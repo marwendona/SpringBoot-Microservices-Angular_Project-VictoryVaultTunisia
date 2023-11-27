@@ -8,4 +8,6 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 public class PlayerInPosition {
+    private String position;
+    private Player player;
 }
