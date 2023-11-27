@@ -8,4 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 public class Referee {
+    private String firstName;
+    private String lastName;
+    private String nationality;
 }
