@@ -10,4 +10,13 @@ public class StandingDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "rank")
+    private int rank;
+
+    @Column(name = "score")
+    private int score;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "standing")
+    private SeasonDto season;
 }
