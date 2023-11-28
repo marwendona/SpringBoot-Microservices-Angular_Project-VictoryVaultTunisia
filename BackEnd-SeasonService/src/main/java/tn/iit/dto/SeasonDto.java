@@ -3,6 +3,7 @@ package tn.iit.dto;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,5 +21,5 @@ public class SeasonDto {
     private List<RoundDto> rounds;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "season")
-    private StandingDto generalStanding ;
+    private StandingDto generalStanding;
 }
