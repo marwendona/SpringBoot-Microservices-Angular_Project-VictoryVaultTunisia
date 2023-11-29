@@ -1,14 +1,28 @@
 package tn.iit.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.extern.jackson.Jacksonized;
+import lombok.ToString;
 
+@Entity
+@Table(name = "coach")
 @Data
-@Builder
-@Jacksonized
 public class Coach {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "firstName")
     private String firstName;
+
+    @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "nationality")
     private String nationality;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "team_id")
+    @ToString.Exclude
+    private Team team;
 }

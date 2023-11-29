@@ -1,28 +1,13 @@
 package tn.iit.dto;
 
-import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
-import tn.iit.entity.Player;
+import lombok.extern.jackson.Jacksonized;
 
-@Entity
-@Table(name = "scorer")
 @Data
+@Builder
+@Jacksonized
 public class ScorerDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "scoringTime")
+    private PlayerDto playerScoring;
     private int scoringTime;
-
-    @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false)
-    @ToString.Exclude
-    private MatchDto match;
-
-    @ManyToOne
-    @JoinColumn(name = "player_in_position_id", nullable = false)
-    @ToString.Exclude
-    private PlayerInPositionDto playerInPosition;
 }

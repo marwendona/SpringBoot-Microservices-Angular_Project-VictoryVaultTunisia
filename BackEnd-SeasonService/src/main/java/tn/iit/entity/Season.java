@@ -1,16 +1,24 @@
 package tn.iit.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.extern.jackson.Jacksonized;
 
 import java.util.List;
 
+@Entity
+@Table(name = "season")
 @Data
-@Builder
-@Jacksonized
 public class Season {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "season")
     private List<Round> rounds;
-    private List<Standing> generalStanding ;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "season")
+    private Standing generalStanding;
 }

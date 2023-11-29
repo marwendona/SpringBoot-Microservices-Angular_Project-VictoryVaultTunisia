@@ -1,14 +1,27 @@
 package tn.iit.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.extern.jackson.Jacksonized;
 
+import java.util.List;
+
+@Entity
+@Table(name = "referee")
 @Data
-@Builder
-@Jacksonized
 public class Referee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "firstName")
     private String firstName;
+
+    @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "nationality")
     private String nationality;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "referee")
+    private List<Match> matchs;
 }

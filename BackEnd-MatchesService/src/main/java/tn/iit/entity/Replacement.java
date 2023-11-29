@@ -1,14 +1,32 @@
 package tn.iit.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.extern.jackson.Jacksonized;
+import lombok.ToString;
 
+@Entity
+@Table(name = "replacement")
 @Data
-@Builder
-@Jacksonized
 public class Replacement {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "replacementTime")
     private int replacementTime;
-    private Player playerIn;
-    private Player playerOut;
+
+    @ManyToOne
+    @JoinColumn(name = "player_in_position_in_id", nullable = false)
+    @ToString.Exclude
+    private PlayerInPosition playerIn;
+
+    @ManyToOne
+    @JoinColumn(name = "player_in_position_out_id", nullable = false)
+    @ToString.Exclude
+    private PlayerInPosition playerOut;
+
+    @ManyToOne
+    @JoinColumn(name = "match_id", nullable = false)
+    @ToString.Exclude
+    private Match match;
 }

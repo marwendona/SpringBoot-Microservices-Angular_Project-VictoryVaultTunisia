@@ -1,4 +1,4 @@
-package tn.iit.dto;
+package tn.iit.Dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 @Builder
 @Jacksonized
-public class TeamDto {
+public class SeasonDto {
     private String name;
-    private List<PlayerDto> players;
-    private CoachDto coach;
+    private List<RoundDto> rounds;
+    private List<StandingDto> generalStanding ;
 }

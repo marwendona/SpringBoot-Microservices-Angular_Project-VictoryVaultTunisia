@@ -1,4 +1,4 @@
-package tn.iit.dto;
+package tn.iit.Dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 @Data
 @Builder
 @Jacksonized
-public class PlayerInPositionDto {
-    private String position;
-    private PlayerDto player;
+public class StandingDto {
+    private int rank;
+    private int score;
 }
