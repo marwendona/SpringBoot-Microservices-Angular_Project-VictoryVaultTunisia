@@ -16,16 +16,16 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    public void createTeam(Team team) {
-        teamRepository.save(team);
+    public Team createTeam(Team team) {
+        return teamRepository.save(team);
     }
 
     public Team getTeamById(Long teamId) {
         return teamRepository.findById(teamId).orElse(null);
     }
 
-    public void updateTeam(Team team) {
-        teamRepository.save(team);
+    public Team updateTeam(Team team) {
+        return teamRepository.save(team);
     }
 
     public void deleteTeam(Long teamId) {

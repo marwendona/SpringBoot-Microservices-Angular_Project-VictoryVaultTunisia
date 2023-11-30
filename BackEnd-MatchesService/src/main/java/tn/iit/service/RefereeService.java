@@ -16,16 +16,16 @@ public class RefereeService {
         this.refereeRepository = refereeRepository;
     }
 
-    public void createReferee(Referee referee) {
-        refereeRepository.save(referee);
+    public Referee createReferee(Referee referee) {
+        return refereeRepository.save(referee);
     }
 
     public Referee getRefereeById(Long refereeId) {
         return refereeRepository.findById(refereeId).orElse(null);
     }
 
-    public void updateReferee(Referee referee) {
-        refereeRepository.save(referee);
+    public Referee updateReferee(Referee referee) {
+        return refereeRepository.save(referee);
     }
 
     public void deleteReferee(Long refereeId) {

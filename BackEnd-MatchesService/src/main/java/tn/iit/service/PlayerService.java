@@ -16,8 +16,8 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public void createPlayer(Player player) {
-        playerRepository.save(player);
+    public Player createPlayer(Player player) {
+        return playerRepository.save(player);
     }
 
     public Player getPlayerById(Long playerId) {
@@ -27,8 +27,8 @@ public class PlayerService {
     public Page<Player> getAllPlayers(Pageable pageable) {
         return playerRepository.findAll(pageable);
     }
-    public void updatePlayer(Player player) {
-        playerRepository.save(player);
+    public Player updatePlayer(Player player) {
+        return playerRepository.save(player);
     }
 
     public void deletePlayer(Long playerId) {

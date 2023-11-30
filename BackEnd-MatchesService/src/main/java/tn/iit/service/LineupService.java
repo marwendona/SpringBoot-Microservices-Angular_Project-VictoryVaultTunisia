@@ -16,16 +16,16 @@ public class LineupService {
         this.lineupRepository = lineupRepository;
     }
 
-    public void createLineup(Lineup lineup) {
-        lineupRepository.save(lineup);
+    public Lineup createLineup(Lineup lineup) {
+        return lineupRepository.save(lineup);
     }
 
     public Lineup getLineupById(long lineupId) {
         return lineupRepository.findById(lineupId).orElse(null);
     }
 
-    public void updateLineup(Lineup lineup) {
-        lineupRepository.save(lineup);
+    public Lineup updateLineup(Lineup lineup) {
+      return  lineupRepository.save(lineup);
     }
 
     public void deleteLineup(long lineupId) {

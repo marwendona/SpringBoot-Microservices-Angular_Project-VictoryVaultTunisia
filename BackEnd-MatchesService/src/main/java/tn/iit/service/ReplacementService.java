@@ -16,16 +16,16 @@ public class ReplacementService {
         this.replacementRepository = replacementRepository;
     }
 
-    public void createReplacement(Replacement replacement) {
-        replacementRepository.save(replacement);
+    public Replacement createReplacement(Replacement replacement) {
+        return replacementRepository.save(replacement);
     }
 
     public Replacement getReplacementById(Long replacementId) {
         return replacementRepository.findById(replacementId).orElse(null);
     }
 
-    public void updateReplacement(Replacement replacement) {
-        replacementRepository.save(replacement);
+    public Replacement updateReplacement(Replacement replacement) {
+        return replacementRepository.save(replacement);
     }
 
     public void deleteReplacement(Long replacementId) {

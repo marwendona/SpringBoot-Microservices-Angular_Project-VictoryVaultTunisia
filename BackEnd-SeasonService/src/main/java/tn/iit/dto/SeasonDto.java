@@ -1,4 +1,4 @@
-package tn.iit.Dto;
+package tn.iit.dto;
 
 import lombok.Builder;
 import lombok.Data;

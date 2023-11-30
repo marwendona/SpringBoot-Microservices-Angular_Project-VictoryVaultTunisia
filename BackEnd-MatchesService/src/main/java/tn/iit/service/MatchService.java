@@ -16,8 +16,8 @@ public class MatchService {
         this.matchRepository = matchRepository;
     }
 
-    public void createMatch(Match match) {
-        matchRepository.save(match);
+    public Match createMatch(Match match) {
+        return matchRepository.save(match);
     }
 
     public Match getMatchById(Long matchId) {
@@ -27,8 +27,8 @@ public class MatchService {
         return matchRepository.findAll(pageable);
     }
 
-    public void updateMatch(Match match) {
-        matchRepository.save(match);
+    public Match updateMatch(Match match) {
+        return matchRepository.save(match);
     }
 
     public void deleteMatch(Long matchId) {

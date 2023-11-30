@@ -16,16 +16,16 @@ public class ScorerService {
         this.scorerRepository = scorerRepository;
     }
 
-    public void createScorer(Scorer scorer) {
-        scorerRepository.save(scorer);
+    public Scorer createScorer(Scorer scorer) {
+        return scorerRepository.save(scorer);
     }
 
     public Scorer getScorerById(Long scorerId) {
         return scorerRepository.findById(scorerId).orElse(null);
     }
 
-    public void updateScorer(Scorer scorer) {
-        scorerRepository.save(scorer);
+    public Scorer updateScorer(Scorer scorer) {
+        return scorerRepository.save(scorer);
     }
 
     public void deleteScorer(Long scorerId) {

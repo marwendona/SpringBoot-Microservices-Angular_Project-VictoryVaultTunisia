@@ -17,8 +17,8 @@ public class CoachService {
         this.coachRepository = coachRepository;
     }
 
-    public void createCoach(Coach coach) {
-        coachRepository.save(coach);
+    public Coach createCoach(Coach coach) {
+        return coachRepository.save(coach);
     }
 
     public Coach getCoachById(Long coachId) {
@@ -28,8 +28,8 @@ public class CoachService {
         return coachRepository.findAll(pageable);
     }
 
-    public void updateCoach(Coach coach) {
-        coachRepository.save(coach);
+    public Coach updateCoach(Coach coach) {
+        return coachRepository.save(coach);
     }
 
     public void deleteCoach(Long coachId) {

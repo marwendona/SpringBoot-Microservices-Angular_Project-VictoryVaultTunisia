@@ -16,16 +16,16 @@ public class PlayerInPositionService {
         this.playerInPositionRepository = playerInPositionRepository;
     }
 
-    public void createPlayerInPosition(PlayerInPosition playerInPosition) {
-        playerInPositionRepository.save(playerInPosition);
+    public PlayerInPosition createPlayerInPosition(PlayerInPosition playerInPosition) {
+        return playerInPositionRepository.save(playerInPosition);
     }
 
     public PlayerInPosition getPlayerInPositionById(Long playerInPositionId) {
         return playerInPositionRepository.findById(playerInPositionId).orElse(null);
     }
 
-    public void updatePlayerInPosition(PlayerInPosition playerInPosition) {
-        playerInPositionRepository.save(playerInPosition);
+    public PlayerInPosition updatePlayerInPosition(PlayerInPosition playerInPosition) {
+        return playerInPositionRepository.save(playerInPosition);
     }
 
     public void deletePlayerInPosition(Long playerInPositionId) {

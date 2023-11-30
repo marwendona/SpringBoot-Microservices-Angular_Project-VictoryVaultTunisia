@@ -16,16 +16,16 @@ public class StadiumService {
         this.stadiumRepository = stadiumRepository;
     }
 
-    public void createStadium(Stadium stadium) {
-        stadiumRepository.save(stadium);
+    public Stadium createStadium(Stadium stadium) {
+       return stadiumRepository.save(stadium);
     }
 
     public Stadium getStadiumById(Long stadiumId) {
         return stadiumRepository.findById(stadiumId).orElse(null);
     }
 
-    public void updateStadium(Stadium stadium) {
-        stadiumRepository.save(stadium);
+    public Stadium updateStadium(Stadium stadium) {
+      return  stadiumRepository.save(stadium);
     }
 
     public void deleteStadium(Long stadiumId) {
