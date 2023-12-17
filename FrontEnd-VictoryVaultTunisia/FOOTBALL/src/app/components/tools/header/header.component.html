@@ -1,19 +1,9 @@
 <header class="header-main">
-    <div class="header-upper">
-        <div class="container">
-            <div class="row">
-                <ul>
-                    <li><a href="">Signup/login</a></li>
-                    <li><a href="shopcart.html"><i class="fa fa-shopping-cart"></i> <span>cart(<span
-                                    class="cartitems">0</span>)</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+   
     <div class="header-lower clearfix">
         <div class="container">
             <div class="row">
-                <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="image"></a></h1>
+                <h1 class="logo"><a style="cursor: auto;"><img src="assets/images/logo.png" alt="image"></a></h1>
                 <div class="menubar">
                     <nav class="navbar">
                         <div class="nav-wrapper">
@@ -62,7 +52,7 @@
                                             <li><a href="gallery03.html">gallery column 03</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">blog 
+                                    <li><a [ngClass]="{ 'active': isActive('/classement') }" href="/classement">classement 
                                         <span></span> 
                                         <span></span> 
                                         <span></span>
@@ -74,13 +64,7 @@
                                         <span></span>
                                         <span></span>
                                         <span></span></a></li>
-                                    <li><a href="shop.html">shop 
-                                        <span></span> 
-                                        <span></span> 
-                                        <span></span>
-                                        <span></span>
-                                        </a>
-                                    </li>
+                            
                                     <li><a href="contact.html">contact 
                                         <span></span> 
                                         <span></span> 
@@ -104,5 +88,3 @@
     </div>
 </header>
 
-<div class="banner" id="layerSlider" style="width: 60%;">
-</div>

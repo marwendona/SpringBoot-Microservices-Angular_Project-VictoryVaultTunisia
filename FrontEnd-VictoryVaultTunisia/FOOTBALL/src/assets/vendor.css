@@ -2751,7 +2751,7 @@ body {
 }
 
 /* Magnific Popup CSS */
-.mfp-bg {
+/* .mfp-bg {
   top: 0;
   left: 0;
   width: 100%;
@@ -2762,9 +2762,9 @@ body {
   background: #0b0b0b;
   opacity: 0.8;
   filter: alpha(opacity=80);
-}
+} */
 
-.mfp-wrap {
+/* .mfp-wrap {
   top: 0;
   left: 0;
   width: 100%;
@@ -2773,7 +2773,7 @@ body {
   position: fixed;
   outline: none !important;
   -webkit-backface-visibility: hidden;
-}
+} */
 
 .mfp-container {
   text-align: center;

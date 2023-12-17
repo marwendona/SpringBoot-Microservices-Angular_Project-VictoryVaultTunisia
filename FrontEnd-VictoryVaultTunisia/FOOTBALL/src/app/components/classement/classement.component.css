@@ -1,0 +1,82 @@
+/* Style the dropdown button */
+.form-select {
+    display: inline-block;
+    width: auto; /* Adjust the width as needed */
+    padding: 0.5rem 1rem; /* Adjust the padding as needed */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #2196F3; /* Material Design primary color */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-select:hover,
+.form-select:focus {
+    border-color: #1565C0; /* Darker shade for hover and focus */
+    outline: 0;
+}
+
+/* Style the dropdown arrow */
+.form-select::after {
+    content: '\25BC';
+    font-size: 1em;
+    position: absolute;
+    top: 50%;
+    right: 0.75rem; /* Adjust the right position as needed */
+    transform: translateY(-50%);
+}
+
+/* Style the selected option */
+.form-select option {
+    background-color: #2196F3; /* Material Design primary color */
+    color: #fff;
+}
+
+/* Style the dropdown menu */
+.form-select:focus + .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+.dropdown-menu option {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem; /* Adjust padding as needed */
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-menu option:hover,
+.dropdown-menu option:focus {
+    background-color: #f8f9fa; /* Lighter shade for hover and focus */
+}

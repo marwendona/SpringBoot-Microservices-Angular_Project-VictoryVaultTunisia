@@ -3708,7 +3708,7 @@ select[multiple].input-lg,
   padding-right: 42.5px;
 }
 
-.form-control-feedback {
+/* .form-control-feedback {
   position: absolute;
   top: 0;
   right: 0;
@@ -3719,7 +3719,7 @@ select[multiple].input-lg,
   line-height: 34px;
   text-align: center;
   pointer-events: none;
-}
+} */
 
 .input-lg+.form-control-feedback,
 .input-group-lg>.form-control+.form-control-feedback,
@@ -9057,7 +9057,7 @@ h6 a:hover {
   transition: background, -webkit-transform 0.7s ease-in-out;
   transition: background, transform 0.7s ease-in-out;
   padding: 30px 0 20px;
-  top: 40px;
+  top: 0px;
   z-index: 9;
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -9480,7 +9480,7 @@ h6 a:hover {
 }
 
 .footer-type02 {
-  padding: 30px 0;
+  padding: 90px 0px;
   background-image: url("images/background/heroesBg.jpg");
   background-size: cover;
   background-position: center;
@@ -10237,7 +10237,7 @@ h6 a:hover {
 @media (min-width: 992px) {
   .booking-content {
     float: left;
-    width: 58.3333333333%;
+    width: 100%;
   }
 }
 
@@ -10773,7 +10773,7 @@ h6 a:hover {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .bookticket h2 {
