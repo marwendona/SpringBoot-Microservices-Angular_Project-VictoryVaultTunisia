@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.CoachRepository;
 import tn.iit.entity.Coach;
+import tn.iit.utils.checks.CoachControl;
 
 
 @Service
@@ -18,6 +19,10 @@ public class CoachService {
     }
 
     public Coach createCoach(Coach coach) {
+        if(!CoachControl.checkCoach(coach).checkNationality().checkFirstName().checkLastName().finish()){
+
+            throw new IllegalArgumentException("Invalid coach");
+        }
         return coachRepository.save(coach);
     }
 
