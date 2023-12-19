@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/tools/header/header.component';
 import { FooterComponent } from './components/tools/footer/footer.component';
 import { ClassementComponent } from './components/classement/classement.component';
 import { MatTableModule } from '@angular/material/table';
+import { TeamComponent } from './components/team/team.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ClassementComponent
+    ClassementComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

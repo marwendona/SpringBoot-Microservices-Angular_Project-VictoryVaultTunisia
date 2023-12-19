@@ -1,0 +1,152 @@
+
+svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* Update this line to align items to the right-top */
+  margin-top: 16px;
+  
+}
+body {
+    position: relative;
+    /* Other styles for the body */
+}
+
+.card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 100%;
+    margin: 160px 50px; /* 20px top and bottom, 80px left and right */
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    position: absolute; /* Change to absolute */
+    top: 0; /* Set top to 0 to position it at the top */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+}
+
+
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+
+  .dropbtn {
+    background-color: #b81e20;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: static;
+    display: flex;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #721214;
+  }
+
+  
+
+  .custom-table .odd-row {
+    background-color: #abb1c4;
+}
+
+.custom-table tr:hover {
+    background-color: #7D849A;
+}
+
+.custom-table th,
+th:hover {
+    background-color: #313131;
+    color: rgb(255, 255, 255);
+}
+
+
+.filters {
+    margin: 20px;
+}
+
+/* Custom class for larger input */
+.custom-input {
+    width: 400px; /* Adjust the width as needed */
+}
+
+.filters {
+  margin: 20px;
+}
+
+/* Custom class for larger input */
+.custom-input {
+  width: 1940px; /* Adjust the width as needed */
+  height: 50px;
+  zoom: 1.2;
+}
+
+.error-message {
+color: red;
+font-size: 12px;
+margin-top: 5px;
+}

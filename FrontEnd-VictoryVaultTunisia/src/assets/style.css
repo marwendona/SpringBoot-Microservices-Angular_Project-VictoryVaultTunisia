@@ -9007,7 +9007,7 @@ h6 a:hover {
   float: left;
   width: 16.6666666667%;
   min-height: 1px;
-  padding-left: 15px;
+  padding-left: 5px;
   padding-right: 15px;
 }
 
@@ -9359,7 +9359,7 @@ h6 a:hover {
 
 @media screen and (min-width: 768px) {
   .header-main .logo a {
-    top: -30px;
+    top: -70px;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
@@ -10401,6 +10401,16 @@ h6 a:hover {
   background-size: cover;
   background-position: center;
 }
+.classement {
+  height: 50px;
+  padding: 400px 0;
+  background: url("images/Asset.png") no-repeat;
+  background-size: 100% 100%; /* Elastic horizontally and vertically */
+  background-position: center;
+}
+
+
+
 .latestResult {
   padding: 100px 0;
   background: url("images/background/latestnews.jpg") no-repeat;
@@ -11204,7 +11214,7 @@ ul.videoLive li a a.active {
 }
 
 section {
-  padding: 70px 0;
+  padding: 50px 0;
 }
 
 /* --------------- latest news ----------*/
