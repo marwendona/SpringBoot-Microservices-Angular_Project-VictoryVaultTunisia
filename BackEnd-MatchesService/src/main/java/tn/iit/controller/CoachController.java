@@ -1,5 +1,7 @@
 package tn.iit.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,8 +10,9 @@ import tn.iit.dto.mapper.CoachMapper;
 import tn.iit.entity.Coach;
 import tn.iit.service.CoachService;
 
+
 @RestController
-@RequestMapping("/coaches")
+@RequestMapping("/coach")
 public class CoachController {
 
     private final CoachService coachService;
@@ -18,6 +21,13 @@ public class CoachController {
         this.coachService = coachService;
     }
 
+    @GetMapping
+    public ResponseEntity<Page<CoachDto>> getAllCoaches() {
+        Page<CoachDto> coaches = coachService.
+                getAllCoaches(PageRequest.of(0,10)).
+                map(CoachMapper::toCoachDto);
+        return ResponseEntity.ok(coaches);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<CoachDto> getCoachById(@PathVariable Long id) {
         Coach coach = coachService.getCoachById(id);
