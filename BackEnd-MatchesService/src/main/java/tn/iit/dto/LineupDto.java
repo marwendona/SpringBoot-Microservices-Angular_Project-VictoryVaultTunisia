@@ -10,6 +10,7 @@ import java.util.List;
 @Builder
 @Jacksonized
 public class LineupDto {
+    private Long id;
     private TeamDto team;
     private MatchDto match;
     private List<PlayerDto> players;

@@ -10,6 +10,7 @@ import java.math.BigInteger;
 @Builder
 @Jacksonized
 public class StadiumDto {
+    private Long id;
     private String name;
     private BigInteger capacity;
 }

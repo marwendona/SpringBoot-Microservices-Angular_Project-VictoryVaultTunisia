@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 @Jacksonized
 public class MatchDto {
+    private Long id;
     StadiumDto stadium;
     RefereeDto referee;
     Date date;
