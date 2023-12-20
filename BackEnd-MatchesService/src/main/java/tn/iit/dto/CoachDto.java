@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 public class CoachDto {
+    private Long id;
     private String firstName;
     private String lastName;
     private String nationality;
