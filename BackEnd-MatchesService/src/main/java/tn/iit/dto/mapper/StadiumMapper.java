@@ -19,6 +19,7 @@ public class StadiumMapper {
                 id(stadium.getId()).
                 name(stadium.getName()).
                 capacity(stadium.getCapacity()).
+                //matches(stadium.getMatches().stream().map(MatchMapper::toMatchDto).toList()).
                 build();
     }
 }

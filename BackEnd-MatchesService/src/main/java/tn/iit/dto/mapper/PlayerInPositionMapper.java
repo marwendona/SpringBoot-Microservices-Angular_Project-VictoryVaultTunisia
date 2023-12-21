@@ -15,7 +15,6 @@ public class PlayerInPositionMapper {
         PlayerInPosition playerInPosition = new PlayerInPosition();
         playerInPosition.setId(playerInPositionDto.getId());
         playerInPosition.setPosition(playerInPositionDto.getPosition());
-        //playerInPosition.setPlayer(playerInPositionDto.getPlayerId());
         return playerInPosition;
     }
 }
