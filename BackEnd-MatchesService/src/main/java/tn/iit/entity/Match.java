@@ -44,7 +44,7 @@ public class Match {
     private List<Lineup> lineupHomes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
-    private List<Lineup> lineupAways;
+    private List<Lineup> lineupAway;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private List<Replacement> replacements;
