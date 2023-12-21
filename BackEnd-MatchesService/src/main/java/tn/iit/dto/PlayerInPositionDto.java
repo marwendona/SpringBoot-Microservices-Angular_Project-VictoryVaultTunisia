@@ -10,5 +10,5 @@ import lombok.extern.jackson.Jacksonized;
 public class PlayerInPositionDto {
     private Long id;
     private String position;
-    private PlayerDto player;
+    private Long playerId;
 }

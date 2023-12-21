@@ -13,12 +13,12 @@ import java.util.List;
 @Jacksonized
 public class MatchDto {
     private Long id;
-    StadiumDto stadium;
-    RefereeDto referee;
+    Long stadiumId;
+    Long refereeId;
     Date date;
     BigInteger spectatorNumber;
     List<ScorerDto> teamHomeScorers;
     List<ScorerDto> teamAwayScorers;
-    LineupDto lineupHome;
-    LineupDto lineupAway;
+    Long lineupHomeId;
+    Long lineupAwayId;
 }

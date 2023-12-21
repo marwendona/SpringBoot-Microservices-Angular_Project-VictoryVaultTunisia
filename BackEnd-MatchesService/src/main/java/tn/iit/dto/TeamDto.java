@@ -13,5 +13,5 @@ public class TeamDto {
     private Long id;
     private String name;
     private List<PlayerDto> players;
-    private CoachDto coach;
+    private Long coachId;
 }

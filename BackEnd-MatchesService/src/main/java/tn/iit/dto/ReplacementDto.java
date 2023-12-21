@@ -10,6 +10,6 @@ import lombok.extern.jackson.Jacksonized;
 public class ReplacementDto {
     private Long id;
     private int replacementTime;
-    private PlayerDto playerIn;
-    private PlayerDto playerOut;
+    private Long playerInId;
+    private Long playerOutId;
 }
