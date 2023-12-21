@@ -21,5 +21,5 @@ public class Stadium {
     private BigInteger capacity;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stadium")
-    private List<Match> matchs;
+    private List<Match> matches;
 }
