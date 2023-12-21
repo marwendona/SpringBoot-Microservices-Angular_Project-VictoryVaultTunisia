@@ -10,6 +10,7 @@ import java.util.List;
 @Builder
 @Jacksonized
 public class SeasonDto {
+    private Long id;
     private String name;
     private List<RoundDto> rounds;
     private List<StandingDto> generalStanding ;

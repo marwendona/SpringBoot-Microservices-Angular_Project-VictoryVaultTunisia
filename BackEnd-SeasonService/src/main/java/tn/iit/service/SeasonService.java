@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.SeasonRepository;
 import tn.iit.entity.Season;
+import tn.iit.utils.checks.SeasonControl;
 
 @Service
 public class SeasonService {
@@ -17,6 +18,9 @@ public class SeasonService {
     }
 
     public Season createSeason(Season season) {
+        if(!SeasonControl.checkSeason(season).checkName().finish()){
+            throw new IllegalArgumentException("Invalid season");
+        }
         return seasonRepository.save(season);
     }
 
