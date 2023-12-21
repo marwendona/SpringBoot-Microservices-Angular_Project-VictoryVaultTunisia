@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Data
 @Builder
@@ -13,4 +14,5 @@ public class StadiumDto {
     private Long id;
     private String name;
     private BigInteger capacity;
+    private List<MatchDto> matches;
 }

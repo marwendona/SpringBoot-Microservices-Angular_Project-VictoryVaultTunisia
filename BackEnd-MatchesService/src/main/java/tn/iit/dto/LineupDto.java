@@ -13,5 +13,5 @@ public class LineupDto {
     private Long id;
     private Long teamId;
     private Long matchId;
-    private List<PlayerDto> players;
+    private List<PlayerInPositionDto> players;
 }
