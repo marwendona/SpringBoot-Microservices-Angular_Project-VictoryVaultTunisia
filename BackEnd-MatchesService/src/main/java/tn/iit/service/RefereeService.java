@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.RefereeRepository;
 import tn.iit.entity.Referee;
+import tn.iit.utils.checks.RefereeControl;
 
 @Service
 public class RefereeService {
@@ -17,6 +18,9 @@ public class RefereeService {
     }
 
     public Referee createReferee(Referee referee) {
+        if(!RefereeControl.checkReferee(referee).checkFirstName().checkLastName().finish()){
+            throw new IllegalArgumentException("Invalid referee");
+        }
         return refereeRepository.save(referee);
     }
 
