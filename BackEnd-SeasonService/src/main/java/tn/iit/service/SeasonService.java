@@ -8,6 +8,8 @@ import tn.iit.dao.SeasonRepository;
 import tn.iit.entity.Season;
 import tn.iit.utils.checks.SeasonControl;
 
+import java.util.ArrayList;
+
 @Service
 public class SeasonService {
     private final SeasonRepository seasonRepository;
@@ -18,9 +20,18 @@ public class SeasonService {
     }
 
     public Season createSeason(Season season) {
-        if(!SeasonControl.checkSeason(season).checkName().finish()){
+        if (!SeasonControl.checkSeason(season).checkName().finish()) {
             throw new IllegalArgumentException("Invalid season");
         }
+
+        if (season.getRounds() == null) {
+            season.setRounds(new ArrayList<>());
+        }
+
+        if (season.getGeneralStanding() == null) {
+            season.setGeneralStanding(new ArrayList<>());
+        }
+
         return seasonRepository.save(season);
     }
 
