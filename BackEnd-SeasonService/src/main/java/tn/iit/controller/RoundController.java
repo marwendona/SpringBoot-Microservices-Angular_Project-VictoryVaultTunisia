@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.RoundDto;
 import tn.iit.dto.mapper.RoundMapper;
 import tn.iit.entity.Round;
+import tn.iit.entity.Season;
 import tn.iit.service.RoundService;
 import tn.iit.service.SeasonService;
 
@@ -50,19 +51,23 @@ public class RoundController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdRoundDto);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<RoundDto> updateRound(@PathVariable Long id, @RequestBody RoundDto roundDto) {
-//        Round existingRound = roundService.getRoundById(id);
-//        if (existingRound != null) {
-//            Round round = RoundMapper.toRound(roundDto);
-//            round.setId(id);
-//            Round updatedRound = roundService.updateRound(round);
-//            RoundDto updatedRoundDto = RoundMapper.toRoundDto(updatedRound);
-//            return ResponseEntity.ok(updatedRoundDto);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<RoundDto> updateRound(@PathVariable Long id, @RequestBody RoundDto roundDto) {
+        Round existingRound = roundService.getRoundById(id);
+        if (existingRound != null) {
+            Round round = RoundMapper.toRound(roundDto);
+            round.setId(id);
+
+            Season existingSeason = existingRound.getSeason();
+            round.setSeason(existingSeason);
+
+            Round updatedRound = roundService.updateRound(round);
+            RoundDto updatedRoundDto = RoundMapper.toRoundDto(updatedRound);
+            return ResponseEntity.ok(updatedRoundDto);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRound(@PathVariable Long id) {
