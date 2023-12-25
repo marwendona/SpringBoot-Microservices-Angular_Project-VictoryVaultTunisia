@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 public class StandingDto {
+    private Long id;
     private int rank;
     private int score;
 }
