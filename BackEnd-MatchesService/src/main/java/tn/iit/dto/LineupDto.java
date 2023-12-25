@@ -12,6 +12,5 @@ import java.util.List;
 public class LineupDto {
     private Long id;
     private Long teamId;
-    private Long matchId;
     private List<PlayerInPositionDto> players;
 }

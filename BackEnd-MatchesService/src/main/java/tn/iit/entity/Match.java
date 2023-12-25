@@ -40,11 +40,11 @@ public class Match {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private List<Scorer> teamAwayScorers;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
-    private List<Lineup> lineupHomes;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "match")
+    private Lineup lineupHomes;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
-    private List<Lineup> lineupAway;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "match")
+    private Lineup lineupAway;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private List<Replacement> replacements;

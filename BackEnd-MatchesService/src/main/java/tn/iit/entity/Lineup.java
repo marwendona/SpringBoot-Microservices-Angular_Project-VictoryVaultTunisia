@@ -22,7 +22,7 @@ public class Lineup {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineup")
     private List<PlayerInPosition> playerInPositions;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "match_id", nullable = false)
     @ToString.Exclude
     private Match match;
