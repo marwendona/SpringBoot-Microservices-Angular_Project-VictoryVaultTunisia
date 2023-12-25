@@ -1,7 +1,9 @@
 package tn.iit.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -19,6 +21,9 @@ public class Season {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "season")
     private List<Round> rounds;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "season")
-    private Standing generalStanding;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "season")
+    private List<Standing> generalStanding;
+
+    public Season() {
+    }
 }
