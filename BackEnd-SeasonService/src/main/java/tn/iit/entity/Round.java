@@ -1,6 +1,7 @@
 package tn.iit.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -18,8 +19,11 @@ public class Round {
     @Column(name = "roundNumber")
     private int roundNumber;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "season_id", nullable = false)
     @ToString.Exclude
     private Season season;
+
+    public Round() {
+    }
 }
