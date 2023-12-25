@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 public class RoundDto {
+    private Long id;
     private String name;
     private int roundNumber;
 }
