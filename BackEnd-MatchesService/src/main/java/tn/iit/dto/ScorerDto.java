@@ -9,6 +9,5 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 public class ScorerDto {
     private Long id;
-    private Long playerScoringId;
     private int scoringTime;
 }
