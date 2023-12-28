@@ -21,4 +21,5 @@ public class MatchDto {
     List<ScorerDto> teamAwayScorers;
     Long lineupHomeId;
     Long lineupAwayId;
+    List<ReplacementDto> replacements;
 }
