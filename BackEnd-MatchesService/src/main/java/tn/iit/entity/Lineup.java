@@ -22,7 +22,10 @@ public class Lineup {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineup")
     private List<PlayerInPosition> playerInPositions;
 
-    @OneToOne(mappedBy = "lineup")
+    @OneToOne(mappedBy = "lineupHomes")
     @ToString.Exclude
-    private Match match;
+    private Match matchHomes;
+    @OneToOne(mappedBy = "lineupAway")
+    @ToString.Exclude
+    private Match matchAway;
 }

@@ -41,11 +41,11 @@ public class Match {
     private List<Scorer> teamAwayScorers;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lineup_id", nullable = false)
+    @JoinColumn(name = "lineup_homes_id", nullable = false)
     private Lineup lineupHomes;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lineup_id", nullable = false)
+    @JoinColumn(name = "lineup_away_id", nullable = false)
     private Lineup lineupAway;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
