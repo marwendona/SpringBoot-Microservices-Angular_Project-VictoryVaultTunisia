@@ -12,4 +12,5 @@ public class ReplacementDto {
     private int replacementTime;
     private Long playerInId;
     private Long playerOutId;
+    private Long matchId;
 }
