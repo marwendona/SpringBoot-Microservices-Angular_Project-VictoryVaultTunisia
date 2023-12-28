@@ -7,8 +7,9 @@ public class ScorerMapper {
     public static ScorerDto toScorerDto(Scorer scorer) {
         return ScorerDto.builder().
                 id(scorer.getId()).
-                playerScoringId(scorer.getPlayerInPosition().getId()).
                 scoringTime(scorer.getScoringTime()).
+                playerInPositionId(scorer.getPlayerInPosition().getId()).
+                matchId(scorer.getMatch().getId()).
                 build();
     }
     public static Scorer toScorer(ScorerDto scorerDto) {
