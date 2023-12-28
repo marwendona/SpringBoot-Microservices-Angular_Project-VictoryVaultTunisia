@@ -14,12 +14,6 @@ public class LineupMapper {
         return lineup;
     }
     public static LineupDto toLineupDto(Lineup lineup) {
-        if(lineup.getTeam() == null) {
-            return LineupDto.builder().
-                    id(lineup.getId()).
-                    players(lineup.getPlayerInPositions().stream().map(PlayerInPositionMapper::toPlayerInPositionDto).toList()).
-                    build();
-        }
         return LineupDto.builder().
                 id(lineup.getId()).
                 teamId(lineup.getTeam().getId()).
