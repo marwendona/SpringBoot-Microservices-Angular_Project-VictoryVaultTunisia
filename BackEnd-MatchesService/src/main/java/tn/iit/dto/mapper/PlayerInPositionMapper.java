@@ -9,6 +9,7 @@ public class PlayerInPositionMapper {
                 id(playerInPosition.getId()).
                 position(playerInPosition.getPosition()).
                 playerId(playerInPosition.getPlayer().getId()).
+                lineupId(playerInPosition.getId()).
                 build();
     }
     public static PlayerInPosition toPlayerInPosition(PlayerInPositionDto playerInPositionDto) {
