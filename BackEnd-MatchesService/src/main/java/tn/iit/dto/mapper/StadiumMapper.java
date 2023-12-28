@@ -9,8 +9,7 @@ public class StadiumMapper {
         stadium.setId(stadiumDto.getId());
         stadium.setName(stadiumDto.getName());
         stadium.setCapacity(stadiumDto.getCapacity());
-        //TO FIX
-        //stadium.setMatches(stadiumDto.getMatches().stream().map(MatchMapper::toMatch).toList());
+        stadium.setMatches(stadiumDto.getMatches().stream().map(MatchMapper::toMatch).toList());
         return stadium;
     }
 
@@ -19,7 +18,7 @@ public class StadiumMapper {
                 id(stadium.getId()).
                 name(stadium.getName()).
                 capacity(stadium.getCapacity()).
-                //matches(stadium.getMatches().stream().map(MatchMapper::toMatchDto).toList()).
+                matches(stadium.getMatches().stream().map(MatchMapper::toMatchDto).toList()).
                 build();
     }
 }
