@@ -11,6 +11,5 @@ import java.util.List;
 @Jacksonized
 public class LineupDto {
     private Long id;
-    private Long teamId;
     private List<PlayerInPositionDto> players;
 }
