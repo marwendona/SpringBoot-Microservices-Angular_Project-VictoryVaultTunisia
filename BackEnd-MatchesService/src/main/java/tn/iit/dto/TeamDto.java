@@ -12,4 +12,8 @@ import java.util.List;
 public class TeamDto {
     private Long id;
     private String name;
+    private List<LineupDto> lineups;
+    private List<PlayerDto> players;
+    private Long coachId;
+
 }

@@ -2,7 +2,6 @@ package tn.iit.dto.mapper;
 
 import tn.iit.dto.TeamDto;
 import tn.iit.entity.Team;
-import tn.iit.service.CoachService;
 
 public class TeamMapper {
 
@@ -10,14 +9,17 @@ public class TeamMapper {
         return TeamDto.builder().
                 id(team.getId()).
                 name(team.getName()).
-                players(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()).
                 coachId(team.getCoach().getId()).
+                lineups(team.getLineups().stream().map(LineupMapper::toLineupDto).toList()).
+                players(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()).
                 build();
     }
     public static Team toTeam(TeamDto dto) {
         Team team = new Team();
         team.setId(dto.getId());
         team.setName(dto.getName());
+        team.setPlayers(dto.getPlayers().stream().map(PlayerMapper::toPlayer).toList());
+        team.setLineups(dto.getLineups().stream().map(LineupMapper::toLineup).toList());
         return team;
     }
 }
