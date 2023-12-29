@@ -2,6 +2,7 @@ package tn.iit.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.List;
 @Entity
 @Table(name = "player_in_position")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PlayerInPosition {
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -2,12 +2,15 @@ package tn.iit.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Table(name = "scorer")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Scorer {
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -2,6 +2,7 @@ package tn.iit.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,7 +13,9 @@ import java.util.List;
 @Entity
 @Table(name = "football_match")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Match {
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

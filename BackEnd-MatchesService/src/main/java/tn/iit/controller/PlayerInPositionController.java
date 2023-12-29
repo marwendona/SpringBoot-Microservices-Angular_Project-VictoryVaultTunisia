@@ -56,6 +56,7 @@ public class PlayerInPositionController {
         PlayerInPosition existingPlayerInPosition = playerInPositionService.getPlayerInPositionById(id);
         if (existingPlayerInPosition != null) {
             PlayerInPosition playerInPosition = PlayerInPositionMapper.toPlayerInPosition(playerInPositionDto);
+            playerInPosition.setId(id);
             playerInPosition.setPlayer(playerService.getPlayerById(playerInPosition.getPlayer().getId()));
             playerInPosition.setLineup(lineupService.getLineupById(playerInPosition.getLineup().getId()));
             playerInPositionService.updatePlayerInPosition(playerInPosition);

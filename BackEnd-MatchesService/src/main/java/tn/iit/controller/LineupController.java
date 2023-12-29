@@ -52,6 +52,7 @@ public class LineupController {
         if (existingLineup != null) {
             Lineup lineup = LineupMapper.toLineup(lineupDto);
             Team team = teamService.getTeamById(lineupDto.getTeamId());
+            lineup.setId(id);
             lineup.setTeam(team);
             Lineup updatedLineup = lineupService.updateLineup(lineup);
             LineupDto updatedLineupDto = LineupMapper.toLineupDto(updatedLineup);

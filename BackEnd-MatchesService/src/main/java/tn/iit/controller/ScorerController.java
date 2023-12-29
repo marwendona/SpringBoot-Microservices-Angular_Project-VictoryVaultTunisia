@@ -57,6 +57,7 @@ public class ScorerController {
             return ResponseEntity.notFound().build();
         }
         Scorer newScorer = ScorerMapper.toScorer(scorerDto);
+        newScorer.setId(id);
         newScorer.setMatch(matchService.getMatchById(scorerDto.getMatchId()));
         newScorer.setPlayerInPosition(playerInPositionService.getPlayerInPositionById(scorerDto.getPlayerInPositionId()));
         scorerService.updateScorer(newScorer);

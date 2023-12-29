@@ -55,6 +55,7 @@ public class PlayerController {
         Player existingPlayer = playerService.getPlayerById(id);
         if (existingPlayer != null) {
             Player player = PlayerMapper.toPlayer(playerDto);
+            player.setId(id);
             player.setTeam(teamService.getTeamById(playerDto.getTeamId()));
             Player updatedPlayer = playerService.updatePlayer(player);
             return new ResponseEntity<>(PlayerMapper.toPlayerDto(updatedPlayer), HttpStatus.OK);

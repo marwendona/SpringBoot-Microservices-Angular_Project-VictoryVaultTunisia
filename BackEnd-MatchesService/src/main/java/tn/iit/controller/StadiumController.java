@@ -43,6 +43,7 @@ public class StadiumController {
             return ResponseEntity.notFound().build();
         }
         Stadium newStadium = StadiumMapper.toStadium(stadiumDto);
+        newStadium.setId(id);
         stadiumService.updateStadium(newStadium);
         return ResponseEntity.ok(stadiumDto);
     }

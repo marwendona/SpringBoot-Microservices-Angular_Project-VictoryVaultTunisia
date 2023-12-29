@@ -51,6 +51,7 @@ public class ReplacementController {
             return ResponseEntity.notFound().build();
         }
         Replacement replacement = ReplacementMapper.toReplacement(replacementDto);
+        replacement.setId(id);
         replacement.setMatch(matchService.getMatchById(replacementDto.getMatchId()));
         replacement.setPlayerIn(playerInPositionService.getPlayerInPositionById(replacementDto.getPlayerInId()));
         replacement.setPlayerOut(playerInPositionService.getPlayerInPositionById(replacementDto.getPlayerOutId()));

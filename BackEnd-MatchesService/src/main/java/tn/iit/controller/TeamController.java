@@ -37,7 +37,7 @@ public class TeamController {
     public ResponseEntity<TeamDto> createTeam(@RequestBody TeamDto teamDto) {
         Team team = TeamMapper.toTeam(teamDto);
         team.setCoach(coachService.getCoachById(teamDto.getCoachId()));
-        teamService.createTeam(team);
+         teamService.createTeam(team);
         return new ResponseEntity<>(teamDto, HttpStatus.CREATED);
     }
 
@@ -67,8 +67,6 @@ public class TeamController {
     public ResponseEntity<TeamDto> getTeamById(@PathVariable Long id) {
         Team team = teamService.getTeamById(id);
         TeamDto teamDto = TeamMapper.toTeamDto(team);
-        teamDto.setLineups(team.getLineups().stream().map(LineupMapper::toLineupDto).toList());
-        teamDto.setPlayers(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList());
         teamDto.setCoachId(team.getCoach().getId());
         if (team != null) {
             return new ResponseEntity<>(teamDto, HttpStatus.OK);
@@ -80,15 +78,16 @@ public class TeamController {
     @PutMapping("/{id}")
     public ResponseEntity<TeamDto> updateTeam(@PathVariable Long id, @RequestBody TeamDto team) {
         Team existingTeam = teamService.getTeamById(id);
-        team.setLineups(team.getLineups());
-        team.setPlayers(team.getPlayers());
-        team.setCoachId(team.getCoachId());
-
         if (existingTeam != null) {
-            teamService.updateTeam(TeamMapper.toTeam(team));
-            return new ResponseEntity<>(team, HttpStatus.OK);
+            Team newTeam = TeamMapper.toTeam(team);
+
+            newTeam.setId(id);
+            newTeam.setCoach(coachService.getCoachById(team.getCoachId()));
+            System.out.println(existingTeam +"\n"+newTeam);
+            Team updateTeam = teamService.updateTeam(newTeam);
+            return ResponseEntity.ok(team);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return  ResponseEntity.notFound().build();
         }
     }
 

@@ -52,6 +52,7 @@ public class CoachController {
         Coach existingCoach = coachService.getCoachById(id);
         if (existingCoach != null) {
             Coach coach = CoachMapper.toCoach(coachDto);
+            coach.setId(id);
             Coach updatedCoach = coachService.updateCoach(coach);
             CoachDto updatedCoachDto = CoachMapper.toCoachDto(updatedCoach);
             return ResponseEntity.ok(updatedCoachDto);

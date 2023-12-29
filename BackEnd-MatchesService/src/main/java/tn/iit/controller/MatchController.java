@@ -77,6 +77,7 @@ public class MatchController {
             return ResponseEntity.notFound().build();
         }
         Match newMatch = MatchMapper.toMatch(matchDto);
+        newMatch.setId(id);
         newMatch.setStadium(stadiumService.getStadiumById(matchDto.getStadiumId()));
         newMatch.setReferee(refereeService.getRefereeById(matchDto.getRefereeId()));
         newMatch.setLineupAway(lineupService.getLineupById(matchDto.getLineupAwayId()));
