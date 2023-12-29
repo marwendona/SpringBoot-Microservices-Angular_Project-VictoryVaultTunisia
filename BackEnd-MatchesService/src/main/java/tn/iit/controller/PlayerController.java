@@ -9,6 +9,7 @@ import tn.iit.dto.PlayerDto;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
+import tn.iit.service.TeamService;
 
 import java.util.List;
 
@@ -18,14 +19,17 @@ public class PlayerController {
 
 
     private final PlayerService playerService;
+    private final TeamService teamService;
 
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, TeamService teamService) {
         this.playerService = playerService;
+        this.teamService = teamService;
     }
 
     @PostMapping
     public ResponseEntity<PlayerDto> createPlayer(@RequestBody PlayerDto playerDto) {
         Player player = PlayerMapper.toPlayer(playerDto);
+        player.setTeam(teamService.getTeamById(playerDto.getTeamId()));
         Player createdPlayer = playerService.createPlayer(player);
         return new ResponseEntity<>(PlayerMapper.toPlayerDto(createdPlayer), HttpStatus.CREATED);
     }
@@ -51,6 +55,7 @@ public class PlayerController {
         Player existingPlayer = playerService.getPlayerById(id);
         if (existingPlayer != null) {
             Player player = PlayerMapper.toPlayer(playerDto);
+            player.setTeam(teamService.getTeamById(playerDto.getTeamId()));
             Player updatedPlayer = playerService.updatePlayer(player);
             return new ResponseEntity<>(PlayerMapper.toPlayerDto(updatedPlayer), HttpStatus.OK);
         } else {
