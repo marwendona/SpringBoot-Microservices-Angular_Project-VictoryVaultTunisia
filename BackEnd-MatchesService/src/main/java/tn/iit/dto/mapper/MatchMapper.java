@@ -23,9 +23,6 @@ public class MatchMapper {
         Match match = new Match();
         match.setDate(dto.getDate());
         match.setId(dto.getId());
-        match.setTeamAwayScorers(dto.getTeamAwayScorers().stream().map(ScorerMapper::toScorer).toList());
-        match.setTeamHomeScorers(dto.getTeamHomeScorers().stream().map(ScorerMapper::toScorer).toList());
-        match.setReplacements(dto.getReplacements().stream().map(ReplacementMapper::toReplacement).toList());
         match.setSpectatorNumber(dto.getSpectatorNumber());
         return match;
 

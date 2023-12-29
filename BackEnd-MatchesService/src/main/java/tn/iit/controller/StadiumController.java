@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.StadiumDto;
 import tn.iit.dto.mapper.StadiumMapper;
+import tn.iit.entity.Stadium;
 import tn.iit.service.StadiumService;
 
 @RestController
@@ -32,13 +33,18 @@ public class StadiumController {
     }
     @PostMapping
     public ResponseEntity<StadiumDto> createStadium(@RequestBody StadiumDto stadiumDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                StadiumMapper.toStadiumDto(stadiumService.createStadium(StadiumMapper.toStadium(stadiumDto))));
+        stadiumService.createStadium(StadiumMapper.toStadium(stadiumDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(stadiumDto);
     }
     @PutMapping("/{id}")
     public ResponseEntity<StadiumDto> updateStadium(@PathVariable Long id, @RequestBody StadiumDto stadiumDto) {
-        return ResponseEntity.ok(
-                StadiumMapper.toStadiumDto(stadiumService.updateStadium(StadiumMapper.toStadium(stadiumDto))));
+        Stadium oldStadium = stadiumService.getStadiumById(id);
+        if (oldStadium == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Stadium newStadium = StadiumMapper.toStadium(stadiumDto);
+        stadiumService.updateStadium(newStadium);
+        return ResponseEntity.ok(stadiumDto);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStadium(@PathVariable Long id) {

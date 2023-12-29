@@ -43,6 +43,7 @@ public class LineupController {
         Lineup lineup = LineupMapper.toLineup(lineupDto);
         Team team = teamService.getTeamById(lineupDto.getTeamId());
         lineup.setTeam(team);
+        lineupService.createLineup(lineup);
         return ResponseEntity.status(HttpStatus.CREATED).body(lineupDto);
     }
     @PutMapping("/{id}")

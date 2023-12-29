@@ -1,5 +1,6 @@
 package tn.iit.controller;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,24 +8,30 @@ import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.PlayerInPositionDto;
 import tn.iit.dto.mapper.PlayerInPositionMapper;
 import tn.iit.entity.PlayerInPosition;
+import tn.iit.service.LineupService;
 import tn.iit.service.PlayerInPositionService;
 import tn.iit.service.PlayerService;
+import tn.iit.service.TeamService;
 
 @RestController
 @RequestMapping("/playerinposition")
 public class PlayerInPositionController {
     private final PlayerInPositionService playerInPositionService;
     private final PlayerService playerService;
+    private final LineupService lineupService;
 
-    public PlayerInPositionController(PlayerInPositionService playerInPositionService, PlayerService playerService) {
+    public PlayerInPositionController(PlayerInPositionService playerInPositionService,
+                                      PlayerService playerService,
+                                      LineupService lineupService) {
         this.playerInPositionService = playerInPositionService;
         this.playerService = playerService;
+        this.lineupService = lineupService;
     }
     @GetMapping
-    public ResponseEntity<PlayerInPositionDto> getAllPlayerInPosition() {
-        PlayerInPositionDto playerInPositionDto = playerInPositionService.
+    public ResponseEntity<Page<PlayerInPositionDto>> getAllPlayerInPosition() {
+        Page<PlayerInPositionDto> playerInPositionDto = playerInPositionService.
                 getAllPlayerInPositions(PageRequest.of(0,10)).
-                map(PlayerInPositionMapper::toPlayerInPositionDto).getContent().get(0);
+                map(PlayerInPositionMapper::toPlayerInPositionDto);
         return ResponseEntity.ok(playerInPositionDto);
     }
     @GetMapping("/{id}")
@@ -39,7 +46,9 @@ public class PlayerInPositionController {
     @PostMapping
     public ResponseEntity<PlayerInPositionDto> createPlayerInPosition(@RequestBody PlayerInPositionDto playerInPositionDto) {
         PlayerInPosition playerInPosition = PlayerInPositionMapper.toPlayerInPosition(playerInPositionDto);
-        playerInPosition.setPlayer(playerService.getPlayerById(playerInPosition.getPlayer().getId()));
+        playerInPosition.setPlayer(playerService.getPlayerById(playerInPositionDto.getPlayerId()));
+        playerInPosition.setLineup(lineupService.getLineupById(playerInPositionDto.getLineupId()));
+        playerInPositionService.createPlayerInPosition(playerInPosition);
         return ResponseEntity.status(HttpStatus.CREATED).body(playerInPositionDto);
     }
     @PutMapping("/{id}")
@@ -48,6 +57,8 @@ public class PlayerInPositionController {
         if (existingPlayerInPosition != null) {
             PlayerInPosition playerInPosition = PlayerInPositionMapper.toPlayerInPosition(playerInPositionDto);
             playerInPosition.setPlayer(playerService.getPlayerById(playerInPosition.getPlayer().getId()));
+            playerInPosition.setLineup(lineupService.getLineupById(playerInPosition.getLineup().getId()));
+            playerInPositionService.updatePlayerInPosition(playerInPosition);
             return ResponseEntity.ok(PlayerInPositionMapper.toPlayerInPositionDto(playerInPositionService.updatePlayerInPosition(playerInPosition)));
         } else {
             return ResponseEntity.notFound().build();

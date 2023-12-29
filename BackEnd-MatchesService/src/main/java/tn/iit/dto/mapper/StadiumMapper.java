@@ -9,7 +9,6 @@ public class StadiumMapper {
         stadium.setId(stadiumDto.getId());
         stadium.setName(stadiumDto.getName());
         stadium.setCapacity(stadiumDto.getCapacity());
-        stadium.setMatches(stadiumDto.getMatches().stream().map(MatchMapper::toMatch).toList());
         return stadium;
     }
 

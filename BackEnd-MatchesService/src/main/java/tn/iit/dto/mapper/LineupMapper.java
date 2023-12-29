@@ -10,7 +10,6 @@ public class LineupMapper {
     public static Lineup toLineup(LineupDto dto) {
         Lineup lineup = new Lineup();
         lineup.setId(dto.getId());
-        lineup.setPlayerInPositions(dto.getPlayers().stream().map(PlayerInPositionMapper::toPlayerInPosition).toList());
         return lineup;
     }
     public static LineupDto toLineupDto(Lineup lineup) {
