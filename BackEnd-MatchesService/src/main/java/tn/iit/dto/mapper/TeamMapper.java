@@ -18,8 +18,6 @@ public class TeamMapper {
         Team team = new Team();
         team.setId(dto.getId());
         team.setName(dto.getName());
-        team.setPlayers(dto.getPlayers().stream().map(PlayerMapper::toPlayer).toList());
-        team.setLineups(dto.getLineups().stream().map(LineupMapper::toLineup).toList());
         return team;
     }
 }
