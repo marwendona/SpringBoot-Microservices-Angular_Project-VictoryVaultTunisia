@@ -57,10 +57,10 @@ public class PlayerInPositionController {
         if (existingPlayerInPosition != null) {
             PlayerInPosition playerInPosition = PlayerInPositionMapper.toPlayerInPosition(playerInPositionDto);
             playerInPosition.setId(id);
-            playerInPosition.setPlayer(playerService.getPlayerById(playerInPosition.getPlayer().getId()));
-            playerInPosition.setLineup(lineupService.getLineupById(playerInPosition.getLineup().getId()));
+            playerInPosition.setPlayer(playerService.getPlayerById(existingPlayerInPosition.getPlayer().getId()));
+            playerInPosition.setLineup(lineupService.getLineupById(existingPlayerInPosition.getLineup().getId()));
             playerInPositionService.updatePlayerInPosition(playerInPosition);
-            return ResponseEntity.ok(PlayerInPositionMapper.toPlayerInPositionDto(playerInPositionService.updatePlayerInPosition(playerInPosition)));
+            return ResponseEntity.ok(playerInPositionDto);
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -54,9 +54,8 @@ public class LineupController {
             Team team = teamService.getTeamById(lineupDto.getTeamId());
             lineup.setId(id);
             lineup.setTeam(team);
-            Lineup updatedLineup = lineupService.updateLineup(lineup);
-            LineupDto updatedLineupDto = LineupMapper.toLineupDto(updatedLineup);
-            return ResponseEntity.ok(updatedLineupDto);
+            lineupService.updateLineup(lineup);
+            return ResponseEntity.ok(lineupDto);
         } else {
             return ResponseEntity.notFound().build();
         }
