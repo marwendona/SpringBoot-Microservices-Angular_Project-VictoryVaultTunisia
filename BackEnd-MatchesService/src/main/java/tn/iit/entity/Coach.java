@@ -21,8 +21,6 @@ public class Coach {
     @Column(name = "nationality")
     private String nationality;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "team_id")
-    @ToString.Exclude
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "coach")
     private Team team;
 }
