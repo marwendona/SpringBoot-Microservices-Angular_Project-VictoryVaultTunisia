@@ -45,22 +45,20 @@ public class TeamController {
     public ResponseEntity<Page<TeamDto>> getAllTeams() {
         Page<TeamDto> teams = teamService.getAllTeams(PageRequest.of(0,10)).map(TeamMapper::toTeamDto);
         teams.forEach(team ->
-                team.setLineups(
-                        teamService.getTeamById(team.getId()).
-                        getLineups().stream().map(LineupMapper::toLineupDto).toList()
-                )
-        );
-        teams.forEach(team ->
-                team.setPlayers(
-                        teamService.getTeamById(team.getId()).
-                                getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()
-                )
-        );
-        teams.forEach(team ->
-                team.setCoachId(
-                        teamService.getTeamById(team.getId()).
-                                getCoach().getId()
-                )
+                {
+                    team.setLineups(
+                            teamService.getTeamById(team.getId()).
+                                    getLineups().stream().map(LineupMapper::toLineupDto).toList()
+                    );
+                    team.setPlayers(
+                            teamService.getTeamById(team.getId()).
+                                    getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()
+                    );
+                    team.setCoachId(
+                            teamService.getTeamById(team.getId()).
+                                    getCoach().getId()
+                    );
+                }
         );
         return new ResponseEntity<>(teams, HttpStatus.OK);
     }
