@@ -24,6 +24,6 @@ public class Coach {
     @Column(name = "nationality")
     private String nationality;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "coach")
+    @OneToOne(mappedBy = "coach")
     private Team team;
 }
