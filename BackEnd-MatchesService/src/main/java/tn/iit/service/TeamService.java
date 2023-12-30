@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.TeamRepository;
 import tn.iit.entity.Team;
+import tn.iit.utils.checks.TeamControl;
 
 @Service
 public class TeamService {
@@ -17,6 +18,10 @@ public class TeamService {
     }
 
     public Team createTeam(Team team) {
+        if (!TeamControl.checkTeam(team).checkName().finish()) {
+            throw new IllegalArgumentException("Invalid team");
+        }
+
         return teamRepository.save(team);
     }
 
