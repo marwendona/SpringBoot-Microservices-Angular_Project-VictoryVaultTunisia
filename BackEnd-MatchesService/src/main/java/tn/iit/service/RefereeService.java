@@ -18,9 +18,10 @@ public class RefereeService {
     }
 
     public Referee createReferee(Referee referee) {
-        if(!RefereeControl.checkReferee(referee).checkFirstName().checkLastName().finish()){
+        if(!RefereeControl.checkReferee(referee).checkFirstName().checkLastName().checkNationality().finish()){
             throw new IllegalArgumentException("Invalid referee");
         }
+
         return refereeRepository.save(referee);
     }
 
