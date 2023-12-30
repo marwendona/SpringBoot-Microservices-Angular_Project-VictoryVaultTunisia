@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.MatchRepository;
 import tn.iit.entity.Match;
+import tn.iit.utils.checks.MatchControl;
 
 @Service
 public class MatchService {
@@ -17,6 +18,10 @@ public class MatchService {
     }
 
     public Match createMatch(Match match) {
+        if(!MatchControl.checkMatch(match).checkDate().checkSpectatorNumber().finish()){
+            throw new IllegalArgumentException("Invalid match");
+        }
+
         return matchRepository.save(match);
     }
 
