@@ -26,10 +26,6 @@ public class Round {
     @ToString.Exclude
     private Season season;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "round")
-    @ToString.Exclude
-    private List<Match> matches;
-
     public Round() {
     }
 }

@@ -24,10 +24,8 @@ public class Standing {
     @ToString.Exclude
     private Season season;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "team_id", nullable = false)
-    @ToString.Exclude
-    private Team team;
+    @Column(name = "team_id")
+    private Long teamId;
 
     public Standing() {
     }
