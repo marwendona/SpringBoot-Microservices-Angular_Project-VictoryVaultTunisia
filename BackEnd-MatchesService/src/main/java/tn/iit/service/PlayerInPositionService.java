@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.PlayerInPositionRepository;
 import tn.iit.entity.PlayerInPosition;
+import tn.iit.utils.checks.PlayerInPositionControl;
 
 @Service
 public class PlayerInPositionService {
@@ -17,6 +18,10 @@ public class PlayerInPositionService {
     }
 
     public PlayerInPosition createPlayerInPosition(PlayerInPosition playerInPosition) {
+        if (!PlayerInPositionControl.checkPlayerInPosition(playerInPosition).checkPosition().finish()) {
+            throw new IllegalArgumentException("Invalid playerInPosition");
+        }
+
         return playerInPositionRepository.save(playerInPosition);
     }
 
