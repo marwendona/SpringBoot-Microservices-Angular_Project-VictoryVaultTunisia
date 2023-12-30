@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.ReplacementRepository;
 import tn.iit.entity.Replacement;
+import tn.iit.utils.checks.ReplacementControl;
 
 @Service
 public class ReplacementService {
@@ -17,6 +18,9 @@ public class ReplacementService {
     }
 
     public Replacement createReplacement(Replacement replacement) {
+        if (!ReplacementControl.checkReplacement(replacement).checkReplacementTime().finish()) {
+            throw new IllegalArgumentException("Invalid replacement");
+        }
         return replacementRepository.save(replacement);
     }
 
