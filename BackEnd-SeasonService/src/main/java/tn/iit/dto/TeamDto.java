@@ -4,12 +4,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
+import java.util.List;
+
 @Data
 @Builder
 @Jacksonized
-public class StandingDto {
+public class TeamDto {
+
     private Long id;
-    private int rank;
-    private int score;
-    private int teamId;
+    private String name;
+    private List<StandingDto> standings;
 }
