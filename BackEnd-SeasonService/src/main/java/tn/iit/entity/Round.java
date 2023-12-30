@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name = "round")
 @Data
@@ -23,6 +25,10 @@ public class Round {
     @JoinColumn(name = "season_id", nullable = false)
     @ToString.Exclude
     private Season season;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "round")
+    @ToString.Exclude
+    private List<Match> matches;
 
     public Round() {
     }
