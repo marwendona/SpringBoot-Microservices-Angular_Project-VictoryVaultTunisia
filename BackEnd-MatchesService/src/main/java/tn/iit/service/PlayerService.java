@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.PlayerRepository;
 import tn.iit.entity.Player;
+import tn.iit.utils.checks.PlayerControl;
 
 @Service
 public class PlayerService {
@@ -17,6 +18,10 @@ public class PlayerService {
     }
 
     public Player createPlayer(Player player) {
+        if (!PlayerControl.checkPlayer(player).checkFirstName().checkLastName().checkNationality().finish()) {
+            throw new IllegalArgumentException("Invalid player");
+        }
+
         return playerRepository.save(player);
     }
 
