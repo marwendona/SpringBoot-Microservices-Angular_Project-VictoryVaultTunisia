@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.StadiumRepository;
 import tn.iit.entity.Stadium;
+import tn.iit.utils.checks.StadiumControl;
 
 @Service
 public class StadiumService {
@@ -17,6 +18,10 @@ public class StadiumService {
     }
 
     public Stadium createStadium(Stadium stadium) {
+        if(!StadiumControl.checkStadium(stadium).checkName().checkCapacity().finish()){
+            throw new IllegalArgumentException("Invalid stadium");
+        }
+
        return stadiumRepository.save(stadium);
     }
 
