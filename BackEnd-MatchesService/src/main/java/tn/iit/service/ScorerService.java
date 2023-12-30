@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.iit.dao.ScorerRepository;
 import tn.iit.entity.Scorer;
+import tn.iit.utils.checks.ScorerControl;
 
 @Service
 public class ScorerService {
@@ -17,6 +18,9 @@ public class ScorerService {
     }
 
     public Scorer createScorer(Scorer scorer) {
+        if(!ScorerControl.checkScorer(scorer).checkScoringTime().finish()) {
+            throw new IllegalArgumentException("Invalid scorer");
+        }
         return scorerRepository.save(scorer);
     }
 
