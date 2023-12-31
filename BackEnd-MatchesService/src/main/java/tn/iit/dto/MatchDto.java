@@ -22,4 +22,5 @@ public class MatchDto {
     Long lineupHomeId;
     Long lineupAwayId;
     List<ReplacementDto> replacements;
+    private Long roundId;
 }
