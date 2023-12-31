@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import tn.iit.dto.LineupDto;
 import tn.iit.dto.PlayerDto;
+import tn.iit.dto.SeasonTeamDto;
 import tn.iit.dto.TeamDto;
 import tn.iit.dto.mapper.LineupMapper;
 import tn.iit.dto.mapper.PlayerMapper;
@@ -83,7 +84,6 @@ public class TeamController {
 
             newTeam.setId(id);
             newTeam.setCoach(coachService.getCoachById(team.getCoachId()));
-            System.out.println(existingTeam +"\n"+newTeam);
             Team updateTeam = teamService.updateTeam(newTeam);
             return ResponseEntity.ok(team);
         } else {
@@ -101,5 +101,19 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("season-service/{id}")
+    public ResponseEntity<SeasonTeamDto> getTeamByIdForSeason(@PathVariable long id){
+        Team team = teamService.getTeamById(id);
+        if(team == null) {
+            return ResponseEntity.notFound().build();
+        }
+        SeasonTeamDto teamDto = SeasonTeamDto.builder()
+                .id(team.getId())
+                .name(team.getName())
+                .build();
+
+        return ResponseEntity.ok(teamDto);
+    }
+
 
 }
