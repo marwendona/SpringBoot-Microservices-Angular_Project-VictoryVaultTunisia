@@ -24,6 +24,9 @@ public class Standing {
     @ToString.Exclude
     private Season season;
 
+    @Column(name = "team_id")
+    private Long teamId;
+
     public Standing() {
     }
 }

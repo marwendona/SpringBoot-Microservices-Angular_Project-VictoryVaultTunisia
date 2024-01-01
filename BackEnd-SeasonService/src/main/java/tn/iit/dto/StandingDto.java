@@ -11,4 +11,5 @@ public class StandingDto {
     private Long id;
     private int rank;
     private int score;
+    private int teamId;
 }

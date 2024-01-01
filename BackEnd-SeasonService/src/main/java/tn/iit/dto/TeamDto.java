@@ -4,14 +4,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
-import java.util.List;
 
 @Data
 @Builder
 @Jacksonized
-public class RoundDto {
+public class TeamDto {
+
     private Long id;
     private String name;
-    private int roundNumber;
-    private List<MatchDto> matches;
 }

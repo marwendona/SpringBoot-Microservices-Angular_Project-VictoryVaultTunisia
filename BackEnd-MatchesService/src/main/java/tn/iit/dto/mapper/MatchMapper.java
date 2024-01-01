@@ -17,6 +17,7 @@ public class MatchMapper {
                 teamHomeScorers(match.getTeamHomeScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 replacements(match.getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()).
                 spectatorNumber(match.getSpectatorNumber()).
+                roundId(match.getRoundId()).
                 build();
     }
     public static Match toMatch(MatchDto dto) {
@@ -24,6 +25,7 @@ public class MatchMapper {
         match.setDate(dto.getDate());
         match.setId(dto.getId());
         match.setSpectatorNumber(dto.getSpectatorNumber());
+        match.setRoundId(dto.getRoundId());
         return match;
 
     }

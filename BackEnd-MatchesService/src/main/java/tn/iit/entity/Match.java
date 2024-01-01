@@ -53,4 +53,7 @@ public class Match {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private List<Replacement> replacements;
+
+    @Column(name = "round_id")
+    private Long roundId;
 }

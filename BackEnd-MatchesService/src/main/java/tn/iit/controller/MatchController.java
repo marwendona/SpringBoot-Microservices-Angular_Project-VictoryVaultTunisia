@@ -6,14 +6,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.MatchDto;
+import tn.iit.dto.SeasonMatchDto;
 import tn.iit.dto.mapper.MatchMapper;
 import tn.iit.dto.mapper.ReplacementMapper;
 import tn.iit.dto.mapper.ScorerMapper;
 import tn.iit.entity.Match;
+import tn.iit.entity.Scorer;
 import tn.iit.service.LineupService;
 import tn.iit.service.MatchService;
 import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/matches")
@@ -89,5 +93,27 @@ public class MatchController {
     public ResponseEntity<Void> deleteMatch(@PathVariable Long id) {
         matchService.deleteMatch(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("season-service/{id}")
+    public ResponseEntity<SeasonMatchDto> getMatchByIdForSeason(@PathVariable long id){
+        Match match = matchService.getMatchById(id);
+        if(match == null) {
+            return ResponseEntity.notFound().build();
+        }
+        String nameTeamHome=match.getLineupHomes().getTeam().getName();
+        String nameTeamAway=match.getLineupAway().getTeam().getName();
+        Long scoreHome = (long) match.getTeamHomeScorers().size();
+        Long scoreAway=(long) match.getTeamAwayScorers().size();
+
+    SeasonMatchDto matchDto = SeasonMatchDto.builder()
+            .id(match.getId())
+            .nameTeamHome(nameTeamHome)
+            .nameTeamAway(nameTeamAway)
+            .scoreTeamHome(scoreHome)
+            .scoreTeamAway(scoreAway)
+            .roundId(matchService.getMatchById(id).getRoundId())
+            .build();
+        System.out.println(matchDto);
+    return ResponseEntity.ok(matchDto);
     }
 }
