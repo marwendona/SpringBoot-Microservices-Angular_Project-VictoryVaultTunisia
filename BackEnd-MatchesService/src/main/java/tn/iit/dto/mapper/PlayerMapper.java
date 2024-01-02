@@ -19,6 +19,7 @@ public class PlayerMapper {
                 lastName(player.getLastName()).
                 nationality(player.getNationality()).
                 teamId(player.getTeam().getId()).
+                teamName(player.getTeam().getName()).
                 build();
     }
 }

@@ -10,6 +10,9 @@ public class TeamMapper {
                 id(team.getId()).
                 name(team.getName()).
                 coachId(team.getCoach().getId()).
+                coachFirstName(team.getCoach().getFirstName()).
+                coachLastName(team.getCoach().getLastName()).
+                coachNationality(team.getCoach().getNationality()).
                 lineups(team.getLineups().stream().map(LineupMapper::toLineupDto).toList()).
                 players(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()).
                 build();
