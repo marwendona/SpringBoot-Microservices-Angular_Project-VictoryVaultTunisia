@@ -9,6 +9,13 @@ import { FooterComponent } from './components/tools/footer/footer.component';
 import { ClassementComponent } from './components/classement/classement.component';
 import { MatTableModule } from '@angular/material/table';
 import { TeamComponent } from './components/team/team.component';
+import { PlayersComponent } from './components/players/players.component';
+import { CoachComponent } from './components/coach/coach.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,12 +24,18 @@ import { TeamComponent } from './components/team/team.component';
     HeaderComponent,
     FooterComponent,
     ClassementComponent,
-    TeamComponent
+    TeamComponent,
+    PlayersComponent,
+    CoachComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
