@@ -14,4 +14,5 @@ public class RoundDto {
     private String name;
     private int roundNumber;
     private List<MatchDto> matches;
+    private int seasonId;
 }
