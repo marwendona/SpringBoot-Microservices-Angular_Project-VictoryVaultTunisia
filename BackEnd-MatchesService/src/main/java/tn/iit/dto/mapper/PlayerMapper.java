@@ -1,7 +1,11 @@
 package tn.iit.dto.mapper;
 
 import tn.iit.dto.PlayerDto;
+import tn.iit.dto.TeamDto;
 import tn.iit.entity.Player;
+import tn.iit.entity.Team;
+
+import java.util.Optional;
 
 public class PlayerMapper {
     public static Player toPlayer(PlayerDto dto) {
@@ -13,12 +17,17 @@ public class PlayerMapper {
         return player;
     }
     public static PlayerDto toPlayerDto(Player player) {
+        Long teamId = null;
+        Optional<Team> team = Optional.ofNullable(player.getTeam());
+        if(team.isPresent()){
+            teamId = team.get().getId();
+        }
         return PlayerDto.builder().
                 id(player.getId()).
                 firstName(player.getFirstName()).
                 lastName(player.getLastName()).
                 nationality(player.getNationality()).
-                teamId(player.getTeam().getId()).
+                teamId(teamId).
                 build();
     }
 }

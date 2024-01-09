@@ -44,6 +44,7 @@ public class TeamController {
             player.setTeam(team);
             playerService.createPlayer(player);
         });
+        createdTeam.setPlayers(players);
         return new ResponseEntity<>(TeamMapper.toTeamDto(createdTeam), HttpStatus.CREATED);
     }
 

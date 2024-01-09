@@ -29,7 +29,9 @@ public class PlayerController {
     @PostMapping
     public ResponseEntity<PlayerDto> createPlayer(@RequestBody PlayerDto playerDto) {
         Player player = PlayerMapper.toPlayer(playerDto);
-        player.setTeam(teamService.getTeamById(playerDto.getTeamId()));
+        if (playerDto.getTeamId() != null) {
+            player.setTeam(teamService.getTeamById(playerDto.getTeamId()));
+        }
         Player createdPlayer = playerService.createPlayer(player);
         return new ResponseEntity<>(PlayerMapper.toPlayerDto(createdPlayer), HttpStatus.CREATED);
     }
