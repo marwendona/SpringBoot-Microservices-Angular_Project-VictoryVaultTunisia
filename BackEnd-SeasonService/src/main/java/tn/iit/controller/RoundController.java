@@ -9,8 +9,11 @@ import tn.iit.dto.RoundDto;
 import tn.iit.dto.mapper.RoundMapper;
 import tn.iit.entity.Round;
 import tn.iit.entity.Season;
+import tn.iit.proxy.MatchController;
 import tn.iit.service.RoundService;
 import tn.iit.service.SeasonService;
+
+import java.util.ArrayList;
 
 
 @RestController
@@ -19,17 +22,23 @@ public class RoundController {
 
     private final RoundService roundService;
     private final SeasonService seasonService;
+    private final MatchController matchController;
 
-    public RoundController(RoundService roundService, SeasonService seasonService) {
+    public RoundController(RoundService roundService, SeasonService seasonService, MatchController matchController) {
         this.roundService = roundService;
         this.seasonService = seasonService;
+        this.matchController = matchController;
     }
 
     @GetMapping
     public ResponseEntity<Page<RoundDto>> getAllRounds() {
         Page<RoundDto> rounds = roundService.
                 getAllRounds(PageRequest.of(0,10)).
-                map(RoundMapper::toRoundDto);
+                map(RoundMapper::toRoundDto).
+                map(roundDto -> {
+                    roundDto.setMatches(matchController.getMatchesByRoundId(roundDto.getId()).getBody());
+                    return roundDto;
+                } );
         return ResponseEntity.ok(rounds);
     }
     @GetMapping("/{id}")
@@ -37,6 +46,7 @@ public class RoundController {
         Round round = roundService.getRoundById(id);
         if (round != null) {
             RoundDto roundDto = RoundMapper.toRoundDto(round);
+            roundDto.setMatches(matchController.getMatchesByRoundId(roundDto.getId()).getBody());
             return ResponseEntity.ok(roundDto);
         } else {
             return ResponseEntity.notFound().build();
@@ -57,10 +67,8 @@ public class RoundController {
         if (existingRound != null) {
             Round round = RoundMapper.toRound(roundDto);
             round.setId(id);
-
             Season existingSeason = existingRound.getSeason();
             round.setSeason(existingSeason);
-
             Round updatedRound = roundService.updateRound(round);
             RoundDto updatedRoundDto = RoundMapper.toRoundDto(updatedRound);
             return ResponseEntity.ok(updatedRoundDto);
@@ -74,6 +82,7 @@ public class RoundController {
         Round existingRound = roundService.getRoundById(id);
         if (existingRound != null) {
             roundService.deleteRound(id);
+            matchController.deleteMatchesByRoundId(id);
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();

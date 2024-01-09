@@ -101,19 +101,6 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("season-service/{id}")
-    public ResponseEntity<SeasonTeamDto> getTeamByIdForSeason(@PathVariable long id){
-        Team team = teamService.getTeamById(id);
-        if(team == null) {
-            return ResponseEntity.notFound().build();
-        }
-        SeasonTeamDto teamDto = SeasonTeamDto.builder()
-                .id(team.getId())
-                .name(team.getName())
-                .build();
-
-        return ResponseEntity.ok(teamDto);
-    }
 
 
 }

@@ -13,6 +13,7 @@ public class RoundMapper {
                 .id(round.getId())
                 .name(round.getName())
                 .roundNumber(round.getRoundNumber())
+                .seasonId(round.getSeason().getId())
                 .build();
     }
 

@@ -6,8 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.MatchDto;
+import tn.iit.dto.MatchSeasonServiceDto;
 import tn.iit.dto.SeasonMatchDto;
 import tn.iit.dto.mapper.MatchMapper;
+import tn.iit.dto.mapper.MatchSeasonServiceMapper;
 import tn.iit.dto.mapper.ReplacementMapper;
 import tn.iit.dto.mapper.ScorerMapper;
 import tn.iit.entity.Match;
@@ -115,5 +117,19 @@ public class MatchController {
             .build();
         System.out.println(matchDto);
     return ResponseEntity.ok(matchDto);
+    }
+    @GetMapping("/matches/season-service/{id}")
+    ResponseEntity<List<MatchSeasonServiceDto>> getMatchesByRoundId(@PathVariable long id) {
+        List<MatchSeasonServiceDto> matches = matchService
+                .getMatchesByRoundId(id)
+                .stream()
+                .map(MatchSeasonServiceMapper::toMatchSeasonServiceDto)
+                .toList();
+        return ResponseEntity.ok().body(matches);
+    }
+    @DeleteMapping("/matches/season-service/{id}")
+    ResponseEntity<Void> deleteMatchesByRoundId(@PathVariable long id){
+        matchService.deleteByRoundId(id);
+        return ResponseEntity.ok().build();
     }
 }

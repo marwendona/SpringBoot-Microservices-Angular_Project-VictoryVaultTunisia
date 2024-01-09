@@ -13,6 +13,8 @@ public class StandingMapper {
                 .id(standing.getId())
                 .rank(standing.getRank())
                 .score(standing.getScore())
+                .teamId(standing.getTeamId())
+                .seasonId(standing.getSeason().getId())
                 .build();
     }
 

@@ -8,6 +8,8 @@ import tn.iit.dao.MatchRepository;
 import tn.iit.entity.Match;
 import tn.iit.utils.checks.MatchControl;
 
+import java.util.List;
+
 @Service
 public class MatchService {
     private MatchRepository matchRepository;
@@ -38,5 +40,12 @@ public class MatchService {
 
     public void deleteMatch(Long matchId) {
         matchRepository.deleteById(matchId);
+    }
+
+    public List<Match> getMatchesByRoundId(Long stadiumId) {
+        return matchRepository.findAllByRoundId(stadiumId);
+    }
+    public void deleteByRoundId(Long stadiumId) {
+        matchRepository.deleteByRoundId(stadiumId).orElseThrow(() -> new RuntimeException("Round not found"));
     }
 }
