@@ -27,7 +27,7 @@ public class Player {
     private String nationality;
 
     @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false)
+    @JoinColumn(name = "team_id")
     @ToString.Exclude
     private Team team;
 

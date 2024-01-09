@@ -6,18 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import tn.iit.dto.LineupDto;
 import tn.iit.dto.PlayerDto;
-import tn.iit.dto.SeasonTeamDto;
 import tn.iit.dto.TeamDto;
 import tn.iit.dto.mapper.LineupMapper;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.dto.mapper.TeamMapper;
-import tn.iit.entity.Coach;
+import tn.iit.entity.Player;
 import tn.iit.entity.Team;
 import tn.iit.service.CoachService;
-import tn.iit.service.LineupService;
-import tn.iit.service.PlayerInPositionService;
+import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
 
 import java.util.List;
@@ -27,19 +24,27 @@ import java.util.List;
 public class TeamController {
     private final CoachService coachService;
     private final TeamService teamService;
+    private final PlayerService playerService;
 
     public TeamController(CoachService coachService,
-                          TeamService teamService) {
+                          TeamService teamService,
+                          PlayerService playerService) {
         this.coachService = coachService;
         this.teamService = teamService;
+        this.playerService = playerService;
     }
 
     @PostMapping
     public ResponseEntity<TeamDto> createTeam(@RequestBody TeamDto teamDto) {
         Team team = TeamMapper.toTeam(teamDto);
         team.setCoach(coachService.getCoachById(teamDto.getCoachId()));
-         teamService.createTeam(team);
-        return new ResponseEntity<>(teamDto, HttpStatus.CREATED);
+        Team createdTeam = teamService.createTeam(team);
+        List<Player> players = teamDto.getPlayers().stream().map(PlayerMapper::toPlayer).toList();
+        players.forEach(player -> {
+            player.setTeam(team);
+            playerService.createPlayer(player);
+        });
+        return new ResponseEntity<>(TeamMapper.toTeamDto(createdTeam), HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -67,9 +72,10 @@ public class TeamController {
     @GetMapping("/{id}")
     public ResponseEntity<TeamDto> getTeamById(@PathVariable Long id) {
         Team team = teamService.getTeamById(id);
-        TeamDto teamDto = TeamMapper.toTeamDto(team);
-        teamDto.setCoachId(team.getCoach().getId());
+
         if (team != null) {
+            TeamDto teamDto = TeamMapper.toTeamDto(team);
+            teamDto.setCoachId(team.getCoach().getId());
             return new ResponseEntity<>(teamDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -85,7 +91,10 @@ public class TeamController {
             newTeam.setId(id);
             newTeam.setCoach(coachService.getCoachById(team.getCoachId()));
             Team updateTeam = teamService.updateTeam(newTeam);
-            return ResponseEntity.ok(team);
+
+            TeamDto teamDto = TeamMapper.toTeamDto(updateTeam);
+
+            return ResponseEntity.ok(teamDto);
         } else {
             return  ResponseEntity.notFound().build();
         }
@@ -97,6 +106,15 @@ public class TeamController {
         if (teamService.getTeamById(id) != null) {
             teamService.deleteTeam(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/{id}/players")
+    public ResponseEntity<List<PlayerDto>> getPlayersByTeam(@PathVariable Long id) {
+        Team team = teamService.getTeamById(id);
+        if (team != null) {
+            return new ResponseEntity<>(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
