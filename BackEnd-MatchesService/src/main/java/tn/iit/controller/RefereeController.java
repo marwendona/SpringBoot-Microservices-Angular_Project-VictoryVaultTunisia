@@ -22,9 +22,9 @@ public class RefereeController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<RefereeDto>> getAllReferees() {
+    public ResponseEntity<Page<RefereeDto>> getAllReferees(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<RefereeDto> referees = refereeService.
-                getAllReferees(PageRequest.of(0,10)).
+                getAllReferees(PageRequest.of(page,size)).
                 map(RefereeMapper::toRefereeDto);
         return ResponseEntity.ok(referees);
     }

@@ -20,10 +20,10 @@ public class StadiumController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<StadiumDto>> getStadiums() {
+    public ResponseEntity<Page<StadiumDto>> getStadiums(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(
                 stadiumService.getAllStadiums(
-                        PageRequest.of(0, 10)
+                        PageRequest.of(page, size)
                 ).map(StadiumMapper::toStadiumDto));
     }
     @GetMapping("/{id}")

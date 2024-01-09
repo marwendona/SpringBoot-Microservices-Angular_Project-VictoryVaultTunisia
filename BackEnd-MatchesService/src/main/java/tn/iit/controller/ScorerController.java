@@ -28,10 +28,10 @@ public class ScorerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ScorerDto>> getScorers() {
+    public ResponseEntity<Page<ScorerDto>> getScorers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(
                 scorerService.getAllScorers(
-                        PageRequest.of(0, 10)
+                        PageRequest.of(page, size)
                 ).map(ScorerMapper::toScorerDto));
     }
     @GetMapping("/{id}")

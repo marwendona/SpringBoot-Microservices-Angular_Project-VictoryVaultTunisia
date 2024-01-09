@@ -39,8 +39,8 @@ public class MatchController {
         this.stadiumService = stadiumService;
     }
     @GetMapping
-    public ResponseEntity<Page<MatchDto>> getMatches() {
-        Page<MatchDto> matches = matchService.getAllMatches(PageRequest.of(0,10)).map(MatchMapper::toMatchDto);
+    public ResponseEntity<Page<MatchDto>> getMatches(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        Page<MatchDto> matches = matchService.getAllMatches(PageRequest.of(page,size)).map(MatchMapper::toMatchDto);
         matches.forEach(match -> {
             match.setTeamAwayScorers(
                     matchService.getMatchById(match.getId()).getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()

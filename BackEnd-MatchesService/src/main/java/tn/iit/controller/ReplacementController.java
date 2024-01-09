@@ -25,9 +25,9 @@ public class ReplacementController {
         this.matchService = matchService;
     }
     @GetMapping
-    public ResponseEntity<Page<ReplacementDto>> getAllReplacements() {
+    public ResponseEntity<Page<ReplacementDto>> getAllReplacements(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<ReplacementDto> replacements = replacementService.
-                getAllReplacements(PageRequest.of(0, 10)).
+                getAllReplacements(PageRequest.of(page,size)).
                 map(ReplacementMapper::toReplacementDto);
         return ResponseEntity.ok(replacements);
     }

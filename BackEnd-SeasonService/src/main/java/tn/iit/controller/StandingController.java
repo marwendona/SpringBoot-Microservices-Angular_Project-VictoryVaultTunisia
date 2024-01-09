@@ -26,9 +26,9 @@ public class StandingController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<StandingDto>> getAllStandings() {
+    public ResponseEntity<Page<StandingDto>> getAllStandings(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<StandingDto> standings = standingService.
-                getAllStandings(PageRequest.of(0,10)).
+                getAllStandings(PageRequest.of(page, size)).
                 map(StandingMapper::toStandingDto);
         return ResponseEntity.ok(standings);
     }

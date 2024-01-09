@@ -31,9 +31,9 @@ public class RoundController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<RoundDto>> getAllRounds() {
+    public ResponseEntity<Page<RoundDto>> getAllRounds(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<RoundDto> rounds = roundService.
-                getAllRounds(PageRequest.of(0,10)).
+                getAllRounds(PageRequest.of(page, size)).
                 map(RoundMapper::toRoundDto).
                 map(roundDto -> {
                     roundDto.setMatches(matchController.getMatchesByRoundId(roundDto.getId()).getBody());

@@ -28,9 +28,9 @@ public class PlayerInPositionController {
         this.lineupService = lineupService;
     }
     @GetMapping
-    public ResponseEntity<Page<PlayerInPositionDto>> getAllPlayerInPosition() {
+    public ResponseEntity<Page<PlayerInPositionDto>> getAllPlayerInPosition(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<PlayerInPositionDto> playerInPositionDto = playerInPositionService.
-                getAllPlayerInPositions(PageRequest.of(0,10)).
+                getAllPlayerInPositions(PageRequest.of(page, size)).
                 map(PlayerInPositionMapper::toPlayerInPositionDto);
         return ResponseEntity.ok(playerInPositionDto);
     }

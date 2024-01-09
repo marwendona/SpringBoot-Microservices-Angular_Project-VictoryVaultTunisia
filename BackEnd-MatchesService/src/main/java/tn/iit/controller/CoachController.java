@@ -22,9 +22,9 @@ public class CoachController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<CoachDto>> getAllCoaches() {
+    public ResponseEntity<Page<CoachDto>> getAllCoaches(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<CoachDto> coaches = coachService.
-                getAllCoaches(PageRequest.of(0,10)).
+                getAllCoaches(PageRequest.of(page,size)).
                 map(CoachMapper::toCoachDto);
         return ResponseEntity.ok(coaches);
     }

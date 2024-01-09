@@ -49,24 +49,8 @@ public class TeamController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<TeamDto>> getAllTeams() {
-        Page<TeamDto> teams = teamService.getAllTeams(PageRequest.of(0,10)).map(TeamMapper::toTeamDto);
-        teams.forEach(team ->
-                {
-                    team.setLineups(
-                            teamService.getTeamById(team.getId()).
-                                    getLineups().stream().map(LineupMapper::toLineupDto).toList()
-                    );
-                    team.setPlayers(
-                            teamService.getTeamById(team.getId()).
-                                    getPlayers().stream().map(PlayerMapper::toPlayerDto).toList()
-                    );
-                    team.setCoachId(
-                            teamService.getTeamById(team.getId()).
-                                    getCoach().getId()
-                    );
-                }
-        );
+    public ResponseEntity<Page<TeamDto>> getAllTeams(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        Page<TeamDto> teams = teamService.getAllTeams(PageRequest.of(page, size)).map(TeamMapper::toTeamDto);
         return new ResponseEntity<>(teams, HttpStatus.OK);
     }
 

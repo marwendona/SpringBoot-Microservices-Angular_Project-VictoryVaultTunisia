@@ -22,9 +22,9 @@ public class SeasonController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<SeasonDto>> getAllSeasons() {
+    public ResponseEntity<Page<SeasonDto>> getAllSeasons(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<SeasonDto> seasons = seasonService.
-                getAllSeasons(PageRequest.of(0,10)).
+                getAllSeasons(PageRequest.of(page, size)).
                 map(SeasonMapper::toSeasonDto);
         return ResponseEntity.ok(seasons);
     }

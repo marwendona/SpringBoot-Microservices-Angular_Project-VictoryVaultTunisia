@@ -37,8 +37,8 @@ public class PlayerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PlayerDto>> getAllPlayers() {
-        Page<PlayerDto> players = playerService.getAllPlayers(PageRequest.of(0,10)).map(PlayerMapper::toPlayerDto);
+    public ResponseEntity<Page<PlayerDto>> getAllPlayers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        Page<PlayerDto> players = playerService.getAllPlayers(PageRequest.of(page, size)).map(PlayerMapper::toPlayerDto);
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
