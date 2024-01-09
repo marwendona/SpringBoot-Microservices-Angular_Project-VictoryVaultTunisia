@@ -1,0 +1,97 @@
+
+.team {
+  cursor: pointer;
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  /* background-color: #364a8a; */
+  background-image: url('../../../assets/images/button.png');
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: transform 0.5s ease-in-out;
+  border: 2px solid #2d3e72; /* Border color and width */
+}
+.team:hover {
+  transform: scale(1.2);
+}
+
+.teamsoft {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  background-image: url('../../../assets/images/ff.png');
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  top: 190px;
+  left: 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.coupe{
+  cursor: pointer;
+
+  transition: transform 0.5s ease-in-out;
+
+}
+.coupe:hover {
+  transform: scale(1.2);
+}
+
+.connector {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background-color: #000;
+  top: 400px;
+  left: 180px;
+}
+
+
+
+.content-container {
+  background-color: #f8f8f8; /* Set a background color for the rectangle */
+  padding: 100px; /* Add padding inside the rectangle */
+  border-radius: 10px; /* Add rounded corners to the rectangle */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  width: 100%; /* Make the rectangle take the full width of its container */
+}
+
+
+.custom-table .odd-row {
+  background-color: #e6e6e6;
+}
+
+.custom-table tr:hover {
+  background-color: #ce3e3e;
+}
+
+.custom-table th,
+th:hover {
+  background-image: url('../../../assets/images/background/blackblueBg.jpg');
+  color: rgb(255, 255, 255);
+}
+.custom-table td,
+.custom-table th {
+    text-align: center;
+}
+.heading-container {
+  background-color: #cac5c4;
+  padding: 10px; 
+  border: 0px solid #333; 
+  background-image: url('../../../assets/images/background/blackblueBg.jpg');
+  border-radius: 0px; 
+  text-align: center; 
+}
+
+/* Style for the heading text */
+.heading-container h3 {
+  margin: 0; /* Remove default margin for the heading */
+  color: rgb(255, 255, 255);
+}

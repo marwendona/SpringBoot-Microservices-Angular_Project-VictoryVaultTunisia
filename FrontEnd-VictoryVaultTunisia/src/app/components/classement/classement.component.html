@@ -1,0 +1,444 @@
+<body style="zoom: 75%;">
+  <div class="wrapper">
+    <!--  -->
+    <app-header></app-header>
+    <!--  -->
+    <section> 
+      <br><br><br><br><br><br><br>
+      <h2 class="heading">classement <span>des équipes</span></h2>
+      <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
+        animi, commodi, voluptatibus labore aperiam fugit <br>maxime quos optio architecto cum? Laborum nesciunt
+        doloribus expedita atque error rem molestias, ducimus.</p>
+      <div class="content-container">
+         <h1>Championnat de Tunisie - Ligue Pro1 </h1> 
+
+        <div class="heading-container">
+            <h3>13ième Journée - Saison 2023 / 2024</h3>
+        </div>
+        <table mat-table [dataSource]="dataResultJournee" matSort class="custom-table" style="zoom: 100%;">
+          <ng-container matColumnDef="équipe1">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> équipe </th>
+              <td mat-cell *matCellDef="let compte"> {{compte.equipe1}} </td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="Score">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Score </th>
+              <td mat-cell *matCellDef="let compte"> {{compte.Score}}</td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="équipe2">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> équipe </th>
+              <td mat-cell *matCellDef="let compte"> {{compte.equipe2}}</td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; let even = even"
+              [ngClass]="{ 'even-row': even, 'odd-row': !even }" (mouseenter)="onRowHover(true)"  (click)="onRowClick(row)"
+
+              (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
+          </tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+      </table>
+   
+    </div>
+ 
+    </section>
+  
+
+    <section class="matchSchedule">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">match <span>schedule</span></h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil debitis mollitia qui
+            libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus doloremque non, vel ipsam,
+            nesciunt dolores consequatur, est tempora ut! Est?>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus
+            doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut! Est.</p>
+          <div class="matchSchedule_details row">
+            <div class="match_next right-triangle">
+              <div class="wrap_match_next right-triangle">
+                <div class="right-padding">
+                  <h4 class="headline03">next match</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+              </div>
+            </div>
+            <div class="match_versus">
+              <div class="bg-blackimg match_versus02">
+                <div class="nextmatchDetails">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse harum animi a ipsa distinctio
+                    veritatis suscipit amet.</p>
+                  <div class="wrap-logo clearfix">
+                    <div class="logo-match"><img src="../../../assets/images/matchResult/logo01.png" alt="image"></div>
+                    <div class="match_vs">vs</div>
+                    <div class="logo-match"><img src="../../../assets/images/matchResult/logo02.png" alt="image"></div>
+                  </div>
+                  <p class="match_dtls">October 31, 2015 | 18:25PM</p>
+                  <p class="match_dtls">Wemsddley stadium (london)</p>
+                </div>
+              </div>
+            </div>
+            <div class="match_timing">
+              <ul class="counter-wrap">
+                <li><span>12</span>days</li>
+                <li><span>18</span>hours</li>
+                <li><span>27</span>minutes</li>
+                <li><span>55</span>seconds</li>
+              </ul>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </section>
+ 
+    <section class="players homeplayer">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">our <span>heroes</span></h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
+            animi, commodi, voluptatibus labore aperiam fugit maxime quos optio architecto cum? Laborum nesciunt
+            doloribus expedita atque error rem molestias, ducimus.</p>
+          <div class="wrapplayer clearfix"><a class="prv prev-player"></a> <a class="nxt next-player"></a>
+            <ul class="slideHeroes clearfix">
+              <li><a href="">
+                  <div class="playerFig">
+                    <div class="playerpic">
+                      <div style="background:url(../../../assets/images/player/player01.jpg)" class="bgimg"></div>
+                    </div>
+                    <ul class="playerDetails clearfix">
+                      <li><span>Daren Difiore</span> <span><img src="../../../assets/images/icons/tShirt.png"
+                            alt="image"></span></li>
+                      <li class="playinfodetails">age 28 (born 22 april ,1987)</li>
+                      <li class="playerInfo"><span>goalkeeper</span> <span><i class="fa fa-heart"></i>20</span></li>
+                    </ul>
+                  </div>
+                </a></li>
+              <li><a href="">
+                  <div class="playerFig">
+                    <div class="playerpic">
+                      <div style="background:url(../../../assets/images/player/player02.jpg)" class="bgimg"></div>
+                    </div>
+                    <ul class="playerDetails clearfix">
+                      <li><span>Terry Tijerina</span> <span><img src="../../../assets/images/icons/tShirt.png"
+                            alt="image"></span></li>
+                      <li class="playinfodetails">age 28 (born 22 april ,1987)</li>
+                      <li class="playerInfo"><span>DEFENDER</span> <span><i class="fa fa-heart"></i>34</span></li>
+                    </ul>
+                  </div>
+                </a></li>
+              <li><a href="">
+                  <div class="playerFig">
+                    <div class="playerpic">
+                      <div style="background:url(../../../assets/images/player/player03.jpg)" class="bgimg"></div>
+                    </div>
+                    <ul class="playerDetails clearfix">
+                      <li><span>Alex Alameda</span> <span><img src="../../../assets/images/icons/tShirt.png"
+                            alt="image"></span></li>
+                      <li class="playinfodetails">age 28 (born 22 april ,1987)</li>
+                      <li class="playerInfo"><span>STRIKER</span> <span><i class="fa fa-heart"></i>45</span></li>
+                    </ul>
+                  </div>
+                </a></li>
+              <li><a href="">
+                  <div class="playerFig">
+                    <div class="playerpic">
+                      <div style="background:url(../../../assets/images/player/player04.jpg)" class="bgimg"></div>
+                    </div>
+                    <ul class="playerDetails clearfix">
+                      <li><span>Lane Lavalley</span> <span><img src="../../../assets/images/icons/tShirt.png"
+                            alt="image"></span></li>
+                      <li class="playinfodetails">age 28 (born 22 april ,1987)</li>
+                      <li class="playerInfo"><span>STRIKER</span> <span><i class="fa fa-heart"></i>45</span></li>
+                    </ul>
+                  </div>
+                </a></li>
+              <li><a href="">
+                  <div class="playerFig">
+                    <div class="playerpic">
+                      <div style="background:url(../../../assets/images/player/player05.jpg)" class="bgimg"></div>
+                    </div>
+                    <ul class="playerDetails clearfix">
+                      <li><span>Dominick Dumbleton</span> <span><img src="../../../assets/images/icons/tShirt.png"
+                            alt="image"></span>
+                      </li>
+                      <li class="playinfodetails">age 28 (born 22 april ,1987)</li>
+                      <li class="playerInfo"><span>STRIKER</span> <span><i class="fa fa-heart"></i>78</span></li>
+                    </ul>
+                  </div>
+                </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="gallery">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">our <span>gallery</span></h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
+            animi, commodi, voluptatibus labore aperiam fugit maxime quos optio architecto cum? Laborum nesciunt
+            doloribus expedita atque error rem molestias, ducimus.</p>
+        </div>
+      </div>
+      <div class="galleryWrapper">
+        <div class="grid">
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery02.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery03.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery04.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery021.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery031.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/five.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery031.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/masonry/medium_01.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/gallery041.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid_item">
+            <div class="gallery_dtl"><img src="../../../assets/images/gallery/masonry/medium_03.jpg" alt="image">
+              <div class="gallery_info">
+                <div class="galleryinfo_wrap">
+                  <p class="uppercase">consectetur</p>
+                  <p class="red_p">Magna aliqua</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gutter"></div>
+        </div>
+      </div><a class="btn btn-red">read more</a>
+    </section>
+    <section class="social-media">
+      <div class="container">
+        <div class="row">
+          <ul class="socialinfo">
+            <li><a href="">
+                <div class="sociallink"><i class="fa fa-twitter"></i></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                  assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus assumenda
+                  consectetur reiciendis hic obcaecati.</p>
+              </a></li>
+            <li><a href="">
+                <div class="sociallink"><i class="fa fa-facebook"></i></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                  assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus assumenda
+                  consectetur reiciendis hic obcaecati.</p>
+              </a></li>
+            <li><a href="">
+                <div class="sociallink"><i class="fa fa-behance"></i></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                  assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus assumenda
+                  consectetur reiciendis hic obcaecati.</p>
+              </a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="awards">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">awa<span>rds</span></h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
+            animi, commodi, voluptatibus labore aperiam fugit maxime quos optio architecto cum? Laborum nesciunt
+            doloribus expedita atque error rem molestias, ducimus.</p>
+          <div class="wrapper-container clearfix"><a class="prv awards_prev"></a> <a class="nxt awards_next"></a>
+            <ul class="awards-wrap clearfix">
+              <li><a href="achivement_details.html"><img src="../../../assets/images/awards/awards01.png" alt="image">
+                  <ul class="awards-info">
+                    <li>uefa 2014</li>
+                    <li>champion</li>
+                  </ul>
+                </a></li>
+              <li><a href="achivement_details.html"><img src="../../../assets/images/awards/awards02.png" alt="image">
+                  <ul class="awards-info">
+                    <li>uefa 2014</li>
+                    <li>champion</li>
+                  </ul>
+                </a></li>
+              <li><a href="achivement_details.html"><img src="../../../assets/images/awards/awards03.png" alt="image">
+                  <ul class="awards-info">
+                    <li>uefa 2014</li>
+                    <li>champion</li>
+                  </ul>
+                </a></li>
+              <li><a href="#"><img src="../../../assets/images/awards/awards04.png" alt="image">
+                  <ul class="awards-info">
+                    <li>uefa 2014</li>
+                    <li>champion</li>
+                  </ul>
+                </a></li>
+              <li><a href="achivement_details.html"><img src="../../../assets/images/awards/awards02.png" alt="image">
+                  <ul class="awards-info">
+                    <li>uefa 2014</li>
+                    <li>champion</li>
+                  </ul>
+                </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="product bg-white">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">TOP PRODUCTS & <span>merchandise</span></h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
+            animi, commodi, voluptatibus labore aperiam fugit maxime quos optio architecto cum? Laborum nesciunt
+            doloribus expedita atque error rem molestias, ducimus.</p>
+          <ul class="product_details">
+            <li><a href="#">
+                <div>
+                  <div class="product-img"
+                    style="background:url(../../../assets/images/product/product01.jpg) center no-repeat"></div>
+                </div>
+                <ul class="oswald16 product_info">
+                  <li class="detailsContainer"><span>soccer jersey</span> <span><i class="fa fa-user"></i>360</span>
+                  </li>
+                  <li class="cartContainer"><span>Add to cart</span> <span><i class="fa fa-shopping-cart"></i></span>
+                    <span class="price">$199</span>
+                  </li>
+                </ul>
+              </a></li>
+            <li><a href="#">
+                <div>
+                  <div class="product-img"
+                    style="background:url(../../../assets/images/product/product02.jpg) center no-repeat"></div>
+                </div>
+                <ul class="oswald16 product_info">
+                  <li class="detailsContainer"><span>soccer jersey</span> <span><i class="fa fa-user"></i>360</span>
+                  </li>
+                  <li class="cartContainer"><span>Add to cart</span> <span><i class="fa fa-shopping-cart"></i></span>
+                    <span class="price">$199</span>
+                  </li>
+                </ul>
+              </a></li>
+            <li><a href="#">
+                <div>
+                  <div class="product-img"
+                    style="background:url(../../../assets/images/product/product03.jpg) center no-repeat"></div>
+                </div>
+                <ul class="oswald16 product_info">
+                  <li class="detailsContainer"><span>soccer jersey</span> <span><i class="fa fa-user"></i>360</span>
+                  </li>
+                  <li class="cartContainer"><span>Add to cart</span> <span><i class="fa fa-shopping-cart"></i></span>
+                    <span class="price">$199</span>
+                  </li>
+                </ul>
+              </a></li>
+            <li><a href="#">
+                <div>
+                  <div class="product-img"
+                    style="background:url(../../../assets/images/product/product04.jpg) center no-repeat"></div>
+                </div>
+                <ul class="oswald16 product_info">
+                  <li class="detailsContainer"><span>soccer jersey</span> <span><i class="fa fa-user"></i>360</span>
+                  </li>
+                  <li class="cartContainer"><span>Add to cart</span> <span><i class="fa fa-shopping-cart"></i></span>
+                    <span class="price">$199</span>
+                  </li>
+                </ul>
+              </a></li>
+          </ul>
+          <div class="center"><a href="#" class="btn btn-red">view more</a></div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <app-footer></app-footer>
+    <!--  -->
+  </div>
+
+</body>
