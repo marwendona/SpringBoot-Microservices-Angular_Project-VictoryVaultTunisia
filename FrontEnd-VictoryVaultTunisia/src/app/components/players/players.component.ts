@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Players } from 'src/app/models/Players';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-players',
@@ -100,8 +101,38 @@ EditPlayer() {
     window.location.reload();
   })
 }
+confirmDelete(playerId:number): void {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'You won\'t be able to revert this!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d51d1d',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Call your delete function here
+      this.deleteFunction(playerId);
+    }
+  });
+}
+deleteFunction(playerId:number): void {
+  this.playerService.deletePlayer(playerId).subscribe(()=>{
+    Swal.fire({
+      title: 'Deleted!',
+      text: 'Your file has been deleted.',
+      icon: 'success'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   
 
+  })
+ 
+}
   isRowHovered = false;
   onRowHover(hovered: boolean) {
     this.isRowHovered = hovered;

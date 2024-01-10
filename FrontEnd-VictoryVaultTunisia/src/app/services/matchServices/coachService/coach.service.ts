@@ -21,4 +21,12 @@ export class CoachService {
   getCoachById(id:number):Observable<Coach> {
     return this._httpClient.get<Coach>(`${this.coachAPI}/${id}`);
   }
+
+  editCoach(coach:Coach,coachId:number){
+    return this._httpClient.put<any>(`${this.coachAPI}/${coachId}`, coach);
+  }
+
+  deleteCoach(coachId:number){
+    return this._httpClient.delete(`${this.coachAPI}/${coachId}`)
+  }
 }

@@ -61,4 +61,21 @@ border: solid 2px #d62828;
     }
     
     
-    
+      
+  .custom-table .odd-row {
+    background-color: #e6e6e6;
+  }
+  
+  .custom-table tr:hover {
+    background-color: #ce3e3e;
+  }
+  
+  .custom-table th,
+  th:hover {
+    background-image: url('../../../assets/images/background/blackblueBg.jpg');
+    color: rgb(255, 255, 255);
+  }
+  .custom-table td,
+  .custom-table th {
+      text-align: center;
+  }

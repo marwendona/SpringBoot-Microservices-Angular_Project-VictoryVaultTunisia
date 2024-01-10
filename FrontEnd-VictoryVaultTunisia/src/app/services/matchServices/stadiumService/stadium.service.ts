@@ -23,4 +23,12 @@ export class StadiumService {
     return this._httpClient.post<any>(`${this.stadiumsPI}/uploadStadiumImage`, formData);
   }
 
+  editStadium(stade:Stadium,stadeId:number){
+    return this._httpClient.put<any>(`${this.stadiumsPI}/${stadeId}`, stade);
+  }
+
+  deleteStadium(stadeId:number){
+    return this._httpClient.delete(`${this.stadiumsPI}/${stadeId}`)
+  }
+
 }

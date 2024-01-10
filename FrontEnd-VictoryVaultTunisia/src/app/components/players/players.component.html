@@ -175,9 +175,10 @@
                   <mat-icon class="btn-icon">edit</mat-icon>
                 </button>
                 &nbsp;  
-                <button type="button" class=" btnIcon btn-danger" style=" background-color: #d51d1d; ">
-                  <mat-icon class="btn-icon">delete</mat-icon>          
-                </button> 
+                <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(player.id)">
+                  <mat-icon class="btn-icon">delete</mat-icon>
+                </button>
+                
               </span>
             </td>
 

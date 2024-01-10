@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Stadium } from 'src/app/models/Stadium';
 import { StadiumService } from 'src/app/services/matchServices/stadiumService/stadium.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stade',
@@ -11,24 +12,23 @@ import { StadiumService } from 'src/app/services/matchServices/stadiumService/st
   styleUrls: ['./stade.component.css'],
 })
 export class StadeComponent implements OnInit {
-  deleteStadium(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
-  editStadium(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
-
   dataPlayers: any;
   stadeForm!: FormGroup<any>;
+  stadeFormEdit!: FormGroup<any>;
   dataStadium!: any;
   selectedFile!: File;
   eventImage!: any;
+  displayedColumns: string[] = ['name', 'capacity','photo','action'];
+  isRowHovered = false;
+  fileName!: string;
+
   constructor(
     private stadiumService: StadiumService,
     private _httpClient: HttpClient
   ) {}
   ngOnInit(): void {
     this.initFormAddAccount();
+    this.initFormEditStadium();
     this.getStadium();
   }
 
@@ -39,11 +39,8 @@ export class StadeComponent implements OnInit {
       photo: new FormControl('', Validators.required),
     });
   }
-  fileName!: string;
 
   addStadium() {
-  
-
     const file: File = this.eventImage.target.files[0];
     if (file) {
       this.fileName = file.name;
@@ -80,12 +77,87 @@ export class StadeComponent implements OnInit {
 
   getStadium() {
     this.stadiumService.getStadiums().subscribe((dataStadium) => {
-      this.dataStadium = dataStadium;
-      this.dataStadium = this.dataStadium.content;
+      this.dataStadium = new MatTableDataSource<Stadium>(dataStadium);
+      this.dataStadium = this.dataStadium._data.value.content
     });
   }
 
   onImageSelected(event: any) {
     this.eventImage=event
+  }
+
+  initFormEditStadium() {
+    this.stadeFormEdit = new FormGroup({
+      id: new FormControl('', Validators.required), 
+      nameEdit: new FormControl('', Validators.required),
+      capacityEdit: new FormControl('', Validators.required),
+      photoEdit: new FormControl('', Validators.required),
+    });
+  }
+  
+  LoadInfoStadium(stadium: any) {
+    console.log(stadium)
+    this.stadeFormEdit.patchValue({
+      id:stadium.id,
+      nameEdit: stadium.name,
+      capacityEdit: stadium.capacity,
+      photoEdit: stadium.photo,
+    });
+  }
+  
+
+  EditStadium() {
+    const stade: Stadium = {
+      id: 0,
+      name: this.stadeFormEdit.value.nameEdit,
+      capacity: this.stadeFormEdit.value.capacityEdit,
+      photo: this.stadeFormEdit.value.photoEdit,
+      matches: []
+    };
+  console.log(stade)
+    this.stadiumService.editStadium(stade,this.stadeFormEdit.value.id).subscribe(()=>{
+      console.log("player changed successfuly")
+      window.location.reload();
+    })
+  }
+  confirmDelete(playerId:number): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d51d1d',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call your delete function here
+        this.deleteFunction(playerId);
+      }
+    });
+  }
+  deleteFunction(coachId:number): void {
+    this.stadiumService.deleteStadium(coachId).subscribe(()=>{
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        icon: 'success'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
+    
+  
+    })
+   
+  }
+
+  // configuration table
+  onRowHover(hovered: boolean) {
+    this.isRowHovered = hovered;
+  }
+  onRowClick(row: any){
+    console.log(row.id)
   }
 }

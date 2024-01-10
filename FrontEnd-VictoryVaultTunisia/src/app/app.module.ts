@@ -19,6 +19,7 @@ import { AddteamComponent } from './components/addteam/addteam.component';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
 import { StadeComponent } from './components/stade/stade.component';
+import Swal from 'sweetalert2';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { StadeComponent } from './components/stade/stade.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
