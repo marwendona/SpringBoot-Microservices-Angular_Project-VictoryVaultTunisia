@@ -20,13 +20,13 @@ public class Team {
     @Column(name = "name",unique = true)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
+    @OneToMany(mappedBy = "team")
     private List<Lineup> lineups;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
+    @OneToMany(mappedBy = "team")
     private List<Player> players;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "coach_id")
     @ToString.Exclude
     private Coach coach;

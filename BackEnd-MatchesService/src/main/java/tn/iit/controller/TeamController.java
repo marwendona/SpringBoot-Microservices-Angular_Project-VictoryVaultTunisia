@@ -44,6 +44,7 @@ public class TeamController {
         for (Player player : players) {
             Player existingPlayer = playerService.getPlayerById(player.getId());
             existingPlayer.setTeam(team);
+            existingPlayer=playerService.updatePlayer(existingPlayer);
             playersPresent.add(existingPlayer); 
         }
         createdTeam.setPlayers(playersPresent);
