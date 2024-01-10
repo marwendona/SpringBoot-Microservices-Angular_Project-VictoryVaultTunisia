@@ -193,6 +193,16 @@
             (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
           </tr>
         </table>
+        <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="length"
+               [pageSize]="pageSize"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="pageSizeOptions"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+</mat-paginator>
       </div>
 
     </section>

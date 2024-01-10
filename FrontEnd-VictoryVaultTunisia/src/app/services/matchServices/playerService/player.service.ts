@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Page } from 'src/app/models/Page';
 import { Players } from 'src/app/models/Players';
 
 @Injectable({
@@ -14,8 +15,12 @@ export class PlayerService {
     return this._httpClient.post<any>(`${this.playersAPI}`, player);
   }
 
-  getPlayers():Observable<Players[]> {
-    return this._httpClient.get<Players[]>(this.playersAPI);
+  getPlayers(size:number=10,page:number=0):Observable<Page<Players>> {
+    let params = new HttpParams();
+    params = params.set('size', size);
+    params = params.set('page', page);
+
+    return this._httpClient.get<Page<Players>>(this.playersAPI,{params});
   }
 
   editPlayer(player:Players,playerId:number){

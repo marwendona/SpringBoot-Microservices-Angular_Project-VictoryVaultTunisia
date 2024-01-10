@@ -46,12 +46,14 @@ export class AddteamComponent implements OnInit {
   }
 
   selectedPlayerId: number | undefined;
-
+  playersVierge:Players[]=[];
   async getPlayers(){
      this.playerService.getPlayers().subscribe( players => {
-      this.players = new MatTableDataSource<Players>(players);
-      this.players = this.players._data.value.content
-      console.log("this.players",this.players)
+      console.log("players",players.content)
+      // this.players = new MatTableDataSource<Players>(players);
+      // this.players = this.players._data.value.content
+      // this.players
+      // console.log("this.players",this.players)
     })
   }
   // selectedChoices: string[] = [];

@@ -75,11 +75,10 @@ export class EditTeamComponent  implements OnInit{
       //   this.hidden=false;
       // }
     })
-}
+  }
   async getPlayers() {
     this.playerService.getPlayers().subscribe((players) => {
-      this.players = new MatTableDataSource<Players>(players);
-      this.players = this.players._data.value.content;
+      this.players = players.content;
     });
   }
   EditTeam() {

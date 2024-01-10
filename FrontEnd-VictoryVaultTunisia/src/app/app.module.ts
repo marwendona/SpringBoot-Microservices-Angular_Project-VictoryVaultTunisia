@@ -9,7 +9,6 @@ import { FooterComponent } from './components/tools/footer/footer.component';
 import { ClassementComponent } from './components/classement/classement.component';
 import { MatTableModule } from '@angular/material/table';
 import { TeamComponent } from './components/team/team.component';
-import { PlayersComponent } from './components/players/players.component';
 import { CoachComponent } from './components/coach/coach.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule }   from '@angular/forms';
@@ -22,6 +21,8 @@ import { StadeComponent } from './components/stade/stade.component';
 import Swal from 'sweetalert2';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { RefereeComponent } from './components/referee/referee.component';
+import { PlayersComponent } from './components/players/players.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { RefereeComponent } from './components/referee/referee.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
+    MatPaginatorModule
     
   ],
   providers: [],

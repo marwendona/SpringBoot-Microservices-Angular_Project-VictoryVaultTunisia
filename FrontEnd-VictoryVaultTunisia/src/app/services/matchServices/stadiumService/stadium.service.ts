@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Stadium } from 'src/app/models/Stadium';
@@ -11,8 +11,14 @@ export class StadiumService {
   constructor(private _httpClient: HttpClient) {}
   stadiumsPI= `http://localhost:8082/stadiums`
   
-  addStadiums(stadiums:Stadium): Observable<any> {
-    return this._httpClient.post<any>(`${this.stadiumsPI}`, stadiums);
+  addStadiums(stadiums:Stadium,file:File): Observable<any> { 
+    let params = new HttpParams();
+    // params.set('name', stadiums.name);
+    // params.set('capacity', stadiums.capacity);
+    // params.set('imageFile', file);
+
+
+    return this._httpClient.post<any>(`${this.stadiumsPI}`,{params});
   }
 
   getStadiums():Observable<Stadium[]> {
