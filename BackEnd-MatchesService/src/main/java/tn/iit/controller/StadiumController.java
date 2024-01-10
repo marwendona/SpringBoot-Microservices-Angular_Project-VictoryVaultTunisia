@@ -11,6 +11,10 @@ import tn.iit.dto.mapper.StadiumMapper;
 import tn.iit.entity.Stadium;
 import tn.iit.service.StadiumService;
 
+import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.file.Path;
+
 @RestController
 @RequestMapping("stadiums")
 public class StadiumController {
@@ -33,9 +37,21 @@ public class StadiumController {
                 StadiumMapper.toStadiumDto(stadiumService.getStadiumById(id)));
     }
     @PostMapping
-    public ResponseEntity<StadiumDto> createStadium(@RequestBody StadiumDto stadiumDto) {
-        stadiumService.createStadium(StadiumMapper.toStadium(stadiumDto));
-        return ResponseEntity.status(HttpStatus.CREATED).body(stadiumDto);
+    public ResponseEntity<StadiumDto> createStadium(@RequestParam("name") String name,
+                                                    @RequestParam("capacity") BigInteger capacity ,
+                                                    @RequestParam(name = "imageFile",required = false) MultipartFile imageFile) throws IOException {
+
+        StadiumDto stadiumDto = StadiumDto.builder().
+                name(name).
+                capacity(capacity).
+                build();
+
+        if (imageFile != null) {
+            String photo = StadiumService.saveImage(imageFile);
+            stadiumDto.setPhoto(photo);
+        }
+        Stadium stadium = stadiumService.createStadium(StadiumMapper.toStadium(stadiumDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(StadiumMapper.toStadiumDto(stadium));
     }
     @PutMapping("/{id}")
     public ResponseEntity<StadiumDto> updateStadium(@PathVariable Long id, @RequestBody StadiumDto stadiumDto) {
@@ -54,16 +70,4 @@ public class StadiumController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/uploadStadiumImage")
-    public String uploadImage(@RequestParam("stadeImage") MultipartFile imageFile)  {
-        String returnValue = "start";
-        try {
-            stadiumService.saveImage(imageFile);
-            return returnValue;
-        } catch (Exception e) {
-            e.printStackTrace();
-            returnValue = "error";
-        }
-        return returnValue;
-    }
 }

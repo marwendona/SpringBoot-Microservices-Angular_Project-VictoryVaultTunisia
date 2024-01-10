@@ -10,9 +10,7 @@ import tn.iit.entity.Stadium;
 import tn.iit.utils.checks.StadiumControl;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 
 @Service
 public class StadiumService {
@@ -47,10 +45,12 @@ public class StadiumService {
         return stadiumRepository.findAll(pageable);
     }
 
-    public static void saveImage(MultipartFile imageFile) throws IOException {
-        String folder ="C:/Users/USER/Desktop/AOS/PROJECT/SpringBoot-Microservices-Angular_Project-VictoryVaultTunisia/FrontEnd-VictoryVaultTunisia/src/assets/images/uploadImages/stadium/";
+    public static String saveImage(MultipartFile imageFile) throws IOException {
+        Path root = Paths.get("").toAbsolutePath().getParent();
+        String folder ="FrontEnd-VictoryVaultTunisia/src/assets/images/uploadImages/stadium/";
         byte[] bytes= imageFile.getBytes();
-        Path path = Paths.get(folder + imageFile.getOriginalFilename());
-        Files.write(path, bytes);
+        Path path = Paths.get(root.resolve(folder)+ "\\" +imageFile.getOriginalFilename()) ;
+        Files.write(path, bytes, StandardOpenOption.CREATE);
+        return imageFile.getOriginalFilename();
     }
 }
