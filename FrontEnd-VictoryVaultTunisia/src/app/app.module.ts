@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddteamComponent } from './components/addteam/addteam.component';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
+import { StadeComponent } from './components/stade/stade.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TeamdetailComponent } from './components/teamdetail/teamdetail.componen
     PlayersComponent,
     CoachComponent,
     AddteamComponent,
-    TeamdetailComponent
+    TeamdetailComponent,
+    StadeComponent
   ],
   imports: [
     BrowserModule,

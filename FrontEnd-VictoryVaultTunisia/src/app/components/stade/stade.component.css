@@ -1,0 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
+.btnSpecial{
+
+font-family: Roboto, sans-serif;
+font-weight: 0;
+font-size: 14px;
+color: #fff;
+background-color: #d62828;
+padding: 10px 30px;
+border: solid #d62828 2px;
+box-shadow: rgb(155, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 749ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+}
+
+.btnSpecial:hover{
+
+transition : 749ms;
+padding: 10px 32px;
+transform : translateY(-1px);
+background-color: #ffffff;
+color: #d62828;
+border: solid 2px #d62828;
+}
+
+
+.btn{
+
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: 14px;
+    color: #fff;
+    background-color: #d62828;
+    padding: 10px 30px;
+    border: solid #d62828 2px;
+    box-shadow: rgb(155, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 749ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    }
+    
+    .btn:hover{
+    
+    transition : 749ms;
+    padding: 10px 32px;
+    transform : translateY(-1px);
+    background-color: #ffffff;
+    color: #d62828;
+    border: solid 2px #d62828;
+    }
+    
+    
+    

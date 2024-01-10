@@ -17,4 +17,8 @@ export class PlayerService {
   getPlayers():Observable<Players[]> {
     return this._httpClient.get<Players[]>(this.playersAPI);
   }
+
+  editPlayer(player:Players,playerId:number){
+    return this._httpClient.put<any>(`${this.playersAPI}/${playerId}`, player);
+  }
 }
