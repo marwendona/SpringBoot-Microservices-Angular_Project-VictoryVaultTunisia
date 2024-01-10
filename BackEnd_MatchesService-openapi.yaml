@@ -1,0 +1,1149 @@
+openapi: "3.0.3"
+info:
+  title: "BackEnd_MatchesService API"
+  description: "BackEnd_MatchesService API"
+  version: "1.0.0"
+servers:
+  - url: "https://BackEnd_MatchesService"
+paths:
+  /referees/{id}:
+    put:
+      summary: "PUT referees/{id}"
+      operationId: "updateReferee"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefereeDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RefereeDto"
+    delete:
+      summary: "DELETE referees/{id}"
+      operationId: "deleteReferee"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET referees/{id}"
+      operationId: "getRefereeById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RefereeDto"
+  /referees:
+    post:
+      summary: "POST referees"
+      operationId: "createReferee"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefereeDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RefereeDto"
+    get:
+      summary: "GET referees"
+      operationId: "getAllReferees"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RefereeDto"
+  /players/{id}:
+    put:
+      summary: "PUT players/{id}"
+      operationId: "updatePlayer"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlayerDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerDto"
+    delete:
+      summary: "DELETE players/{id}"
+      operationId: "deletePlayer"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET players/{id}"
+      operationId: "getPlayerById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerDto"
+  /players:
+    post:
+      summary: "POST players"
+      operationId: "createPlayer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlayerDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerDto"
+    get:
+      summary: "GET players"
+      operationId: "getAllPlayers"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerDto"
+  /teams/{id}:
+    put:
+      summary: "PUT teams/{id}"
+      operationId: "updateTeam"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TeamDto"
+    delete:
+      summary: "DELETE teams/{id}"
+      operationId: "deleteTeam"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET teams/{id}"
+      operationId: "getTeamById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TeamDto"
+  /teams:
+    post:
+      summary: "POST teams"
+      operationId: "createTeam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TeamDto"
+    get:
+      summary: "GET teams"
+      operationId: "getAllTeams"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TeamDto"
+  /teams/{id}/players:
+    get:
+      summary: "GET teams/{id}/players"
+      operationId: "getPlayersByTeam"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PlayerDto"
+  /coach/{id}:
+    put:
+      summary: "PUT coach/{id}"
+      operationId: "updateCoach"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CoachDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CoachDto"
+    delete:
+      summary: "DELETE coach/{id}"
+      operationId: "deleteCoach"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET coach/{id}"
+      operationId: "getCoachById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CoachDto"
+  /coach:
+    post:
+      summary: "POST coach"
+      operationId: "createCoach"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CoachDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CoachDto"
+    get:
+      summary: "GET coach"
+      operationId: "getAllCoaches"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CoachDto"
+  /lineups/{id}:
+    put:
+      summary: "PUT lineups/{id}"
+      operationId: "updateLineup"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LineupDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LineupDto"
+    delete:
+      summary: "DELETE lineups/{id}"
+      operationId: "deleteLineup"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET lineups/{id}"
+      operationId: "getLineupById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LineupDto"
+  /lineups:
+    post:
+      summary: "POST lineups"
+      operationId: "createLineup"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LineupDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LineupDto"
+    get:
+      summary: "GET lineups"
+      operationId: "getAllLineups"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LineupDto"
+  /playerinposition/{id}:
+    put:
+      summary: "PUT playerinposition/{id}"
+      operationId: "updatePlayerInPosition"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlayerInPositionDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerInPositionDto"
+    delete:
+      summary: "DELETE playerinposition/{id}"
+      operationId: "deletePlayerInPosition"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET playerinposition/{id}"
+      operationId: "getPlayerInPositionById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerInPositionDto"
+  /playerinposition:
+    post:
+      summary: "POST playerinposition"
+      operationId: "createPlayerInPosition"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlayerInPositionDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerInPositionDto"
+    get:
+      summary: "GET playerinposition"
+      operationId: "getAllPlayerInPosition"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlayerInPositionDto"
+  /stadiums/{id}:
+    put:
+      summary: "PUT stadiums/{id}"
+      operationId: "updateStadium"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StadiumDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StadiumDto"
+    delete:
+      summary: "DELETE stadiums/{id}"
+      operationId: "deleteStadium"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET stadiums/{id}"
+      operationId: "getStadiumById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StadiumDto"
+  /stadiums:
+    post:
+      summary: "POST stadiums"
+      operationId: "createStadium"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StadiumDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StadiumDto"
+    get:
+      summary: "GET stadiums"
+      operationId: "getStadiums"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StadiumDto"
+  /replacements/{id}:
+    put:
+      summary: "PUT replacements/{id}"
+      operationId: "updateReplacement"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReplacementDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReplacementDto"
+    delete:
+      summary: "DELETE replacements/{id}"
+      operationId: "deleteReplacement"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET replacements/{id}"
+      operationId: "getReplacementById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReplacementDto"
+  /replacements:
+    post:
+      summary: "POST replacements"
+      operationId: "createReplacement"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReplacementDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReplacementDto"
+    get:
+      summary: "GET replacements"
+      operationId: "getAllReplacements"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReplacementDto"
+  /scorers/{id}:
+    put:
+      summary: "PUT scorers/{id}"
+      operationId: "updateScorer"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScorerDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ScorerDto"
+    delete:
+      summary: "DELETE scorers/{id}"
+      operationId: "deleteScorer"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET scorers/{id}"
+      operationId: "getScorerById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ScorerDto"
+  /scorers:
+    post:
+      summary: "POST scorers"
+      operationId: "createScorer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScorerDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ScorerDto"
+    get:
+      summary: "GET scorers"
+      operationId: "getScorers"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ScorerDto"
+  /matches/{id}:
+    put:
+      summary: "PUT matches/{id}"
+      operationId: "updateMatch"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MatchDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MatchDto"
+    delete:
+      summary: "DELETE matches/{id}"
+      operationId: "deleteMatch"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET matches/{id}"
+      operationId: "getMatchById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MatchDto"
+  /matches:
+    post:
+      summary: "POST matches"
+      operationId: "createMatch"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MatchDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MatchDto"
+    get:
+      summary: "GET matches"
+      operationId: "getMatches"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MatchDto"
+  /matches/matches/season-service/{id}:
+    delete:
+      summary: "DELETE matches/matches/season-service/{id}"
+      operationId: "deleteMatchesByRoundId"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET matches/matches/season-service/{id}"
+      operationId: "getMatchesByRoundId"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/MatchSeasonServiceDto"
+  /matches/season-service/{id}:
+    get:
+      summary: "GET matches/season-service/{id}"
+      operationId: "getMatchByIdForSeason"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SeasonMatchDto"
+components:
+  schemas:
+    RefereeDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        nationality:
+          type: "string"
+    Void:
+      type: "object"
+      properties: { }
+    PlayerDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        nationality:
+          type: "string"
+        teamId:
+          type: "integer"
+          format: "int64"
+    PlayerInPositionDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        position:
+          type: "string"
+        playerId:
+          type: "integer"
+          format: "int64"
+        lineupId:
+          type: "integer"
+          format: "int64"
+    LineupDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        players:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PlayerInPositionDto"
+        teamId:
+          type: "integer"
+          format: "int64"
+    TeamDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+        lineups:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LineupDto"
+        players:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PlayerDto"
+        coachId:
+          type: "integer"
+          format: "int64"
+    CoachDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        nationality:
+          type: "string"
+    BigInteger:
+      type: "object"
+      properties: { }
+    ScorerDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        scoringTime:
+          type: "integer"
+          format: "int32"
+        playerInPositionId:
+          type: "integer"
+          format: "int64"
+        matchId:
+          type: "integer"
+          format: "int64"
+    ReplacementDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        replacementTime:
+          type: "integer"
+          format: "int32"
+        playerInId:
+          type: "integer"
+          format: "int64"
+        playerOutId:
+          type: "integer"
+          format: "int64"
+        matchId:
+          type: "integer"
+          format: "int64"
+    MatchDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        stadiumId:
+          type: "integer"
+          format: "int64"
+        refereeId:
+          type: "integer"
+          format: "int64"
+        date:
+          type: "string"
+          format: "date-time"
+        spectatorNumber:
+          $ref: "#/components/schemas/BigInteger"
+        teamHomeScorers:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ScorerDto"
+        teamAwayScorers:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ScorerDto"
+        lineupHomeId:
+          type: "integer"
+          format: "int64"
+        lineupAwayId:
+          type: "integer"
+          format: "int64"
+        replacements:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ReplacementDto"
+        roundId:
+          type: "integer"
+          format: "int64"
+    StadiumDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+        capacity:
+          $ref: "#/components/schemas/BigInteger"
+        matches:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/MatchDto"
+    SeasonMatchDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        nameTeamHome:
+          type: "string"
+        nameTeamAway:
+          type: "string"
+        scoreTeamHome:
+          type: "integer"
+          format: "int64"
+        scoreTeamAway:
+          type: "integer"
+          format: "int64"
+        roundId:
+          type: "integer"
+          format: "int64"
+    MatchSeasonServiceDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        nameTeamHome:
+          type: "string"
+        nameTeamAway:
+          type: "string"
+        scoreTeamHome:
+          type: "integer"
+          format: "int64"
+        scoreTeamAway:
+          type: "integer"
+          format: "int64"
+        roundId:
+          type: "integer"
+          format: "int64"
