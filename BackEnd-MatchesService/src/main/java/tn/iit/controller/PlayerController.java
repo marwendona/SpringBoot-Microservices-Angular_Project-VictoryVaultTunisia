@@ -11,8 +11,6 @@ import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -73,6 +71,17 @@ public class PlayerController {
         if (existingPlayer!=null) {
             playerService.deletePlayer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @PutMapping("/{id}/{teamId}")
+    public ResponseEntity<PlayerDto> affectPlayerToTeam( @PathVariable Long id, @PathVariable Long teamId) {
+        Player existingPlayer = playerService.getPlayerById(id);
+        if (existingPlayer != null) {
+            existingPlayer.setTeam(teamService.getTeamById(teamId));
+            Player updatedPlayer = playerService.updatePlayer(existingPlayer);
+            return new ResponseEntity<>(PlayerMapper.toPlayerDto(updatedPlayer), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
