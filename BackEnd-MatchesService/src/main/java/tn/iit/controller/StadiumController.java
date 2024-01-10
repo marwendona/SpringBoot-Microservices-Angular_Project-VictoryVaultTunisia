@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tn.iit.dto.StadiumDto;
 import tn.iit.dto.mapper.StadiumMapper;
 import tn.iit.entity.Stadium;
@@ -51,5 +52,18 @@ public class StadiumController {
     public ResponseEntity<Void> deleteStadium(@PathVariable Long id) {
         stadiumService.deleteStadium(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/uploadStadiumImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile)  {
+        String returnValue = "start";
+        try {
+            stadiumService.saveImage(imageFile);
+            return returnValue;
+        } catch (Exception e) {
+            e.printStackTrace();
+            returnValue = "error";
+        }
+        return returnValue;
     }
 }
