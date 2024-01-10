@@ -86,5 +86,15 @@ public class PlayerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+@DeleteMapping("/{id}/{teamId}")
+    public ResponseEntity<PlayerDto> unAffectPlayerFromTeam( @PathVariable Long id, @PathVariable Long teamId) {
+        Player existingPlayer = playerService.getPlayerById(id);
+        if (existingPlayer != null) {
+            existingPlayer.setTeam(null);
+            Player updatedPlayer = playerService.updatePlayer(existingPlayer);
+            return new ResponseEntity<>(PlayerMapper.toPlayerDto(updatedPlayer), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

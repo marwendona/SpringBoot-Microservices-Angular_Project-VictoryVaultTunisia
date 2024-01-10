@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import tn.iit.dto.PlayerDto;
 import tn.iit.dto.TeamDto;
-import tn.iit.dto.mapper.LineupMapper;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.dto.mapper.TeamMapper;
 import tn.iit.entity.Player;
@@ -17,6 +16,7 @@ import tn.iit.service.CoachService;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,11 +40,13 @@ public class TeamController {
         team.setCoach(coachService.getCoachById(teamDto.getCoachId()));
         Team createdTeam = teamService.createTeam(team);
         List<Player> players = teamDto.getPlayers().stream().map(PlayerMapper::toPlayer).toList();
-        players.forEach(player -> {
-            player.setTeam(team);
-            playerService.createPlayer(player);
-        });
-        createdTeam.setPlayers(players);
+        List<Player> playersPresent = new ArrayList<>();
+        for (Player player : players) {
+            Player existingPlayer = playerService.getPlayerById(player.getId());
+            existingPlayer.setTeam(team);
+            playersPresent.add(existingPlayer); 
+        }
+        createdTeam.setPlayers(playersPresent);
         return new ResponseEntity<>(TeamMapper.toTeamDto(createdTeam), HttpStatus.CREATED);
     }
 
