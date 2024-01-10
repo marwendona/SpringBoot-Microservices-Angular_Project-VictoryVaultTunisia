@@ -23,6 +23,11 @@ public class Stadium {
     @Column(name = "capacity")
     private BigInteger capacity;
 
+    @Column(name = "photo")
+    private String photo;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stadium")
     private List<Match> matches;
+
+
 }

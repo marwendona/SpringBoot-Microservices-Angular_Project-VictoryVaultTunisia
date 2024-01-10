@@ -55,7 +55,7 @@ public class StadiumController {
     }
 
     @PostMapping("/uploadStadiumImage")
-    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile)  {
+    public String uploadImage(@RequestParam("stadeImage") MultipartFile imageFile)  {
         String returnValue = "start";
         try {
             stadiumService.saveImage(imageFile);

@@ -14,5 +14,6 @@ public class StadiumDto {
     private Long id;
     private String name;
     private BigInteger capacity;
+    private String photo;
     private List<MatchDto> matches;
 }
