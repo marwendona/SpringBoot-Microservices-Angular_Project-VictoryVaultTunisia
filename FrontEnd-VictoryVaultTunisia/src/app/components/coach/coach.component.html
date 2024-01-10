@@ -34,13 +34,12 @@
                     {{lastNameError}}
                   </div>
                 </div>
-                  <div >
-                    <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
-                    <input type="text" class="form-control" formControlName="nationality" required>
-                    <div style="color: red;">
-                      {{nationalityError}}
-                    </div>
-                  </div>
+                <div class="form-group mt-3 mt-md-0">   
+                  <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
+                  <select class="form-control custom-input" formControlName="nationality"> <!-- Update the form control name -->
+                    <option value="Tunisienne">Tunisienne</option>
+                  </select>
+                </div>
               </div>
               <div class="modal-footer d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="isSubmitCoachButtonDisabled">Submit</button>

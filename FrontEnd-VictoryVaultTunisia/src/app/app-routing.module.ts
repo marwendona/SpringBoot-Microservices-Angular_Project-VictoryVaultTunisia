@@ -8,8 +8,20 @@ import { CoachComponent } from './components/coach/coach.component';
 import { AddteamComponent } from './components/addteam/addteam.component';
 import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
 import { StadeComponent } from './components/stade/stade.component';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
+import { RefereeComponent } from './components/referee/referee.component';
 
 const routes: Routes = [
+  {
+    path: 'referee',
+    pathMatch:'full',
+    component: RefereeComponent
+  },
+  {
+    path: 'editTeam',
+    pathMatch:'full',
+    component: EditTeamComponent
+  },
   {
     path: 'stade',
     pathMatch:'full',

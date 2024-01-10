@@ -52,8 +52,6 @@ export class StadeComponent implements OnInit {
         }
       );
     }
-
-
     if (this.selectedFile) {
       const stadeImage = new FormData();
       stadeImage.append('image', this.selectedFile, this.selectedFile.name);
@@ -67,7 +65,7 @@ export class StadeComponent implements OnInit {
       matches: [],
     };
 
-    this.stadiumService.addStadiums(stade).subscribe(() => {
+    this.stadiumService.addStadiums(stade,file).subscribe(() => {
       console.log('stade added successfuly!!');
       console.log(stade)
     });

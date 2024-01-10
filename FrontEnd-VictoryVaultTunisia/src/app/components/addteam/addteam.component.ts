@@ -88,16 +88,28 @@ export class AddteamComponent implements OnInit {
     this.hiddenPlayers[playerIndex+1] = false;
 
   }
-
+playersList:Players[]=[]
 
   addTeam() {
     const valuesList = Object.values(this.playerSelections);
 console.log(valuesList)
+
+valuesList.forEach(pl => {
+  const __player : Players ={
+    id: Number(pl),
+    firstName: '',
+    lastName: '',
+    nationality: '',
+    teamId: 0
+  }
+  this.playersList.push(__player)
+})
+
     const team: Team = {
       id: 0,
       name: this.teamForm.value.Name,
       coachId: Number(this.teamForm.value.CoachId),
-      players: []
+      players: this.playersList
     };
 
     if(team.coachId != 0){

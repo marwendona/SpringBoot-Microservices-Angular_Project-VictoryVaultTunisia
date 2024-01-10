@@ -3,71 +3,178 @@
       <!--  -->
       <app-header></app-header>
       <!--  -->
-
+  
+      <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
+      <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Add Referee</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="refereeFormAdd" (ngSubmit)="addReferee()">
+                <div >
+                  <div >
+                    <label for="prenomInput">First Name <span style="color: #d62828;">*</span></label>
+                    <input type="text" class="form-control" formControlName="firstName" required>
+                    <!-- Display error message if the 'cin' control is invalid -->
+                    <div style="color: red;">
+                    </div>
+  
+                  </div>
+                  <div >
+                    <label for="nomInput">Last Name <span style="color: #d62828;">*</span></label>
+                    <input type="text" class="form-control" formControlName="lastName" required>
+                    <div style="color: red;">
+                    </div>
+                  </div>
+                  <div class="form-group mt-3 mt-md-0">   
+                    <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
+                    <select class="form-control custom-input" formControlName="nationality"> <!-- Update the form control name -->
+                      <option value="Tunisienne">Tunisienne</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary w-100 mt-3" >Submit</button>
+                  <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+  
+            <!-- -----------------------------------------------------Modal Edit---------------------------------------------------------------- -->
+            <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Add Referee</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="refereeFormEdit" (ngSubmit)="EditReferee()">
+                    <div>
+                      <div>
+                        <label for="prenomInput">First Name <span style="color: #d62828;">*</span></label>
+                        <input type="text" class="form-control" formControlName="firstNameEdit"  required>
+                        <div style="color: red;">
+                        </div>
+                      </div>
+                      <div>
+                        <label for="nomInput">Last Name <span style="color: #d62828;">*</span></label>
+                        <input type="text" class="form-control" formControlName="lastNameEdit" required>
+                        <div style="color: red;">
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div class="form-group mt-3 mt-md-0">   
+                          <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
+                          <select class="form-control custom-input" formControlName="nationalityEdit"> <!-- Update the form control name -->
+                            <option value="Tunisienne">Tunisienne</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                      <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                      <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+      
       <section>
   
         <br><br><br><br><br><br><br>
-      
+        <button data-toggle="modal" data-target="#DeleteModal" class="btn" style="position: absolute; right: 100px;">
+          <!-- <span>Season</span> -->
+          <i class="fa fa-plus"></i>
+        </button>
   
-        <a href="team" class="btn" style="position: absolute; left: 100px;">
-          <i class="fa fa-arrow-left"></i>
-        </a>
   
   
-        <h2 class="heading">Ajouté <span>un équipe</span></h2>
+        <h2 class="heading">liste <span>des arbitre</span></h2>
         <br><br>
-          
-          <div class="content-container">
-            <form [formGroup]="teamForm"  (ngSubmit)="addTeam()">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group mt-3">
-                    <label for="prenomInput">Name <span style="color: #d62828;">*</span></label>
-                    <input type="text" class="form-control custom-input" formControlName="Name" required>
-                    <div style="color: red;"></div>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group mt-3">
-                    <label for="playerSelect">Coach <span style="color: #d62828;">*</span></label>
-                    <select class="form-control custom-input" formControlName="CoachId">
-                      <option disabled selected>Coach Name</option>
-                      <option disabled>──────────</option>
-                      <option *ngFor="let coach of dataCoach" [value]="coach.id">{{ coach.firstName }}</option>
-                    </select>
-                  </div>
-                  
-                </div>
-                <div class="col-md-15">
-                  <div class="form-group mt-2">
-                    <label for="playerSelect">Add Player</label>
-                    <select formControlName="PL1" class="form-control custom-input" (change)="onSelectOption($event, 'player1')" (change)="onSelectPlayer1()" >
-                      <option disabled selected>Pick a player</option>
-                      <option disabled>──────────</option>
-                      <option *ngFor="let player of players" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
-                    </select>
-                  </div>
-                
-                  <div *ngFor="let playerIndex of [0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]">
-                    <div [hidden]="shouldHidePlayer(playerIndex)" class="form-group mt-2">
-                      <label for="playerSelect">Add another Player</label>
-                      <select class="form-control custom-input" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectPlayern(playerIndex)">
-                        <option disabled selected>Pick a player</option>
-                        <option disabled>──────────</option>
-                        <option *ngFor="let player of players" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                
-                
-                
+  
+        <div class="content-container">
+          <!-- <div class="filters">
+            <h4>Search</h4>
+              <div class="form-group">
+                  <input id="name" type="text" class="form-control custom-input" (change)="applyFilter($event)"
+                        (input)="applyFilter($event)" name="name" placeholder="Name..   " #input>
               </div>
-              <button type="submit" class="btn btn-danger" style="position: absolute; right: 100px;">Submit</button>
-            </form>
+          </div> -->
+          <h1>Championnat de Tunisie - Ligue Pro1 </h1>
+  
+          <div class="heading-container">
+            <h3>13ième Journée - Saison 2023 / 2024</h3>
           </div>
-          
+  
+          <table mat-table [dataSource]="dataReferee" class="custom-table" style="zoom: 100%;">
+            <ng-container matColumnDef="firstName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </th>
+              <td mat-cell *matCellDef="let referee"> {{referee.firstName}} </td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+                *matFooterCellDef></td>
+            </ng-container>
+  
+            <ng-container matColumnDef="lastName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName </th>
+              <td mat-cell *matCellDef="let referee"> {{referee.lastName}}</td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+                *matFooterCellDef></td>
+            </ng-container>
+  
+            <ng-container matColumnDef="nationality">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nationality </th>
+              <td mat-cell *matCellDef="let referee"> {{referee.nationality}}</td>
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+                *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+              <td mat-cell *matCellDef="let referee"> 
+                <span>
+                  <button data-toggle="modal" data-target="#EditModal" (click)="LoadInfoReferee(referee)" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                    <mat-icon class="btn-icon">edit</mat-icon>
+                  </button>
+                  &nbsp;  
+                  <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(referee.id)">
+                    <mat-icon class="btn-icon">delete</mat-icon>
+                  </button>
+                </span>
+              </td>
+  
+              <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+                *matFooterCellDef></td>
+            </ng-container>
+  
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let even = even"
+              [ngClass]="{ 'even-row': even, 'odd-row': !even }" (mouseenter)="onRowHover(true)" (click)="onRowClick(row)"
+              (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
+            </tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  
+          </table>
+  
+        </div>
   
       </section>
   

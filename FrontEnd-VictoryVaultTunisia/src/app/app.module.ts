@@ -20,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
 import { StadeComponent } from './components/stade/stade.component';
 import Swal from 'sweetalert2';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
+import { RefereeComponent } from './components/referee/referee.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import Swal from 'sweetalert2';
     CoachComponent,
     AddteamComponent,
     TeamdetailComponent,
-    StadeComponent
+    StadeComponent,
+    EditTeamComponent,
+    RefereeComponent
   ],
   imports: [
     BrowserModule,

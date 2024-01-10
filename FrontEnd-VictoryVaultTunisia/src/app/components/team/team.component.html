@@ -43,13 +43,13 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
             <td mat-cell *matCellDef="let team" > 
               <span>
-                <button type="button" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                <!-- <button type="button" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
                   <mat-icon class="btn-icon">edit</mat-icon>
                 </button>
-                &nbsp;  
-                <button type="button" class=" btnIcon btn-danger" style=" background-color: #d51d1d; ">
-                  <mat-icon class="btn-icon">delete</mat-icon>          
-                </button> 
+                &nbsp;   -->
+                <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(team.id)">
+                  <mat-icon class="btn-icon">delete</mat-icon>
+                </button>
               </span>
             </td>
 

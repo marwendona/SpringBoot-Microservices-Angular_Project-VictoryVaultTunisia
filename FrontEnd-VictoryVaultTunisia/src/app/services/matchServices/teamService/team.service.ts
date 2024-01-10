@@ -15,12 +15,20 @@ export class TeamService {
   addTeams(team:Team): Observable<any> {
     return this._httpClient.post<any>(this.teamAPI, team);
   }
-
+  
   getTeams():Observable<Team[]> {
     return this._httpClient.get<Team[]>(this.teamAPI);
   }
 
   getPlayersByTeams(id:number):Observable<Players[]> {
     return this._httpClient.get<Players[]>(`${this.teamAPI}/${id}/players`);
+  }
+
+  deleteTeam(teamId:number){
+    return this._httpClient.delete(`${this.teamAPI}/${teamId}`);
+  }
+
+  updateTeam(team:Team,teamId:number){
+    return this._httpClient.put(`${this.teamAPI}/${teamId}`, team);
   }
 }

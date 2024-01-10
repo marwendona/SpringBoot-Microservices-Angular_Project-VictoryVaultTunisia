@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { Team } from 'src/app/models/Team';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-team',
@@ -40,10 +41,45 @@ getTeams(){
     const navigationExtras: NavigationExtras = {
       queryParams: team,
     };
-    this.router.navigate(['/teamDetail'], navigationExtras).then(() => {
+    this.router.navigate(['/editTeam'], navigationExtras).then(() => {
       window.location.reload();
     });
   }
+
+  confirmDelete(TeamId:number): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d51d1d',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call your delete function here
+        this.deleteFunction(TeamId);
+      }
+    });
+  }
+  deleteFunction(teamID:number): void {
+    this.teamService.deleteTeam(teamID).subscribe(()=>{
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        icon: 'success'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
+    
+  
+    })
+   
+  }
+
+
 // configuration table
 onRowHover(hovered: boolean) {
   this.isRowHovered = hovered;
