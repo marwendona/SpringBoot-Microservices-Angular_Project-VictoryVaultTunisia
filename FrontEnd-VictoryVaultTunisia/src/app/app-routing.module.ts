@@ -6,8 +6,14 @@ import { TeamComponent } from './components/team/team.component';
 import { PlayersComponent } from './components/players/players.component';
 import { CoachComponent } from './components/coach/coach.component';
 import { AddteamComponent } from './components/addteam/addteam.component';
+import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
 
 const routes: Routes = [
+  {
+    path: 'teamDetail',
+    pathMatch:'full',
+    component: TeamdetailComponent
+  },
   {
     path: 'addteams',
     pathMatch:'full',

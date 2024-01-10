@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { NavigationExtras, Router } from '@angular/router';
 import { Team } from 'src/app/models/Team';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
 
@@ -10,6 +11,7 @@ import { TeamService } from 'src/app/services/matchServices/teamService/team.ser
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+
 selectedChoice: any;
 addTeam() {
 throw new Error('Method not implemented.');
@@ -20,7 +22,7 @@ throw new Error('Method not implemented.');
   nameError: any;
   teamsForm!: FormGroup<any>;
 
-  constructor(private teamService:TeamService){}
+  constructor(private teamService:TeamService, private router: Router){}
 
   ngOnInit(): void {
     this.getTeams();
@@ -30,18 +32,21 @@ getTeams(){
   this.teamService.getTeams().subscribe((teams)=>{
     this.dataTeams = new MatTableDataSource<Team>(teams);
     this.dataTeams = this.dataTeams._data.value.content;
-    console.log(this.dataTeams)
-
   })
 }
 
-
-
+  onTeamClick(team: any) {
+    // const data = { cin: team.cin };
+    const navigationExtras: NavigationExtras = {
+      queryParams: team,
+    };
+    this.router.navigate(['/teamDetail'], navigationExtras).then(() => {
+      window.location.reload();
+    });
+  }
 // configuration table
 onRowHover(hovered: boolean) {
   this.isRowHovered = hovered;
 }
-onRowClick(row: any){
-  console.log(row.id)
-}
+
 }

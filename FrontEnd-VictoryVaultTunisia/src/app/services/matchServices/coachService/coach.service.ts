@@ -18,4 +18,7 @@ export class CoachService {
   getCoach():Observable<Coach[]> {
     return this._httpClient.get<Coach[]>(this.coachAPI);
   }
+  getCoachById(id:number):Observable<Coach> {
+    return this._httpClient.get<Coach>(`${this.coachAPI}/${id}`);
+  }
 }

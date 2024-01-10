@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddteamComponent } from './components/addteam/addteam.component';
 import {MatIconModule} from '@angular/material/icon';
+import { TeamdetailComponent } from './components/teamdetail/teamdetail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     TeamComponent,
     PlayersComponent,
     CoachComponent,
-    AddteamComponent
+    AddteamComponent,
+    TeamdetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Players } from 'src/app/models/Players';
 import { Team } from 'src/app/models/Team';
 
 @Injectable({
@@ -19,4 +20,7 @@ export class TeamService {
     return this._httpClient.get<Team[]>(this.teamAPI);
   }
 
+  getPlayersByTeams(id:number):Observable<Players[]> {
+    return this._httpClient.get<Players[]>(`${this.teamAPI}/${id}/players`);
+  }
 }

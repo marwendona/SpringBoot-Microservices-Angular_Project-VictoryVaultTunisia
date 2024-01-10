@@ -27,21 +27,21 @@
         <table mat-table [dataSource]="dataTeams" class="custom-table" style="zoom: 100%;">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-            <td mat-cell *matCellDef="let team"> {{team.name}} </td>
+            <td mat-cell *matCellDef="let team" (click)="onTeamClick(team)"> {{team.name}} </td>
             <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
               *matFooterCellDef></td>
           </ng-container>
 
           <ng-container matColumnDef="coach">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Coach </th>
-            <td mat-cell *matCellDef="let team"> {{team.coachId}}</td>
+            <td mat-cell *matCellDef="let team" (click)="onTeamClick(team)"> {{team.coachId}}</td>
             <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
               *matFooterCellDef></td>
           </ng-container>
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-            <td mat-cell *matCellDef="let team"> 
+            <td mat-cell *matCellDef="let team" > 
               <span>
                 <button type="button" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
                   <mat-icon class="btn-icon">edit</mat-icon>
@@ -60,7 +60,7 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns; let even = even"
-            [ngClass]="{ 'even-row': even, 'odd-row': !even }" (mouseenter)="onRowHover(true)" (click)="onRowClick(row)"
+            [ngClass]="{ 'even-row': even, 'odd-row': !even }" (mouseenter)="onRowHover(true)"
             (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
           </tr>
           <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
