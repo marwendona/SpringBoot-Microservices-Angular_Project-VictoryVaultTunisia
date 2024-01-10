@@ -1,0 +1,355 @@
+openapi: "3.0.3"
+info:
+  title: "BackEnd_SeasonService API"
+  description: "BackEnd_SeasonService API"
+  version: "1.0.0"
+servers:
+  - url: "https://BackEnd_SeasonService"
+paths:
+  /standings/{id}:
+    put:
+      summary: "PUT standings/{id}"
+      operationId: "updateStanding"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StandingDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StandingDto"
+    delete:
+      summary: "DELETE standings/{id}"
+      operationId: "deleteStanding"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET standings/{id}"
+      operationId: "getStandingById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StandingDto"
+  /standings/{seasonId}:
+    post:
+      summary: "POST standings/{seasonId}"
+      operationId: "createStanding"
+      parameters:
+        - name: "seasonId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StandingDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StandingDto"
+  /standings:
+    get:
+      summary: "GET standings"
+      operationId: "getAllStandings"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StandingDto"
+  /rounds/{id}:
+    put:
+      summary: "PUT rounds/{id}"
+      operationId: "updateRound"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoundDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoundDto"
+    delete:
+      summary: "DELETE rounds/{id}"
+      operationId: "deleteRound"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET rounds/{id}"
+      operationId: "getRoundById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoundDto"
+  /rounds/{seasonId}:
+    post:
+      summary: "POST rounds/{seasonId}"
+      operationId: "createRound"
+      parameters:
+        - name: "seasonId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoundDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoundDto"
+  /rounds:
+    get:
+      summary: "GET rounds"
+      operationId: "getAllRounds"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoundDto"
+  /seasons/{id}:
+    put:
+      summary: "PUT seasons/{id}"
+      operationId: "updateSeason"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeasonDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SeasonDto"
+    delete:
+      summary: "DELETE seasons/{id}"
+      operationId: "deleteSeason"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET seasons/{id}"
+      operationId: "getSeasonById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SeasonDto"
+  /seasons:
+    post:
+      summary: "POST seasons"
+      operationId: "createSeason"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeasonDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SeasonDto"
+    get:
+      summary: "GET seasons"
+      operationId: "getAllSeasons"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SeasonDto"
+components:
+  schemas:
+    StandingDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        rank:
+          type: "integer"
+          format: "int32"
+        score:
+          type: "integer"
+          format: "int32"
+        teamId:
+          type: "integer"
+          format: "int64"
+        seasonId:
+          type: "integer"
+          format: "int64"
+    Void:
+      type: "object"
+      properties: { }
+    MatchDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        nameTeamHome:
+          type: "string"
+        nameTeamAway:
+          type: "string"
+        scoreTeamHome:
+          type: "integer"
+          format: "int64"
+        scoreTeamAway:
+          type: "integer"
+          format: "int64"
+        roundId:
+          type: "integer"
+          format: "int64"
+    RoundDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+        roundNumber:
+          type: "integer"
+          format: "int32"
+        matches:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/MatchDto"
+        seasonId:
+          type: "integer"
+          format: "int64"
+    SeasonDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+        rounds:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RoundDto"
+        generalStanding:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/StandingDto"
