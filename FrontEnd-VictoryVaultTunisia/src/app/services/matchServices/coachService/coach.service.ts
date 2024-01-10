@@ -12,7 +12,7 @@ export class CoachService {
   coachAPI= `http://localhost:8082/coach`
   
   addCoach(coach:Coach): Observable<any> {
-    return this._httpClient.post<any>(`${this.coachAPI}`, coach);
+    return this._httpClient.post<any>(this.coachAPI, coach);
   }
 
   getCoach():Observable<Coach[]> {

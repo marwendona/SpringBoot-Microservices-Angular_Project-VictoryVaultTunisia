@@ -13,7 +13,7 @@ export class CoachComponent implements OnInit{
 coachForm!: FormGroup;
 isSubmitCoachButtonDisabled: boolean=false;
 dataCoach!: any;
-displayedColumns: string[] = ['firstName', 'lastName','nationality'];
+displayedColumns: string[] = ['firstName', 'lastName','nationality','action'];
 isRowHovered = false;
 
 //declaration not used yet 

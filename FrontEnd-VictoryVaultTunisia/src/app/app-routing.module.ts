@@ -5,8 +5,14 @@ import { ClassementComponent } from './components/classement/classement.componen
 import { TeamComponent } from './components/team/team.component';
 import { PlayersComponent } from './components/players/players.component';
 import { CoachComponent } from './components/coach/coach.component';
+import { AddteamComponent } from './components/addteam/addteam.component';
 
 const routes: Routes = [
+  {
+    path: 'addteams',
+    pathMatch:'full',
+    component: AddteamComponent
+  },
   {
     path: 'coach',
     pathMatch:'full',

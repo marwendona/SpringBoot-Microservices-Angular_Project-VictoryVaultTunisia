@@ -15,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddteamComponent } from './components/addteam/addteam.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ClassementComponent,
     TeamComponent,
     PlayersComponent,
-    CoachComponent
+    CoachComponent,
+    AddteamComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

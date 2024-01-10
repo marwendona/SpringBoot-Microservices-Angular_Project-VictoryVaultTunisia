@@ -4,7 +4,7 @@
     <app-header></app-header>
     <!--  -->
 
-    <!-- -----------------------------------------------------Modal Delete---------------------------------------------------------------- -->
+    <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -17,9 +17,9 @@
           </div>
           <div class="modal-body">
             <form [formGroup]="coachForm" (ngSubmit)="addCoach()">
-              <div class="row">
-                <div class="form-group mt-3 mt-md-0">
-                  <label for="prenomInput">First Name</label>
+              <div >
+                <div >
+                  <label for="prenomInput">First Name <span style="color: #d62828;">*</span></label>
                   <input type="text" class="form-control" formControlName="firstName" required>
                   <!-- Display error message if the 'cin' control is invalid -->
                   <div style="color: red;">
@@ -27,30 +27,26 @@
                   </div>
 
                 </div>
-                <div class="form-group mt-3 mt-md-0">
-                  <label for="nomInput">Last Name</label>
+                <div >
+                  <label for="nomInput">Last Name <span style="color: #d62828;">*</span></label>
                   <input type="text" class="form-control" formControlName="lastName" required>
                   <div style="color: red;">
                     {{lastNameError}}
                   </div>
                 </div>
-                <div class="form-group mt-3 mt-md-0">
-                  <div class="form-group mt-3 mt-md-0">
-                    <label for="nomInput">Nationality</label>
+                  <div >
+                    <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
                     <input type="text" class="form-control" formControlName="nationality" required>
                     <div style="color: red;">
                       {{nationalityError}}
                     </div>
                   </div>
-                  <button type="submit" [disabled]="isSubmitCoachButtonDisabled"
-                    class="btn btn-primary w-100 mt-3">Submit</button>
-                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="isSubmitCoachButtonDisabled">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
               </div>
             </form>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
@@ -69,24 +65,22 @@
 
 
       <h2 class="heading">liste <span>des coach</span></h2>
-      <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consequuntur
-        animi, commodi, voluptatibus labore aperiam fugit <br>maxime quos optio architecto cum? Laborum nesciunt
-        doloribus expedita atque error rem molestias, ducimus.</p>
-        
+      <br><br>
+
       <div class="content-container">
-        <div class="filters">
+        <!-- <div class="filters">
           <h4>Search</h4>
             <div class="form-group">
                 <input id="name" type="text" class="form-control custom-input" (change)="applyFilter($event)"
                       (input)="applyFilter($event)" name="name" placeholder="Name..   " #input>
             </div>
-        </div>
+        </div> -->
         <h1>Championnat de Tunisie - Ligue Pro1 </h1>
 
         <div class="heading-container">
           <h3>13ième Journée - Saison 2023 / 2024</h3>
         </div>
-        
+
         <table mat-table [dataSource]="dataCoach" class="custom-table" style="zoom: 100%;">
           <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </th>
@@ -108,6 +102,24 @@
             <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
               *matFooterCellDef></td>
           </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let team"> 
+              <span>
+                <button type="button" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                  <mat-icon class="btn-icon">edit</mat-icon>
+                </button>
+                &nbsp;  
+                <button type="button" class=" btnIcon btn-danger" style=" background-color: #d51d1d; ">
+                  <mat-icon class="btn-icon">delete</mat-icon>          
+                </button> 
+              </span>
+            </td>
+
+            <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+              *matFooterCellDef></td>
+          </ng-container>
+
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns; let even = even"

@@ -7487,9 +7487,12 @@ button.close {
 .modal-footer:after {
   clear: both;
 }
-
+.modal-footer .btn {
+  margin-left: 380px;
+  margin-bottom: -41px;
+} 
 .modal-footer .btn+.btn {
-  margin-left: 5px;
+  margin-left: 500px;
   margin-bottom: 0;
 }
 
@@ -7497,9 +7500,7 @@ button.close {
   margin-left: -1px;
 }
 
-.modal-footer .btn-block+.btn-block {
-  margin-left: 0;
-}
+
 
 .modal-scrollbar-measure {
   position: absolute;
