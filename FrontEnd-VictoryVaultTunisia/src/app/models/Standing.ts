@@ -3,5 +3,6 @@ export class Standing {
   rank!:number;
   score!:number;
   teamId!:number;
+  teamName!:string;
   seasonId!:number;
 }

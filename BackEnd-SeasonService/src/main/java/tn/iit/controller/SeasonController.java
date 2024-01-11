@@ -1,5 +1,7 @@
 package tn.iit.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -22,11 +24,11 @@ public class SeasonController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<SeasonDto>> getAllSeasons(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<List<SeasonDto>> getAllSeasons(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "1000") int size) {
         Page<SeasonDto> seasons = seasonService.
                 getAllSeasons(PageRequest.of(page, size)).
                 map(SeasonMapper::toSeasonDto);
-        return ResponseEntity.ok(seasons);
+        return ResponseEntity.ok(seasons.getContent());
     }
     @GetMapping("/{id}")
     public ResponseEntity<SeasonDto> getSeasonById(@PathVariable Long id) {

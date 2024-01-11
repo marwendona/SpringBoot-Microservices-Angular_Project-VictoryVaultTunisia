@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import tn.iit.dto.PlayerDto;
 import tn.iit.dto.TeamDto;
+import tn.iit.dto.TeamSeasonServiceDto;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.dto.mapper.TeamMapper;
 import tn.iit.entity.Player;
@@ -18,6 +19,9 @@ import tn.iit.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 @CrossOrigin(origins ={"http://localhost:4200","http://localhost:9090"})
 
 @RestController
@@ -108,6 +112,19 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/teams/season-service/{id}")
+    public ResponseEntity<TeamSeasonServiceDto> getMethodName(@RequestParam Long id) {
+        Team team = teamService.getTeamById(id);
+        if (team != null) {
+            TeamSeasonServiceDto teamSeasonServiceDto =  TeamSeasonServiceDto.builder()
+            .name(team.getName())
+            .build();
+            return new ResponseEntity<>(teamSeasonServiceDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
 
 
 }
