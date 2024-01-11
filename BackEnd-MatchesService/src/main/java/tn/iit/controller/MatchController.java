@@ -56,13 +56,14 @@ public class MatchController {
     @GetMapping("/{id}")
     public ResponseEntity<MatchDto> getMatchById(@PathVariable Long id) {
         MatchDto matchDto = MatchMapper.toMatchDto(matchService.getMatchById(id));
+        if(matchDto == null) {
+            return ResponseEntity.notFound().build();
+        }
         matchDto.setStadiumId(stadiumService.getStadiumById(matchDto.getStadiumId()).getId());
         matchDto.setRefereeId(refereeService.getRefereeById(matchDto.getRefereeId()).getId());
         matchDto.setLineupAwayId(lineupService.getLineupById(matchDto.getLineupAwayId()).getId());
         matchDto.setLineupHomeId(lineupService.getLineupById(matchDto.getLineupHomeId()).getId());
-        if(matchDto == null) {
-            return ResponseEntity.notFound().build();
-        }
+        
         return ResponseEntity.ok(matchDto);
     }
     @PostMapping

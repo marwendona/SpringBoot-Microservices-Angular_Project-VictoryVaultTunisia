@@ -11,7 +11,7 @@ export class MatchService {
 
 
   constructor(private _httpClient: HttpClient) {}
-  matchAPI= `http://localhost:8082/matches`
+  matchAPI= `/matches-service/matches`
   
   addMatch(match:Match): Observable<any> {
     return this._httpClient.post<any>(this.matchAPI, match);

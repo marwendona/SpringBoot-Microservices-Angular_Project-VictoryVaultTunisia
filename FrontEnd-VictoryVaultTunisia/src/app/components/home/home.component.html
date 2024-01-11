@@ -4,18 +4,109 @@
     <app-header></app-header>
     <!--  -->
 
+    <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add remplacemet</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="seasonForm" (ngSubmit)="addSeason()">
+              <div>
+                <div>
+                  <label for="prenomInput">Season Name<span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="name" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+              </div>
 
+            </form>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+    
+    <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
+    <div class="modal fade" id="AddModalRound" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add remplacemet</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="roundForm" (ngSubmit)="addRound()">
+              <div>
+                <div>
+                  <label for="prenomInput">Round Name<span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="name" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="prenomInput">Round Number<span style="color: #d62828;">*</span></label>
+                  <input type="number" class="form-control" formControlName="roundNumber" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+              </div>
+
+            </form>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+    <br><br><br><br><br><br>
+    <button data-toggle="modal" data-target="#AddModal" class="btn" style="position: absolute; right: 100px;">
+      <span>Add Season </span>
+      <p></p>
+      <i class="fa fa-plus"></i>
+    </button>
     <section class="matchSchedule">
       <div class="container">
         <div class="row">
-          <h2 class="heading">
-            <p (click)="previousSeason()"><a class="btnSpecial" >
-                <i class="fa fa-arrow-up" style="color: black;"></i>
+          <h2 class="heading" style="display: flex;
+           align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            ">
+
+            <p (click)="previousSeason()"><a class="btnSpecial" style="width: fit-content;">
+                <i class="fa fa-arrow-left" style="color: white;"></i>
               </a></p>
             <span>{{currentSeason.name}}</span>
-            <p (click)="nextSeason()"><a class="btnSpecial" >
+            <p (click)="nextSeason()"><a class="btnSpecial" style="width: fit-content;">
 
-                <i class="fa fa-arrow-down" style="color: black;"></i>
+                <i class="fa fa-arrow-right" style="color: white;"></i>
               </a></p>
           </h2>
           <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil debitis mollitia qui
@@ -24,7 +115,7 @@
             Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus
             doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut! Est.</p>
 
-          <div class="matchSchedule_details row">
+          <div class="matchSchedule_details row" *ngIf="Seasons && currentSeason">
             <div class="match_versus-wrap">
               <div class="wrap_match-innerdetails">
                 <ul class="home_tInfo scrollable">
@@ -43,7 +134,14 @@
               </div>
             </div>
             <div class="match_next">
+              <button data-toggle="modal" data-target="#AddModalRound" class="btn"
+              style="position: absolute; right: 100px; width: fit-content;height: 25px; margin-top: 10px" >
+              <span>Add Round</span>
+              <p></p>
+              <i class="fa fa-plus"></i>
+            </button>
               <div class="wrap_match_next left_triangle">
+
                 <div class="left_padding">
                   <p (click)="previousRound()"><a class="btnSpecial" style="position: absolute; right: 100px;">
 
@@ -59,7 +157,7 @@
             </div>
           </div>
 
-          <div class="matchSchedule_details row">
+          <div class="matchSchedule_details row" *ngIf="currentSeason">
             <div class="match_next">
               <div class="wrap_match_next right-triangle">
                 <div class="right-padding">
