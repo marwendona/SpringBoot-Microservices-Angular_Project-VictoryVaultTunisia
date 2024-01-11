@@ -17,6 +17,12 @@ public class ReplacementMapper {
                 replacementTime(replacement.getReplacementTime()).
                 playerOutId(replacement.getPlayerOut().getId()).
                 playerInId(replacement.getPlayerIn().getId()).
+                playerInFirstName(replacement.getPlayerIn().getPlayer().getFirstName()).
+                playerInLastName(replacement.getPlayerIn().getPlayer().getLastName()).
+                playerInNationality(replacement.getPlayerIn().getPlayer().getNationality()).
+                playerOutFirstName(replacement.getPlayerOut().getPlayer().getFirstName()).
+                playerOutLastName(replacement.getPlayerOut().getPlayer().getLastName()).
+                playerOutNationality(replacement.getPlayerOut().getPlayer().getNationality()).
                 matchId(replacement.getMatch().getId()).
                 build();
     }

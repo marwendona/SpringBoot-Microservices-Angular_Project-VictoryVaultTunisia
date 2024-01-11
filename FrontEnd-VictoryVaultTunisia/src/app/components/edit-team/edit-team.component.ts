@@ -90,29 +90,35 @@ export class EditTeamComponent  implements OnInit{
 
    })
  }
+
+ playersList:Players[]=[];
   EditTeam() {
     console.log("ahoa",Object.values(this.playerSelections))
 
-    const team:Team ={
-      id: 0,
-      name: this.teamFormEdit.value.NameEdit,
-      players: [],
-      coachId: this.teamFormEdit.value.CoachIdEdit
-    }
 
-    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{})
+    // this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{})
     //fix me
-    Object.values(this.playerSelections).forEach(player =>{
-      console.log(player)
-      const _player:Players = {
+    Object.values(this.playerSelections).forEach(playerId =>{
+      console.log("players",Number(playerId))
+      this.playerService.getPlayerById(Number(playerId)).subscribe(player=>{
+        this.playersList.push(player);
+      })})
+
+      const team:Team ={
         id: 0,
-        firstName: '',
-        lastName: '',
-        nationality: '',
-        teamId: this.paramsTeam.id
+        name: this.teamFormEdit.value.NameEdit,
+        players: this.playersList,
+        coachId: this.teamFormEdit.value.CoachIdEdit
       }
-      this.playerService.editPlayer
+      console.log(this.paramsTeam.id);
+      
+    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{
+      // alert('Modification réussie')
+      // window.location.reload();
     })
+
+
+      
   }
   onSelectOption(event: any, key: string) {
     const selectedPlayerId = parseInt(event.target.value, 10);
@@ -140,39 +146,37 @@ export class EditTeamComponent  implements OnInit{
   }
 
   confirmDelete(playerId:number): void {
-    console.log("aaaa",this.paramsTeam);
-    
-    // Swal.fire({
-    //   title: 'Are you sure?',
-    //   text: 'You won\'t be able to revert this!',
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonColor: '#d51d1d',
-    //   cancelButtonColor: '#3085d6',
-    //   confirmButtonText: 'Yes, delete it!'
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     // Call your delete function here
-    //     this.deleteFunction(playerId,this.paramsTeam.id);
-    //   }
-    // });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d51d1d',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call your delete function here
+        this.deleteFunction(playerId);
+      }
+    });
   }
-  // deleteFunction(playerId:number): void {
-  //   this.playerService.deletePlayerFromTeam(playerId).subscribe(()=>{
-  //     Swal.fire({
-  //       title: 'Deleted!',
-  //       text: 'Your file has been deleted.',
-  //       icon: 'success'
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         window.location.reload();
-  //       }
-  //     });
+  deleteFunction(playerId:number): void {
+    this.playerService.deletePlayerFromTeam(playerId,500).subscribe(()=>{
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        icon: 'success'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
     
   
-  //   })
+    })
    
-  // }
+  }
   
 // configuration table
 onRowHover(hovered: boolean) {

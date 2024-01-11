@@ -20,6 +20,7 @@ import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/matches")

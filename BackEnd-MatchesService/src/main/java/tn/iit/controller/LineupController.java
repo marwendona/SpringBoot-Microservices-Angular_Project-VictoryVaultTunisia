@@ -16,6 +16,7 @@ import tn.iit.service.PlayerInPositionService;
 import tn.iit.service.TeamService;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/lineups")

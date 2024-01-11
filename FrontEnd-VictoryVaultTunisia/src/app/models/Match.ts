@@ -1,17 +1,40 @@
-import { Lineups } from "./Lineups";
-import { Referee } from "./Referee";
-import { Remplacement } from "./Remplacement";
-import { Stadium } from "./Stadium";
+export class MatchSeason {
+  id!: number;
+  nameTeamHome!:string ;
+  nameTeamAway!:string ;
+  scoreTeamHome!: number;
+  scoreTeamAway!: number;
+  roundId!: number;
+}
 
 export class Match {
   id!:number;
-  stadium!:Stadium;
-  referee!:Referee;
+
+  stadiumId!:number;
+  stadiumName!:string;
+  stadiumCapacity!:number;
+
+  refereeId!:number;
+  refereeFirstName!:string;
+  refereeLastName!:string;
+  refereeNationality!:string;
+
   date!:Date;
   spectatorNumber!:number;
-  lineupHomes!:Lineups;
-  lineupAway!:Lineups;
-  replacements!:Remplacement[];
+
+  teamHomeScorers!:any[];
+  teamAwayScorers!:any[];
+
+  lineupHomeId!:number;
+  lineupHomeTeamId!:number;
+  lineupHomeTeamName!:string;
+
+  lineupAwayId!:number;
+  lineupAwayTeamId!:number;
+  lineupAwayTeamName!:string;
+
+  replacements!:any[];
+
   roundId!:number;
+
 }
-  

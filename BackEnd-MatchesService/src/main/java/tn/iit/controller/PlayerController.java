@@ -10,6 +10,7 @@ import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/players")

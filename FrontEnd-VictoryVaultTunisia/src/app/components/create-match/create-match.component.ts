@@ -66,31 +66,31 @@ initMatchForm(){
 
 
 addMatch() {
-  const match:Match={
-    id: 0,
-    stadium: this.matchForm.value.stadium,
-    referee: this.matchForm.value.referee,
-    date: this.matchForm.value.date,
-    spectatorNumber: this.matchForm.value.spectators,
-    lineupHomes: this.matchForm.value.teamHome,
-    lineupAway: this.matchForm.value.teamAway,
-    roundId: 0,
-    replacements: []
-  }
-  this.refereeService.getRefereeById(this.matchForm.value.referee).subscribe(referee=>{
-    match.referee = referee
-  })
+  // const match:Match={
+  //   id: 0,
+  //   stadium: this.matchForm.value.stadium,
+  //   referee: this.matchForm.value.referee,
+  //   date: this.matchForm.value.date,
+  //   spectatorNumber: this.matchForm.value.spectators,
+  //   lineupHomes: this.matchForm.value.teamHome,
+  //   lineupAway: this.matchForm.value.teamAway,
+  //   roundId: 0,
+  //   replacements: []
+  // }
+  // this.refereeService.getRefereeById(this.matchForm.value.referee).subscribe(referee=>{
+  //   match.referee = referee
+  // })
 
-  this.stadiumService.getStadiumById(this.matchForm.value.stadium).subscribe(stadium=>{
-    match.stadium=stadium;
-  })
+  // this.stadiumService.getStadiumById(this.matchForm.value.stadium).subscribe(stadium=>{
+  //   match.stadium=stadium;
+  // })
 
 
-  this.matchService.addMatch(match).subscribe(()=>{
-    console.log("success");
+  // this.matchService.addMatch(match).subscribe(()=>{
+  //   console.log("success");
     
-  })
-  console.log(match);
+  // })
+  // console.log(match);
 
   // console.log(match);
   
