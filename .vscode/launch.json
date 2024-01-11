@@ -31,6 +31,16 @@
             "projectName": "BackEnd-MatchesService",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BackEndSeasonServiceApplication<BackEnd-SeasonService>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "tn.iit.BackEndSeasonServiceApplication",
+            "projectName": "BackEnd-SeasonService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
