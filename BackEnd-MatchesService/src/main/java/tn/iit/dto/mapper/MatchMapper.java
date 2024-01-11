@@ -28,10 +28,6 @@ public class MatchMapper {
                 refereeId(match.getReferee().getId()).
                 lineupAwayId(lineupAway.getId()).
                 lineupHomeId(lineupHome.getId()).
-                lineupAwayTeamId(lineupAway.getTeam().getId()).
-                lineupHomeTeamId(lineupHome.getTeam().getId()).
-                lineupAwayTeamName(lineupAway.getTeam().getName()).
-                lineupHomeTeamName(lineupHome.getTeam().getName()).
                 teamAwayScorers(match.getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 teamHomeScorers(match.getTeamHomeScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 replacements(match.getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()).
