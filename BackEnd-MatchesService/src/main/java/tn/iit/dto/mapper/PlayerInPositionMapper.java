@@ -9,6 +9,9 @@ public class PlayerInPositionMapper {
                 id(playerInPosition.getId()).
                 position(playerInPosition.getPosition()).
                 playerId(playerInPosition.getPlayer().getId()).
+                playerFirstName(playerInPosition.getPlayer().getFirstName()).
+                playerLastName(playerInPosition.getPlayer().getLastName()).
+                playerNationality(playerInPosition.getPlayer().getNationality()).
                 lineupId(playerInPosition.getId()).
                 build();
     }

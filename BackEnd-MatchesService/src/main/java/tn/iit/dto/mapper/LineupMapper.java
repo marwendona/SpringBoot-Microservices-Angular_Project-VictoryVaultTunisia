@@ -17,6 +17,7 @@ public class LineupMapper {
                 id(lineup.getId()).
                 teamId(lineup.getTeam().getId()).
                 players(lineup.getPlayerInPositions().stream().map(PlayerInPositionMapper::toPlayerInPositionDto).toList()).
+                teamName(lineup.getTeam().getName()).
                 build();
     }
 }
