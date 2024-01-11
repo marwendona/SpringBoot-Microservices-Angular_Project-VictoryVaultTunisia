@@ -10,11 +10,9 @@ import tn.iit.dto.mapper.CoachMapper;
 import tn.iit.entity.Coach;
 import tn.iit.service.CoachService;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/coach")
 public class CoachController {
-
     private final CoachService coachService;
 
     public CoachController(CoachService coachService) {

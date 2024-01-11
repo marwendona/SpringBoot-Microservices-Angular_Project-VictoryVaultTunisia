@@ -18,7 +18,6 @@ import tn.iit.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
-@CrossOrigin(origins ={"http://localhost:4200","http://localhost:9090"})
 
 @RestController
 @RequestMapping("/teams")
@@ -46,7 +45,7 @@ public class TeamController {
             Player existingPlayer = playerService.getPlayerById(player.getId());
             existingPlayer.setTeam(team);
             existingPlayer=playerService.updatePlayer(existingPlayer);
-            playersPresent.add(existingPlayer); 
+            playersPresent.add(existingPlayer);
         }
         createdTeam.setPlayers(playersPresent);
         return new ResponseEntity<>(TeamMapper.toTeamDto(createdTeam), HttpStatus.CREATED);

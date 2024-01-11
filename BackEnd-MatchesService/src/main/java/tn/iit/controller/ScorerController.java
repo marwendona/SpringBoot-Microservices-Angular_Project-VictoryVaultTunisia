@@ -11,7 +11,6 @@ import tn.iit.entity.Scorer;
 import tn.iit.service.MatchService;
 import tn.iit.service.PlayerInPositionService;
 import tn.iit.service.ScorerService;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("scorers")

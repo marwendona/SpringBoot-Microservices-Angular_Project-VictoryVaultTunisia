@@ -16,12 +16,10 @@ import tn.iit.service.PlayerInPositionService;
 import tn.iit.service.TeamService;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/lineups")
 public class LineupController {
-
     private final TeamService teamService;
     private final LineupService lineupService;
     private final PlayerInPositionService playerInPositionService;

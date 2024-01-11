@@ -13,14 +13,12 @@ import tn.iit.dto.mapper.MatchSeasonServiceMapper;
 import tn.iit.dto.mapper.ReplacementMapper;
 import tn.iit.dto.mapper.ScorerMapper;
 import tn.iit.entity.Match;
-import tn.iit.entity.Scorer;
 import tn.iit.service.LineupService;
 import tn.iit.service.MatchService;
 import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/matches")

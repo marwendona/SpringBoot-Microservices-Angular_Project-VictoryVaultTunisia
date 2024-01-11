@@ -11,8 +11,6 @@ import tn.iit.entity.PlayerInPosition;
 import tn.iit.service.LineupService;
 import tn.iit.service.PlayerInPositionService;
 import tn.iit.service.PlayerService;
-import tn.iit.service.TeamService;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/playerinposition")

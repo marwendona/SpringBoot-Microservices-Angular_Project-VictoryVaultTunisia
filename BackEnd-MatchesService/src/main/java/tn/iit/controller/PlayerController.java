@@ -1,22 +1,19 @@
 package tn.iit.controller;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import tn.iit.dto.PlayerDto;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
-
-
     private final PlayerService playerService;
     private final TeamService teamService;
 

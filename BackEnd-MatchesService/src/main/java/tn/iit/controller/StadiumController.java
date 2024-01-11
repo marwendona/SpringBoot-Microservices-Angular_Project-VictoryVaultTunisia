@@ -14,7 +14,6 @@ import tn.iit.service.StadiumService;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Path;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("stadiums")
@@ -66,7 +65,7 @@ public class StadiumController {
                 capacity(capacity).
                 build();
 System.out.println(imageFile);
-        
+
         if (imageFile != null) {
             String photo = StadiumService.saveImage(imageFile);
             stadiumDto.setPhoto(photo);
