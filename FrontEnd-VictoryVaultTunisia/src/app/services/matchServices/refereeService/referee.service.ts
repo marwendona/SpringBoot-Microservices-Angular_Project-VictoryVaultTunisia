@@ -9,8 +9,8 @@ import { Referee } from 'src/app/models/Referee';
 export class RefereeService {
 
   constructor(private _httpClient: HttpClient) {}
-  refereeAPI= `http://localhost:8082/referees`
-  
+  refereeAPI= `/matches-service/referees`
+
   addReferee(referee:Referee): Observable<any> {
     return this._httpClient.post<any>(this.refereeAPI, referee);
   }

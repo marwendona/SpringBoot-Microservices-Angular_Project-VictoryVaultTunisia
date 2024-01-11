@@ -9,8 +9,8 @@ import { Coach } from 'src/app/models/Coach';
 export class CoachService {
 
   constructor(private _httpClient: HttpClient) {}
-  coachAPI= `http://localhost:8082/coach`
-  
+  coachAPI= `/matches-service/coach`
+
   addCoach(coach:Coach): Observable<any> {
     return this._httpClient.post<any>(this.coachAPI, coach);
   }

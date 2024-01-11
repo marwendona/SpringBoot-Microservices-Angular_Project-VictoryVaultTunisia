@@ -11,12 +11,12 @@ import { Team } from 'src/app/models/Team';
 export class TeamService {
 
   constructor(private _httpClient: HttpClient) {}
-  teamAPI= `http://localhost:8082/teams`
-  
+  teamAPI= `/matches-service/teams`
+
   addTeams(team:Team): Observable<any> {
     return this._httpClient.post<any>(this.teamAPI, team);
   }
-  
+
   getTeams():Observable<Page<Team>> {
     return this._httpClient.get<Page<Team>>(this.teamAPI);
   }

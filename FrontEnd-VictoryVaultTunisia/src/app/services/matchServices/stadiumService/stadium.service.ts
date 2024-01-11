@@ -10,9 +10,9 @@ import { Stadium } from 'src/app/models/Stadium';
 export class StadiumService {
 
   constructor(private _httpClient: HttpClient) {}
-  stadiumsPI= `http://localhost:8082/stadiums`
-  
-  addStadiums(stadiums:Stadium,file?:File): Observable<any> { 
+  stadiumsPI= `/matches-service/stadiums`
+
+  addStadiums(stadiums:Stadium,file?:File): Observable<any> {
     let httpheader = new HttpHeaders();
         let options={
             headers: httpheader
@@ -20,11 +20,11 @@ export class StadiumService {
         const uploadData = new FormData();
         uploadData.append('name', stadiums.name);
         uploadData.append('capacity', stadiums.capacity.toString());
-        
+
         if(file){
           uploadData.append('imageFile', file);
         }
-        
+
     return this._httpClient.post<any>(`${this.stadiumsPI}`, uploadData,options);
   }
 
