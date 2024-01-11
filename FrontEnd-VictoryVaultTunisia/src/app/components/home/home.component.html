@@ -1,183 +1,92 @@
-
 <body style="zoom: 75%;">
-     <div class="wrapper">
-      <!--  -->
-        <app-header></app-header>
-      <!--  -->
-     
-       <section class="latestResult">
-         <div class="container">
-           <div class="row">
-             <div class="latestResult-wrap">
-       
-             </div>
-             <div class="result clearfix">
-               <div class="result-details">
-                 <div class="content">
-                   <h4>fc Dragons</h4>
-                   <p>lose</p>
-                   <p>Shannon Skelly(23)</p>
-                 </div>
-                 <div class="figure">
-                   <div class="team-logo">
-                     <div style="background:url(../../../assets/images/team-logo/logo01.png)" class="teamLogoImg"></div>
-                   </div>
-                 </div>
-               </div>
-               <div class="result-count">
-                 <div class="count-number"><span class="lose-team">1</span> <span>-</span> <span class="win-team">3</span>
-                 </div>
-                 <div class="dateTime">
-                   <div class="dateTime-container"><span class="date">may 16,2015</span> <span class="time">15:30pm</span>
-                   </div>
-                   <div class="country-wrap"><span class="field">wbeysley stadium</span> <span
-                       class="country">(london)</span></div>
-                 </div>
-               </div>
-               <div class="result-details">
-                 <div class="content contentresult">
-                   <h4>fc Zulu Ninjas</h4>
-                   <p>win</p>
-                   <p>Leland Lagos(29)</p>
-                   <p>Lelnd Lagos(39)</p>
-                 </div>
-                 <div class="figure figresult">
-                   <div class="team-logo">
-                     <div style="background:url(../../../assets/images/team-logo/logo02.png)" class="teamLogoImg"></div>
-                   </div>
-                 </div>
-               </div>
-               <div class="center"><a href="#" class="btn btn-red score-btn">Score board</a></div>
-             </div>
-           </div>
-         </div>
-       </section>
-       <section class="matchSchedule">
-         <div class="container">
-           <div class="row">
-             <h2 class="heading">match <span>schedule</span></h2>
-             <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil debitis mollitia qui
-               libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus doloremque non, vel ipsam,
-               nesciunt dolores consequatur, est tempora ut! Est?>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-               Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus
-               doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut! Est.</p>
-             
-               <-- round --!> 
-             <div class="matchSchedule_details row">
-               <div class="match_versus-wrap">
-                 <div class="wrap_match-innerdetails">
-                   <ul class="home_tInfo scrollable">
-                     <li *ngFor="let match of matches"><a href="">
-                         <ul class="t_info match_info01 headline01 clearfix">
-                           <li>1</li>
-                           <li >
-                             <div class="headline01 clearfix"><span>{{match.equipe1}}</span><span class="vs">vs</span>
-                               <span>{{match.equipe2}}</span></div>
-                             <div class="paragraph02 clearfix"><span>August 24,2015</span> <span>{{match.date}}</span></div>
-                           </li>
-                         </ul>
-                       </a></li>
-                   </ul>
-                 </div>
-               </div>
-               <div class="match_next">
-                 <div class="wrap_match_next left_triangle">
-                   <div class="left_padding">
-                     <h4 class="headline03">round name</h4>
-                     <p>test</p>
-                   </div>
-                 </div>
-               </div>
-             </div>
+  <div class="wrapper">
+    <!--  -->
+    <app-header></app-header>
+    <!--  -->
 
-             <-- classment --!>
-             <div class="matchSchedule_details row">
-               <div class="match_next">
-                 <div class="wrap_match_next right-triangle">
-                   <div class="right-padding">
-                     <h4 class="headline03">pointed table</h4>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                   </div>
-                 </div>
-               </div>
-               <div class="match_versus-wrap">
-                 <div class="wrap_match-innerdetails">
-                   <ul class="point_table scrollable">
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">1</div>
-                         <div class="headline01 largepoint">FC Silver Bullets</div>
-                         <div class="headline01 smallpoint row row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">2</div>
-                         <div class="headline01 largepoint">FC Spinning Slammers</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">3</div>
-                         <div class="headline01 largepoint">FC Crimson Executioners</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">4</div>
-                         <div class="headline01 largepoint">FC Shaolin Robots</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">5</div>
-                         <div class="headline01 largepoint">FC Silent Xpress</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">6</div>
-                         <div class="headline01 largepoint">FC Dark Scorpions</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">7</div>
-                         <div class="headline01 largepoint">FC Cyborg Snakes</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">8</div>
-                         <div class="headline01 largepoint">FC Skull Killers</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>10</span></div>
-                       </div>
-                     </li>
-                     <li class="clearfix">
-                       <div class="subPoint_table">
-                         <div class="headline01 smallpoint">1</div>
-                         <div class="headline01 largepoint">FC Reptile Kickers</div>
-                         <div class="headline01 smallpoint row"><span>p</span><span>11</span></div>
-                       </div>
-                     </li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </section>
-     <!--  -->
+
+    <section class="matchSchedule">
+      <div class="container">
+        <div class="row">
+          <h2 class="heading">
+            <p (click)="previousSeason()"><a class="btnSpecial" >
+                <i class="fa fa-arrow-up" style="color: black;"></i>
+              </a></p>
+            <span>{{currentSeason.name}}</span>
+            <p (click)="nextSeason()"><a class="btnSpecial" >
+
+                <i class="fa fa-arrow-down" style="color: black;"></i>
+              </a></p>
+          </h2>
+          <p class="headParagraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil debitis mollitia qui
+            libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus doloremque non, vel ipsam,
+            nesciunt dolores consequatur, est tempora ut! Est?>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus
+            doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut! Est.</p>
+
+          <div class="matchSchedule_details row">
+            <div class="match_versus-wrap">
+              <div class="wrap_match-innerdetails">
+                <ul class="home_tInfo scrollable">
+                  <li *ngFor="let match of currentRound.matches"><a href="">
+                      <ul class="t_info match_info01 headline01 clearfix">
+                        <li></li>
+                        <li>
+                          <div class="headline01 clearfix"><span>{{match.nameTeamHome}}</span><span
+                              class="vs">{{match.scoreTeamHome}} - {{match.scoreTeamAway}}</span>
+                            <span>{{match.nameTeamAway}}</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="match_next">
+              <div class="wrap_match_next left_triangle">
+                <div class="left_padding">
+                  <p (click)="previousRound()"><a class="btnSpecial" style="position: absolute; right: 100px;">
+
+                      <i class="fa fa-arrow-up" style="color: white;"></i>
+                    </a></p>
+                  <h4 class="headline03">Round °{{currentRound.roundNumber}}</h4>
+                  <p (click)="nextRound()"><a class="btnSpecial" style="position: absolute; right: 100px;">
+
+                      <i class="fa fa-arrow-down" style="color: white;"></i>
+                    </a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="matchSchedule_details row">
+            <div class="match_next">
+              <div class="wrap_match_next right-triangle">
+                <div class="right-padding">
+                  <h4 class="headline03">Season Rankings</h4>
+                </div>
+              </div>
+            </div>
+            <div class="match_versus-wrap">
+              <div class="wrap_match-innerdetails">
+                <ul class="point_table scrollable">
+                  <li class="clearfix" *ngFor="let standing of currentSeason.standings">
+                    <div class="subPoint_table">
+                      <div class="headline01 smallpoint">{{standing.rank}}</div>
+                      <div class="headline01 largepoint">{{standing.teamName}}</div>
+                      <div class="headline01 smallpoint row row"><span>p</span><span>{{standing.score}}</span></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
     <app-footer></app-footer>
-     <!--  -->
-     </div>
-   
-   </body>
-   
-   
+    <!--  -->
+  </div>
+
+</body>

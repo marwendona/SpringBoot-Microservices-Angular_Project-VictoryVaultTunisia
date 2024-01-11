@@ -1,7 +1,7 @@
 export class MatchSeason {
   id!: number;
-  nameTeamHome!: ;
-  nameTeamAway!: ;
+  nameTeamHome!:string ;
+  nameTeamAway!:string ;
   scoreTeamHome!: number;
   scoreTeamAway!: number;
   roundId!: number;

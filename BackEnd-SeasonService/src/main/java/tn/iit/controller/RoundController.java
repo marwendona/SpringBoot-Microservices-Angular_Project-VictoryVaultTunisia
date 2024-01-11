@@ -1,5 +1,7 @@
 package tn.iit.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -30,7 +32,7 @@ public class RoundController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<RoundDto>> getAllRounds(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<List<RoundDto>> getAllRounds(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "1000") int size) {
         Page<RoundDto> rounds = roundService.
                 getAllRounds(PageRequest.of(page, size)).
                 map(RoundMapper::toRoundDto).
@@ -38,7 +40,7 @@ public class RoundController {
                     roundDto.setMatches(matchController.getMatchesByRoundId(roundDto.getId()).getBody());
                     return roundDto;
                 } );
-        return ResponseEntity.ok(rounds);
+        return ResponseEntity.ok(rounds.getContent());
     }
     @GetMapping("/{id}")
     public ResponseEntity<RoundDto> getRoundById(@PathVariable Long id) {

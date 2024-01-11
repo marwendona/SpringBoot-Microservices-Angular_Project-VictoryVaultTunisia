@@ -4,7 +4,7 @@ import { Standing } from "./Standing";
 export class Season {
     id!:number;
     name:string='';
-    round!:Round;
-    standing!:Standing;
+    rounds!:Round[];
+    standings!:Standing[];
   }
   

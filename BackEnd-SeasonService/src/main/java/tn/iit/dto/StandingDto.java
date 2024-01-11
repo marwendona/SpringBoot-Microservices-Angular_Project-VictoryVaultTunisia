@@ -12,5 +12,6 @@ public class StandingDto {
     private int rank;
     private int score;
     private Long teamId;
+    private String teamName;
     private Long seasonId;
 }
