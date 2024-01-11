@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
 import { Stadium } from 'src/app/models/Stadium';
 import { StadiumService } from 'src/app/services/matchServices/stadiumService/stadium.service';
 import Swal from 'sweetalert2';
+import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-stade',
@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./stade.component.css'],
 })
 export class StadeComponent implements OnInit {
-  dataPlayers: any;
   stadeForm!: FormGroup<any>;
   stadeFormEdit!: FormGroup<any>;
   dataStadium!: any;
@@ -22,6 +21,10 @@ export class StadeComponent implements OnInit {
   isRowHovered = false;
   fileName!: string;
 
+  pageIndex: number=0;
+  pageSize: number=5 ;
+  length!: number;
+  pageSizeOptions = [5, 10, 25];
   constructor(
     private stadiumService: StadiumService,
     private _httpClient: HttpClient
@@ -36,60 +39,56 @@ export class StadeComponent implements OnInit {
     this.stadeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       capacity: new FormControl('', Validators.required),
-      photo: new FormControl('', Validators.required),
+
     });
   }
 
+  handlePageEvent(e: any) {
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    console.log("e",this.pageIndex,this.pageSize,this.length);
+    
+    this.getStadium()
+  }
   addStadium() {
-    const file: File = this.eventImage.target.files[0];
-    if (file) {
-      this.fileName = file.name;
-      const formData = new FormData();
-      formData.append('stadeImage', file);
-      this.stadiumService.uploadImage(formData).subscribe(
-        (response) => {
-          console.log('Image uploaded successfully.', response);
-        }
-      );
+    var file;
+    if(this.eventImage){
+      console.log("dd");
+      
+    file = this.eventImage.target.files[0];
     }
-    if (this.selectedFile) {
-      const stadeImage = new FormData();
-      stadeImage.append('image', this.selectedFile, this.selectedFile.name);
-    }
-
     const stade: Stadium = {
       id: 0,
       name: this.stadeForm.value.name,
       capacity: this.stadeForm.value.capacity,
-      photo: "this.fileName",
+      photo: "",
       matches: [],
     };
-
-    this.stadiumService.addStadiums(stade,file).subscribe(() => {
-      console.log('stade added successfuly!!');
-      console.log(stade)
+    this.stadiumService.addStadiums(stade,file).subscribe((stad) => {
+      window.location.reload();
     });
-
-    console.log("aaa",this.eventImage)
   }
 
   getStadium() {
-    this.stadiumService.getStadiums().subscribe((dataStadium) => {
-      this.dataStadium = new MatTableDataSource<Stadium>(dataStadium);
-      this.dataStadium = this.dataStadium._data.value.content
+    this.stadiumService.getStadiums(this.pageIndex,this.pageSize).subscribe((stadiumPage) => {
+      this.dataStadium= stadiumPage.content;
+      this.length=stadiumPage.totalElements;
     });
   }
 
   onImageSelected(event: any) {
-    this.eventImage=event
+    if(event){
+      
+      this.eventImage=event
+    }
   }
 
   initFormEditStadium() {
     this.stadeFormEdit = new FormGroup({
       id: new FormControl('', Validators.required), 
       nameEdit: new FormControl('', Validators.required),
-      capacityEdit: new FormControl('', Validators.required),
-      photoEdit: new FormControl('', Validators.required),
+      capacityEdit: new FormControl('', Validators.required)
     });
   }
   
@@ -105,18 +104,22 @@ export class StadeComponent implements OnInit {
   
 
   EditStadium() {
+    var file
+    if(this.eventImage){
+
+    file = this.eventImage.target.files[0];
+    }
     const stade: Stadium = {
       id: 0,
       name: this.stadeFormEdit.value.nameEdit,
       capacity: this.stadeFormEdit.value.capacityEdit,
-      photo: this.stadeFormEdit.value.photoEdit,
+      photo: "",
       matches: []
     };
-  console.log(stade)
-    this.stadiumService.editStadium(stade,this.stadeFormEdit.value.id).subscribe(()=>{
-      console.log("player changed successfuly")
+    this.stadiumService.editStadium(stade,this.stadeFormEdit.value.id,file).subscribe(() => {
       window.location.reload();
-    })
+    });
+    
   }
   confirmDelete(playerId:number): void {
     Swal.fire({

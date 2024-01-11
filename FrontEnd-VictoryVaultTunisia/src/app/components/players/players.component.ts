@@ -1,11 +1,9 @@
-import { NumberInput } from '@angular/cdk/coercion';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Players } from 'src/app/models/Players';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
 import Swal from 'sweetalert2';
+import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-players',
@@ -20,33 +18,34 @@ export class PlayersComponent implements OnInit{
   dataPlayers!: any;
   playerFormAdd!: FormGroup<any>;
   playerFormEdit!: FormGroup<any>;
+
   pageIndex: number=0;
   pageSize: number=5 ;
   length!: number;
-
   pageSizeOptions = [5, 10, 25];
 
 constructor(private playerService:PlayerService){}
 
   ngOnInit(): void {
-    this.getPlayers(this.pageSize,this.pageIndex);
+    this.getPlayers();
     this.initFormAddPlayer();
     this.initFormEditPlayer();
   }
 
 
-getPlayers(pageSize:number=5,pageIndex:number=0){
-  this.playerService.getPlayers().subscribe(playerPage=>{
+getPlayers(){
+  this.playerService.getPlayers(this.pageSize,this.pageIndex).subscribe(playerPage=>{
     this.dataPlayers= playerPage.content;
     this.length=playerPage.totalElements;
-    console.log("playerPage",playerPage)
   })
 }
 handlePageEvent(e: any) {
   this.length = e.length;
   this.pageSize = e.pageSize;
   this.pageIndex = e.pageIndex;
-  this.getPlayers(this.pageSize,this.pageIndex)
+  console.log("e",this.pageIndex,this.pageSize,this.length);
+  
+  this.getPlayers()
 }
 
 initFormAddPlayer(){
