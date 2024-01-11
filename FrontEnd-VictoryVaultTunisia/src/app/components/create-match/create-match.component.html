@@ -20,13 +20,13 @@
             <div class="content-container">
                 <form [formGroup]="matchForm" (ngSubmit)="addMatch()">
                     <div class="row">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group mt-3">
                                 <label for="prenomInput">Round Name <span style="color: #d62828;">*</span></label>
-                                <input type="text" class="form-control custom-input" formControlName="name" required>
+                                <input type="text" class="form-control custom-input"  required>
                                 <div style="color: red;"></div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-6">
                             <div class="form-group mt-3">
@@ -45,13 +45,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-15">
                             <div class="form-group mt-3">
                                 <label for="playerSelect">select Date <span style="color: #d62828;">*</span></label>
                                 <input class="form-control custom-input" type="date" formControlName="date">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-15">
                             <div class="form-group mt-3">
                                 <label for="playerSelect">select stadium <span style="color: #d62828;">*</span></label>
                                 <select class="form-control custom-input" formControlName="stadium">
@@ -65,13 +65,13 @@
                             <div class="col-md-6">
                                 <div class="form-group mt-3">
                                 
-                                    <img src="../../../assets/images/matchResult/logo01.png" style="margin-left:300px;" alt="image">
+                                    <img src="../../../assets/images/R.jpg" style="margin-left:600px;width: 500px;border-radius: 10%;" alt="image">
                                 </div>
     
                             </div>
 
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group mt-3">
                                 <label for="playerSelect">Team home <span style="color: #d62828;">*</span></label>
                                 <select class="form-control custom-input" formControlName="teamHome" (change)="onSelectOption($event, 'player1')"  (change)="onSelectPlayer1()" >
@@ -94,7 +94,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
                         
 

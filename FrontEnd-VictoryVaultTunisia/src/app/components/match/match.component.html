@@ -24,7 +24,7 @@
                          name="name" placeholder="Name..   " #input>
               </div>
           </div>
-            <table mat-table [dataSource]="dataTeams" class="custom-table" style="zoom: 100%;">
+            <table mat-table [dataSource]="MatchData" class="custom-table" style="zoom: 100%;">
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Round Name </th>
                 <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.name}} </td>
@@ -48,7 +48,7 @@
 
               <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.date}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>

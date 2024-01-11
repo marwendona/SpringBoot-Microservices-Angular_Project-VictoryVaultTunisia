@@ -1,11 +1,16 @@
 package tn.iit.dto.mapper;
 
+
+import java.util.Optional;
+
 import tn.iit.dto.MatchDto;
+import tn.iit.entity.Lineup;
 import tn.iit.entity.Match;
 
 public class MatchMapper {
-
+     
     public static MatchDto toMatchDto(Match match) {
+        // Optional<Lineup> = Optional.ofNullable()
         return MatchDto.builder().
                 id(match.getId()).
                 date(match.getDate()).

@@ -43,6 +43,8 @@ async getReferee(){
 async getStadium(){
   this.stadiumService.getStadiums().subscribe(stadiumData=>{
     this.stadiumData=stadiumData.content;
+    console.log( this.stadiumData);
+    
   })
 }
 
@@ -54,45 +56,50 @@ async getTeam(){
 
 initMatchForm(){
   this.matchForm = new FormGroup({
-    name: new FormControl('', Validators.required), 
     spectators: new FormControl('', Validators.required),
     referee: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required), 
     stadium: new FormControl('', Validators.required),
-    teamHome: new FormControl('', Validators.required),
-    teamAway: new FormControl('', Validators.required),
   });
 }
 
 
 addMatch() {
-  // const match:Match={
-  //   id: 0,
-  //   stadium: this.matchForm.value.stadium,
-  //   referee: this.matchForm.value.referee,
-  //   date: this.matchForm.value.date,
-  //   spectatorNumber: this.matchForm.value.spectators,
-  //   lineupHomes: this.matchForm.value.teamHome,
-  //   lineupAway: this.matchForm.value.teamAway,
-  //   roundId: 0,
-  //   replacements: []
-  // }
-  // this.refereeService.getRefereeById(this.matchForm.value.referee).subscribe(referee=>{
-  //   match.referee = referee
-  // })
 
-  // this.stadiumService.getStadiumById(this.matchForm.value.stadium).subscribe(stadium=>{
-  //   match.stadium=stadium;
-  // })
+  
+  const match:Match={
+    id: 0,
+    stadiumId: this.matchForm.value.stadium,
+    stadiumName: "",
+    stadiumCapacity: 0,
+    refereeId: this.matchForm.value.referee,
+    refereeFirstName: '',
+    refereeLastName: '',
+    refereeNationality: '',
+    date: this.matchForm.value.date,
+    spectatorNumber: this.matchForm.value.spectators,
+    teamHomeScorers: [],
+    teamAwayScorers: [],
+    lineupHomeId: 0,
+    lineupHomeTeamId: 0,
+    lineupHomeTeamName: '',
+    lineupAwayId: 0,
+    lineupAwayTeamId: 0,
+    lineupAwayTeamName: '',
+    replacements: [],
+    roundId: 0
+  }
+console.log(match);
 
 
-  // this.matchService.addMatch(match).subscribe(()=>{
-  //   console.log("success");
+
+  this.matchService.addMatch(match).subscribe(()=>{
+    console.log("success");
     
-  // })
-  // console.log(match);
+  })
+  console.log(match);
 
-  // console.log(match);
+  console.log(match);
   
 
 }

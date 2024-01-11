@@ -4,4 +4,5 @@ export class Players {
     lastName!: string;
     nationality!: string;
     teamId!: number;
+    teamName:string="";
   }

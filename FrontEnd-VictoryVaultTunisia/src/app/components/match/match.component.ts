@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { CoachService } from 'src/app/services/matchServices/coachService/coach.service';
+import { MatchService } from 'src/app/services/matchServices/matchService/match.service';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
 import Swal from 'sweetalert2';
 
@@ -17,7 +18,7 @@ selectedChoice: any;
 addTeam() {
 throw new Error('Method not implemented.');
 }
-  dataTeams!: CdkTableDataSourceInput<any>;
+MatchData!: CdkTableDataSourceInput<any>;
   _dataTeams!: any[];
 
   isRowHovered = false;
@@ -25,43 +26,21 @@ throw new Error('Method not implemented.');
   nameError: any;
   teamsForm!: FormGroup<any>;
 
-  constructor(private teamService:TeamService, private router: Router,private coachService:CoachService){}
+  constructor(private teamService:TeamService, private router: Router,private coachService:CoachService,private matchService:MatchService){}
 
   ngOnInit(): void {
-    this.getTeams();
+    this.getMatch();
 
-    console.log(this.dataTeams);
+    console.log(this.MatchData);
     
   }
 
   dataTeamsPrinciple:any[]=[];
-  
-getTeams(){
-  this.teamService.getTeams().subscribe(async (teams)=>{
-    this.dataTeams=teams.content
-    // console.log("first",typeof(this.dataTeams));
 
-    // await teams.content.forEach(team=>{
-    //   console.log("mid");
 
-    //  this.coachService.getCoachById(team.coachId).subscribe(result => {
-    //     const newTeam:TeamWithCoachName={
-    //       id: team.id,
-    //       name: team.name,
-    //       players: [],
-    //       coachId: team.coachId,
-    //       coachName: result.firstName +" " +result.lastName 
-    //     }
-    //     this.dataTeamsPrinciple.push(newTeam)
-    //   })
-    //   // console.log(this.dataTeamsPrinciple);
-      
-    // })
-    // console.log("sec");
-    // console.log("prin",typeof(this.dataTeamsPrinciple));
-
-    // this.dataTeams = this.dataTeamsPrinciple
-
+getMatch(){
+  this.matchService.getMatch().subscribe(matchData=>{
+    this.MatchData=matchData.content;
   })
 }
 
