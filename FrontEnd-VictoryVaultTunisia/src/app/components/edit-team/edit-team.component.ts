@@ -8,6 +8,7 @@ import { Team } from 'src/app/models/Team';
 import { CoachService } from 'src/app/services/matchServices/coachService/coach.service';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-team',
@@ -138,6 +139,40 @@ export class EditTeamComponent  implements OnInit{
     this.hiddenPlayers[playerIndex + 1] = false;
   }
 
+  confirmDelete(playerId:number): void {
+    console.log("aaaa",this.paramsTeam);
+    
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: 'You won\'t be able to revert this!',
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#d51d1d',
+    //   cancelButtonColor: '#3085d6',
+    //   confirmButtonText: 'Yes, delete it!'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     // Call your delete function here
+    //     this.deleteFunction(playerId,this.paramsTeam.id);
+    //   }
+    // });
+  }
+  // deleteFunction(playerId:number): void {
+  //   this.playerService.deletePlayerFromTeam(playerId).subscribe(()=>{
+  //     Swal.fire({
+  //       title: 'Deleted!',
+  //       text: 'Your file has been deleted.',
+  //       icon: 'success'
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         window.location.reload();
+  //       }
+  //     });
+    
+  
+  //   })
+   
+  // }
   
 // configuration table
 onRowHover(hovered: boolean) {

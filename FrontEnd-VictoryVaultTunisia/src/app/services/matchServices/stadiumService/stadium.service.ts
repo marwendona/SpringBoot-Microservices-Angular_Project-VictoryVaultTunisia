@@ -35,6 +35,10 @@ export class StadiumService {
     return this._httpClient.get<Page<Stadium>>(this.stadiumsPI,{params});
   }
 
+  getStadiumById(stadiumId:number):Observable<Stadium>{
+    return this._httpClient.get<Stadium>(`${this.stadiumsPI}/${stadiumId}`)
+  }
+
 
   editStadium(stade:Stadium,stadeId:number,file?:File){
     let httpheader = new HttpHeaders();

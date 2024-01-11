@@ -1,20 +1,18 @@
 import { CdkTableDataSourceInput } from '@angular/cdk/table';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
-import { Team } from 'src/app/models/Team';
-import { TeamWithCoachName } from 'src/app/models/team/TeamWithCoachName';
 import { CoachService } from 'src/app/services/matchServices/coachService/coach.service';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
 import Swal from 'sweetalert2';
-@Component({
-  selector: 'app-team',
-  templateUrl: './team.component.html',
-  styleUrls: ['./team.component.css']
-})
-export class TeamComponent implements OnInit {
 
+@Component({
+  selector: 'app-match',
+  templateUrl: './match.component.html',
+  styleUrls: ['./match.component.css']
+})
+export class MatchComponent {
+  
 selectedChoice: any;
 addTeam() {
 throw new Error('Method not implemented.');
@@ -23,7 +21,7 @@ throw new Error('Method not implemented.');
   _dataTeams!: any[];
 
   isRowHovered = false;
-  displayedColumns: string[] = ['name', 'coach','action'];
+  displayedColumns: string[] = ['name', 'Stadium','Referee','date','Spectator','Home','Away','action'];
   nameError: any;
   teamsForm!: FormGroup<any>;
 
@@ -67,7 +65,7 @@ getTeams(){
   })
 }
 
-  onTeamClick(team: any) {
+onMatchClick(team: any) {
     // const data = { cin: team.cin };
     const navigationExtras: NavigationExtras = {
       queryParams: team,

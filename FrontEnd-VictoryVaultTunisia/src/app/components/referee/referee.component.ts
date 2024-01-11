@@ -44,7 +44,7 @@ export class RefereeComponent implements OnInit{
 
   getReferee(){
     this.refereeService.getReferee().subscribe(referee => {
-      this.dataReferee = new MatTableDataSource<Referee>(referee);
+      this.dataReferee = referee.content;
       this.dataReferee = this.dataReferee._data.value.content
     })
   }

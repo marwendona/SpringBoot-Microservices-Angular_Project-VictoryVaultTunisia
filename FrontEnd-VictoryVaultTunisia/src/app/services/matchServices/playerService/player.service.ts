@@ -22,6 +22,7 @@ export class PlayerService {
 
     return this._httpClient.get<Page<Players>>(this.playersAPI,{params});
   }
+  
 
   editPlayer(player:Players,playerId:number){
     return this._httpClient.put<any>(`${this.playersAPI}/${playerId}`, player);
@@ -33,5 +34,9 @@ export class PlayerService {
 
   modifyPlayerTeam(playerId:number){
     // return this._httpClient.put<any>(`${this.playersAPI}/team`)
+  }
+
+  deletePlayerFromTeam(playerId:number,TeamId:number){
+    return this._httpClient.delete(`${this.playersAPI}/${playerId}/${TeamId}`)
   }
 }
