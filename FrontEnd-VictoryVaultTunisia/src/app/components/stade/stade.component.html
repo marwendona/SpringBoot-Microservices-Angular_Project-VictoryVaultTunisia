@@ -9,7 +9,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h2>Add Player</h2>
+            <h2>Add Stadium</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -157,17 +157,11 @@
 
 
 
-      <h2 class="heading">liste <span>des stades</span></h2>
+      <h2 class="heading">stadiums <span>List</span></h2>
      <br> <br>
       
       <div class="content-container">
-        <div class="filters">
-          <h4>Search</h4>
-            <div class="form-group">
-                <input id="name" type="text" class="form-control custom-input" 
-                       name="name" placeholder="Name..   " #input>
-            </div>
-        </div>
+      
         <table mat-table [dataSource]="dataStadium" class="custom-table" style="zoom: 100%;">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>

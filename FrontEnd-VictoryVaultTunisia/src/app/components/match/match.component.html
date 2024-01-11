@@ -13,71 +13,67 @@
           <i class="fa fa-plus"></i>
         </a>
   
-        <h2 class="heading">liste <span>des Match</span></h2>
+        <h2 class="heading">match <span>list</span></h2>
        <br> <br>
         
-        <div class="content-container">
-          <div class="filters">
-            <h4>Search</h4>
-              <div class="form-group">
-                  <input id="name" type="text" class="form-control custom-input" 
-                         name="name" placeholder="Name..   " #input>
-              </div>
-          </div>
+        <div class="content-container"> 
+         
             <table mat-table [dataSource]="MatchData" class="custom-table" style="zoom: 100%;">
+
+          
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Round Name </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.name}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Round </th>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.id}} </td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
   
               <ng-container matColumnDef="Stadium">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Stadium </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.stadiumName}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
 
               <ng-container matColumnDef="Referee">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Referee </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.refereeFirstName+" "+match.refereeLastName}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
 
               <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.date}}</td>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.date}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
 
               <ng-container matColumnDef="Spectator">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Spectator Number </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.spectatorNumber}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
 
               <ng-container matColumnDef="Home">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Home </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> match Home </th>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.coachId}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
 
               <ng-container matColumnDef="Away">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Away </th>
-                <td mat-cell *matCellDef="let team" (click)="onMatchClick(team)"> {{team.coachId}}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> match Away </th>
+                <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.coachId}}</td>
                 <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                   *matFooterCellDef></td>
               </ng-container>
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                <td mat-cell *matCellDef="let team" > 
+                <td mat-cell *matCellDef="let match" > 
                   <span>
-                    <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(team.id)">
+                    <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(match.id)">
                       <mat-icon class="btn-icon">delete</mat-icon>
                     </button>
                   </span>

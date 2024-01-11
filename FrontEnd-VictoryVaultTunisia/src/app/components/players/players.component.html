@@ -30,99 +30,78 @@
                   <div style="color: red;">
                   </div>
                 </div>
-                
                 <div>
-                  <div class="form-group mt-3 mt-md-0">   
+                  <div class="form-group mt-3 mt-md-0">
                     <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
-           
                     <select class="form-control custom-input" formControlName="nationality">
                       <option value="Tunisienne">Tunisienne</option>
                     </select>
-                  </div>
-
-                </div>
-                <div>
-                  <div class="form-group mt-3 mt-md-0">
-                    <label for="nomInput">Equipe</label>
-                    <input type="text" class="form-control" [disabled]="true" required>  <!-- formControlName="equipe"  -->
-                    <div style="color: red;">
-                    </div>
                   </div>
                 </div>
               </div>
               <div class="modal-footer d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
                 <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
-            </div>
-            
+              </div>
+
             </form>
 
           </div>
 
-       
-        
+
+
         </div>
       </div>
     </div>
     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
-        <!-- -----------------------------------------------------Modal Edit---------------------------------------------------------------- -->
-        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2>Add Player</h2>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form [formGroup]="playerFormEdit" (ngSubmit)="EditPlayer()">
+    <!-- -----------------------------------------------------Modal Edit---------------------------------------------------------------- -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Edit Player</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="playerFormEdit" (ngSubmit)="EditPlayer()">
+              <div>
                 <div>
-                  <div>
-                    <label for="prenomInput">First Name <span style="color: #d62828;">*</span></label>
-                    <input type="text" class="form-control" formControlName="firstNameEdit"  required>
-                    <div style="color: red;">
-                    </div>
-                  </div>
-                  <div>
-                    <label for="nomInput">Last Name <span style="color: #d62828;">*</span></label>
-                    <input type="text" class="form-control" formControlName="lastNameEdit" required>
-                    <div style="color: red;">
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <div class="form-group mt-3 mt-md-0">   
-                      <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
-                      <select class="form-control custom-input" formControlName="nationalityEdit"> <!-- Update the form control name -->
-                        <option value="Tunisienne">Tunisienne</option>
-                      </select>
-                    </div>
-                    
-  
-                  </div>
-                  <div>
-                    <div class="form-group mt-3 mt-md-0">
-                      <label for="nomInput">Equipe</label>
-                      <input type="text" class="form-control" [disabled]="true" required>  <!-- formControlName="equipe"  -->
-                      <div style="color: red;">
-                      </div>
-                    </div>
+                  <label for="prenomInput">First Name <span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="firstNameEdit" required>
+                  <div style="color: red;">
                   </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-between">
-                  <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
-                  <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+                <div>
+                  <label for="nomInput">Last Name <span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="lastNameEdit" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+                <div>
+                  <div class="form-group mt-3 mt-md-0">
+                    <label for="nomInput">Nationality <span style="color: #d62828;">*</span></label>
+                    <select class="form-control custom-input" formControlName="nationalityEdit">
+                      <!-- Update the form control name -->
+                      <option value="Tunisienne">Tunisienne</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              </form>
-            </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <!-- -------------------------------------------------------------------------------------------------------------------------- -->
-  
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
     <section>
 
       <br><br><br><br><br><br><br>
@@ -132,16 +111,11 @@
       </button>
 
 
-      <h2 class="heading">liste <span>des équipes</span></h2>
+      <h2 class="heading">Players <span>list</span></h2>
       <br> <br>
 
       <div class="content-container">
-        <div class="filters">
-          <h4>Search</h4>
-          <div class="form-group">
-            <input id="name" type="text" class="form-control custom-input" name="name" placeholder="Name..   " #input>
-          </div>
-        </div>
+
         <table mat-table [dataSource]="dataPlayers" class="custom-table" style="zoom: 100%;">
           <ng-container matColumnDef="rang">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> N°</th>
@@ -169,16 +143,18 @@
           </ng-container>
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-            <td mat-cell *matCellDef="let player"> 
+            <td mat-cell *matCellDef="let player">
               <span>
-                <button data-toggle="modal" data-target="#EditModal" (click)="LoadInfoPlayer(player)" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                <button data-toggle="modal" data-target="#EditModal" (click)="LoadInfoPlayer(player)"
+                  class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
                   <mat-icon class="btn-icon">edit</mat-icon>
                 </button>
-                &nbsp;  
-                <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(player.id)">
+                &nbsp;
+                <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;"
+                  (click)="confirmDelete(player.id)">
                   <mat-icon class="btn-icon">delete</mat-icon>
                 </button>
-                
+
               </span>
             </td>
 
@@ -193,16 +169,10 @@
             (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
           </tr>
         </table>
-        <mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               [length]="length"
-               [pageSize]="pageSize"
-               [showFirstLastButtons]="true"
-               [pageSizeOptions]="pageSizeOptions"
-               [pageIndex]="pageIndex"
-               aria-label="Select page">
-</mat-paginator>
+        <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+          [pageSize]="pageSize" [showFirstLastButtons]="true" [pageSizeOptions]="pageSizeOptions"
+          [pageIndex]="pageIndex" aria-label="Select page">
+        </mat-paginator>
       </div>
 
     </section>

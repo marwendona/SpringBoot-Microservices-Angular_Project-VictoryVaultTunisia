@@ -16,7 +16,7 @@ export class MatchComponent {
   
 selectedChoice: any;
 addTeam() {
-throw new Error('Method not implemented.');
+throw new Error('Method not implemented.' );
 }
 MatchData!: CdkTableDataSourceInput<any>;
   _dataTeams!: any[];
@@ -49,7 +49,7 @@ onMatchClick(team: any) {
     const navigationExtras: NavigationExtras = {
       queryParams: team,
     };
-    this.router.navigate(['/editTeam'], navigationExtras).then(() => {
+    this.router.navigate(['/matchDetail'], navigationExtras).then(() => {
       window.location.reload();
     });
   }

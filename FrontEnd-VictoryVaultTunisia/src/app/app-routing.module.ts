@@ -14,8 +14,14 @@ import { MatchComponent } from './components/match/match.component';
 import { RemplacementComponent } from './components/remplacement/remplacement.component';
 import { LineupComponent } from './components/lineup/lineup.component';
 import { CreateMatchComponent } from './components/create-match/create-match.component';
+import { MatchDetailComponent } from './components/match-detail/match-detail.component';
 
 const routes: Routes = [
+  {
+    path: 'matchDetail',
+    pathMatch:'full',
+    component: MatchDetailComponent
+  },
   {
     path: 'creatematch',
     pathMatch:'full',

@@ -27,6 +27,7 @@ import { MatchComponent } from './components/match/match.component';
 import { RemplacementComponent } from './components/remplacement/remplacement.component';
 import { LineupComponent } from './components/lineup/lineup.component';
 import { CreateMatchComponent } from './components/create-match/create-match.component';
+import { MatchDetailComponent } from './components/match-detail/match-detail.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CreateMatchComponent } from './components/create-match/create-match.com
     MatchComponent,
     RemplacementComponent,
     LineupComponent,
-    CreateMatchComponent
+    CreateMatchComponent,
+    MatchDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -78,28 +78,33 @@ export class HomeComponent implements OnInit {
     });
   }
   nextSeason() {
-    let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
+    if (this.currentSeason)
+   { let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
     if (indexcurrentSeson != this.Seasons.length - 1) {
       this.currentSeason = this.Seasons[indexcurrentSeson + 1];
     }
   }
+  }
   previousSeason() {
-    let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
+    if (this.currentSeason)
+   { let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
     if (indexcurrentSeson != 0) {
       this.currentSeason = this.Seasons[indexcurrentSeson - 1];
-    }
+    }}
   }
   previousRound() {
-    let indexcurrentRound: number = this.rounds.indexOf(this.currentRound);
+    if (this.currentRound)
+    {let indexcurrentRound: number = this.rounds.indexOf(this.currentRound);
     if (indexcurrentRound != 0) {
       this.currentRound = this.rounds[indexcurrentRound - 1];
-    }
+    }}
   }
   nextRound() {
-    let indexcurrentRound: number = this.rounds.indexOf(this.currentRound);
+    if (this.currentRound)
+   { let indexcurrentRound: number = this.rounds.indexOf(this.currentRound);
     if (indexcurrentRound != this.rounds.length - 1) {
       this.currentRound = this.rounds[indexcurrentRound + 1];
-    }
+    }}
   }
 
 
