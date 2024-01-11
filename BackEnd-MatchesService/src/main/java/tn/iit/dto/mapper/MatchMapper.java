@@ -10,18 +10,28 @@ import tn.iit.entity.Match;
 public class MatchMapper {
      
     public static MatchDto toMatchDto(Match match) {
-        // Optional<Lineup> = Optional.ofNullable()
+        Lineup lineupAway=new Lineup();
+        Lineup lineupHome=new Lineup();
+        Optional<Lineup> optionalLineupAway= Optional.ofNullable(lineupAway);
+        Optional<Lineup> optionalLineupHome = Optional.ofNullable(lineupHome);
+
+        if (optionalLineupAway.isPresent()) {
+            lineupAway = optionalLineupAway.get();
+        }
+        if (optionalLineupHome.isPresent()) {
+            lineupHome = optionalLineupHome.get();
+        }
         return MatchDto.builder().
                 id(match.getId()).
                 date(match.getDate()).
                 stadiumId(match.getStadium().getId()).
                 refereeId(match.getReferee().getId()).
-                lineupAwayId(match.getLineupAway().getId()).
-                lineupHomeId(match.getLineupHomes().getId()).
-                lineupAwayTeamId(match.getLineupAway().getTeam().getId()).
-                lineupHomeTeamId(match.getLineupHomes().getTeam().getId()).
-                lineupAwayTeamName(match.getLineupAway().getTeam().getName()).
-                lineupHomeTeamName(match.getLineupHomes().getTeam().getName()).
+                lineupAwayId(lineupAway.getId()).
+                lineupHomeId(lineupHome.getId()).
+                lineupAwayTeamId(lineupAway.getTeam().getId()).
+                lineupHomeTeamId(lineupHome.getTeam().getId()).
+                lineupAwayTeamName(lineupAway.getTeam().getName()).
+                lineupHomeTeamName(lineupHome.getTeam().getName()).
                 teamAwayScorers(match.getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 teamHomeScorers(match.getTeamHomeScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 replacements(match.getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()).
