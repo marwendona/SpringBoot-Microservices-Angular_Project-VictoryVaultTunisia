@@ -46,7 +46,8 @@ public class StadiumService {
     }
 
     public static String saveImage(MultipartFile imageFile) throws IOException {
-        Path root = Paths.get("").toAbsolutePath().getParent();
+        Path root = Paths.get("").toAbsolutePath();
+        System.out.println(root);
         String folder ="FrontEnd-VictoryVaultTunisia/src/assets/images/uploadImages/stadium/";
         byte[] bytes= imageFile.getBytes();
         Path path = Paths.get(root.resolve(folder)+ "\\" +imageFile.getOriginalFilename()) ;

@@ -74,7 +74,7 @@ public class StadiumController {
         Stadium newStadium = StadiumMapper.toStadium(stadiumDto);
         newStadium.setId(id);
         stadiumService.updateStadium(newStadium);
-        return ResponseEntity.ok(stadiumDto);
+        return ResponseEntity.ok(StadiumMapper.toStadiumDto(newStadium));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStadium(@PathVariable Long id) {

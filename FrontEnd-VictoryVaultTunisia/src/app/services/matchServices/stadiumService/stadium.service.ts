@@ -1,6 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Page } from 'src/app/models/Page';
 import { Stadium } from 'src/app/models/Stadium';
 
 @Injectable({
@@ -11,26 +12,42 @@ export class StadiumService {
   constructor(private _httpClient: HttpClient) {}
   stadiumsPI= `http://localhost:8082/stadiums`
   
-  addStadiums(stadiums:Stadium,file:File): Observable<any> { 
+  addStadiums(stadiums:Stadium,file?:File): Observable<any> { 
+    let httpheader = new HttpHeaders();
+        let options={
+            headers: httpheader
+        };
+        const uploadData = new FormData();
+        uploadData.append('name', stadiums.name);
+        uploadData.append('capacity', stadiums.capacity.toString());
+        if(file){
+          uploadData.append('imageFile', file);
+        }
+    return this._httpClient.post<any>(`${this.stadiumsPI}`, uploadData,options);
+  }
+
+  getStadiums(page:number=0,size:number=10):Observable<Page<Stadium>> {
+
+    
     let params = new HttpParams();
-    // params.set('name', stadiums.name);
-    // params.set('capacity', stadiums.capacity);
-    // params.set('imageFile', file);
-
-
-    return this._httpClient.post<any>(`${this.stadiumsPI}`, {params});
+    params = params.set('size', size);
+    params = params.set('page', page);
+    return this._httpClient.get<Page<Stadium>>(this.stadiumsPI,{params});
   }
 
-  getStadiums():Observable<Stadium[]> {
-    return this._httpClient.get<Stadium[]>(this.stadiumsPI);
-  }
 
-  uploadImage(formData:FormData): Observable<any> {
-    return this._httpClient.post<any>(`${this.stadiumsPI}/uploadStadiumImage`, formData);
-  }
-
-  editStadium(stade:Stadium,stadeId:number){
-    return this._httpClient.put<any>(`${this.stadiumsPI}/${stadeId}`, stade);
+  editStadium(stade:Stadium,stadeId:number,file?:File){
+    let httpheader = new HttpHeaders();
+        let options={
+            headers: httpheader
+        };
+        const uploadData = new FormData();
+        uploadData.append('name', stade.name);
+        uploadData.append('capacity', stade.capacity.toString());
+        if(file){
+          uploadData.append('imageFile', file);
+        }
+    return this._httpClient.put<any>(`${this.stadiumsPI}/${stadeId}`, uploadData,options);
   }
 
   deleteStadium(stadeId:number){

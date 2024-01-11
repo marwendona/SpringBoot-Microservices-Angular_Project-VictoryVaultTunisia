@@ -18,10 +18,10 @@ export class PlayersComponent implements OnInit{
   dataPlayers!: any;
   playerFormAdd!: FormGroup<any>;
   playerFormEdit!: FormGroup<any>;
+
   pageIndex: number=0;
   pageSize: number=5 ;
   length!: number;
-
   pageSizeOptions = [5, 10, 25];
 
 constructor(private playerService:PlayerService){}
@@ -37,7 +37,6 @@ getPlayers(){
   this.playerService.getPlayers(this.pageSize,this.pageIndex).subscribe(playerPage=>{
     this.dataPlayers= playerPage.content;
     this.length=playerPage.totalElements;
-    console.log("playerPage",playerPage)
   })
 }
 handlePageEvent(e: any) {
