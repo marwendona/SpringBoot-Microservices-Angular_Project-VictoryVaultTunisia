@@ -35,6 +35,8 @@ getTeams(){
   this.teamService.getTeams().subscribe((teams)=>{
 
     this.dataTeams=teams.content
+    console.log(this.dataTeams);
+    
   })
 }
 

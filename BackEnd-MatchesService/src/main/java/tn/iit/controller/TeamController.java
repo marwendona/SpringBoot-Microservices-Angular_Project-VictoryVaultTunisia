@@ -19,10 +19,8 @@ import tn.iit.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@CrossOrigin(origins ={"http://localhost:4200","http://localhost:9090"})
+@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:9090" })
 
 @RestController
 @RequestMapping("/teams")
@@ -32,8 +30,8 @@ public class TeamController {
     private final PlayerService playerService;
 
     public TeamController(CoachService coachService,
-                          TeamService teamService,
-                          PlayerService playerService) {
+            TeamService teamService,
+            PlayerService playerService) {
         this.coachService = coachService;
         this.teamService = teamService;
         this.playerService = playerService;
@@ -49,15 +47,16 @@ public class TeamController {
         for (Player player : players) {
             Player existingPlayer = playerService.getPlayerById(player.getId());
             existingPlayer.setTeam(team);
-            existingPlayer=playerService.updatePlayer(existingPlayer);
-            playersPresent.add(existingPlayer); 
+            existingPlayer = playerService.updatePlayer(existingPlayer);
+            playersPresent.add(existingPlayer);
         }
         createdTeam.setPlayers(playersPresent);
         return new ResponseEntity<>(TeamMapper.toTeamDto(createdTeam), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<Page<TeamDto>> getAllTeams(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<Page<TeamDto>> getAllTeams(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
         Page<TeamDto> teams = teamService.getAllTeams(PageRequest.of(page, size)).map(TeamMapper::toTeamDto);
         return new ResponseEntity<>(teams, HttpStatus.OK);
     }
@@ -77,6 +76,7 @@ public class TeamController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TeamDto> updateTeam(@PathVariable Long id, @RequestBody TeamDto team) {
+        System.out.println(team);
         Team existingTeam = teamService.getTeamById(id);
         if (existingTeam != null) {
             Team newTeam = TeamMapper.toTeam(team);
@@ -85,11 +85,20 @@ public class TeamController {
             newTeam.setCoach(coachService.getCoachById(team.getCoachId()));
             Team updateTeam = teamService.updateTeam(newTeam);
 
+            List<Player> players = team.getPlayers().stream().map(PlayerMapper::toPlayer).toList();
+            List<Player> playersPresent = new ArrayList<>();
+            for (Player player : players) {
+                Player existingPlayer = playerService.getPlayerById(player.getId());
+                existingPlayer.setTeam(existingTeam);
+                existingPlayer = playerService.updatePlayer(existingPlayer);
+                playersPresent.add(existingPlayer);
+            }
+            updateTeam.setPlayers(playersPresent);
             TeamDto teamDto = TeamMapper.toTeamDto(updateTeam);
 
             return ResponseEntity.ok(teamDto);
         } else {
-            return  ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
     }
 
@@ -103,28 +112,29 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/{id}/players")
     public ResponseEntity<List<PlayerDto>> getPlayersByTeam(@PathVariable Long id) {
         Team team = teamService.getTeamById(id);
         if (team != null) {
-            return new ResponseEntity<>(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList(), HttpStatus.OK);
+            return new ResponseEntity<>(team.getPlayers().stream().map(PlayerMapper::toPlayerDto).toList(),
+                    HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/teams/season-service/{id}")
     public ResponseEntity<TeamSeasonServiceDto> getMethodName(@RequestParam Long id) {
         Team team = teamService.getTeamById(id);
         if (team != null) {
-            TeamSeasonServiceDto teamSeasonServiceDto =  TeamSeasonServiceDto.builder()
-            .name(team.getName())
-            .build();
+            TeamSeasonServiceDto teamSeasonServiceDto = TeamSeasonServiceDto.builder()
+                    .name(team.getName())
+                    .build();
             return new ResponseEntity<>(teamSeasonServiceDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
-
 
 }

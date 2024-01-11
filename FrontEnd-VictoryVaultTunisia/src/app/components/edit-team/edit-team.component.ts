@@ -112,9 +112,13 @@ export class EditTeamComponent  implements OnInit{
       }
       console.log(this.paramsTeam.id);
       
-    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{
+    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(data=>{
       // alert('Modification réussie')
       // window.location.reload();
+      console.log("data",data);
+      console.log("team",team);
+      
+      
     })
 
 
