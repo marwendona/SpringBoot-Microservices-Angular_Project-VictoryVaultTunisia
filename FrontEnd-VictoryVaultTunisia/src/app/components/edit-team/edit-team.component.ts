@@ -8,6 +8,7 @@ import { Team } from 'src/app/models/Team';
 import { CoachService } from 'src/app/services/matchServices/coachService/coach.service';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-team',
@@ -89,29 +90,42 @@ export class EditTeamComponent  implements OnInit{
 
    })
  }
+
+ playersList:Players[]=[];
   EditTeam() {
     console.log("ahoa",Object.values(this.playerSelections))
 
-    const team:Team ={
-      id: 0,
-      name: this.teamFormEdit.value.NameEdit,
-      players: [],
-      coachId: this.teamFormEdit.value.CoachIdEdit
-    }
 
-    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{})
+    // this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(()=>{})
     //fix me
-    Object.values(this.playerSelections).forEach(player =>{
-      console.log(player)
-      const _player:Players = {
+    Object.values(this.playerSelections).forEach(playerId =>{
+      console.log("players",Number(playerId))
+      this.playerService.getPlayerById(Number(playerId)).subscribe(player=>{
+        this.playersList.push(player);
+      })})
+
+      const team:Team ={
         id: 0,
-        firstName: '',
-        lastName: '',
-        nationality: '',
-        teamId: this.paramsTeam.id
+        name: this.teamFormEdit.value.NameEdit,
+        players: this.playersList,
+        coachId: this.teamFormEdit.value.CoachIdEdit
       }
-      this.playerService.editPlayer
+      console.log(this.paramsTeam.id);
+      console.log("team9baall",team);
+      console.log("this.paramsTeam.id",this.paramsTeam.id);
+      
+
+    this.teamService.updateTeam(team,this.paramsTeam.id).subscribe(data=>{
+      // alert('Modification réussie')
+      // window.location.reload();
+      // console.log("data",data);
+      // console.log("team",team);
+      
+      
     })
+
+
+      
   }
   onSelectOption(event: any, key: string) {
     const selectedPlayerId = parseInt(event.target.value, 10);
@@ -138,6 +152,38 @@ export class EditTeamComponent  implements OnInit{
     this.hiddenPlayers[playerIndex + 1] = false;
   }
 
+  confirmDelete(playerId:number): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d51d1d',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call your delete function here
+        this.deleteFunction(playerId);
+      }
+    });
+  }
+  deleteFunction(playerId:number): void {
+    this.playerService.deletePlayerFromTeam(playerId,500).subscribe(()=>{
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        icon: 'success'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
+    
+  
+    })
+   
+  }
   
 // configuration table
 onRowHover(hovered: boolean) {

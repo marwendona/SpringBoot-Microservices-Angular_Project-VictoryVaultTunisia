@@ -64,6 +64,7 @@ addPlayer() {
     lastName: this.playerFormAdd.value.lastName,
     nationality: this.playerFormAdd.value.nationality,
     teamId: this.playerFormAdd.value.teamId,
+    teamName: ''
   };
   console.log(player)
     if(player.firstName != "" && player.lastName != "" && player.nationality != "" ){
@@ -106,6 +107,7 @@ EditPlayer() {
     lastName: this.playerFormEdit.value.lastNameEdit,
     nationality: this.playerFormEdit.value.nationalityEdit,
     teamId: 0,
+    teamName: ''
   };
 
   this.playerService.editPlayer(player,this.playerFormEdit.value.id).subscribe(()=>{

@@ -19,10 +19,12 @@ export class PlayerService {
     let params = new HttpParams();
     params = params.set('size', size);
     params = params.set('page', page);
-
     return this._httpClient.get<Page<Players>>(this.playersAPI,{params});
   }
-
+  
+  getPlayerById(playerId:number):Observable<Players>{
+    return this._httpClient.get<Players>(`${this.playersAPI}/${playerId}`);
+  }
   editPlayer(player:Players,playerId:number){
     return this._httpClient.put<any>(`${this.playersAPI}/${playerId}`, player);
   }
@@ -33,5 +35,9 @@ export class PlayerService {
 
   modifyPlayerTeam(playerId:number){
     // return this._httpClient.put<any>(`${this.playersAPI}/team`)
+  }
+
+  deletePlayerFromTeam(playerId:number,TeamId:number){
+    return this._httpClient.delete(`${this.playersAPI}/${playerId}/${TeamId}`)
   }
 }

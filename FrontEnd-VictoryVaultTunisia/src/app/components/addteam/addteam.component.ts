@@ -103,7 +103,8 @@ valuesList.forEach(pl => {
     firstName: '',
     lastName: '',
     nationality: '',
-    teamId: 0
+    teamId: 0,
+    teamName: ''
   }
   this.playersList.push(__player)
 })

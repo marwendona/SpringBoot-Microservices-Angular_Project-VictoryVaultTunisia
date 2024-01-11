@@ -23,6 +23,10 @@ import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import { RefereeComponent } from './components/referee/referee.component';
 import { PlayersComponent } from './components/players/players.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatchComponent } from './components/match/match.component';
+import { RemplacementComponent } from './components/remplacement/remplacement.component';
+import { LineupComponent } from './components/lineup/lineup.component';
+import { CreateMatchComponent } from './components/create-match/create-match.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TeamdetailComponent,
     StadeComponent,
     EditTeamComponent,
-    RefereeComponent
+    RefereeComponent,
+    MatchComponent,
+    RemplacementComponent,
+    LineupComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,

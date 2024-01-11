@@ -1,3 +1,4 @@
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
@@ -34,6 +35,8 @@ getTeams(){
   this.teamService.getTeams().subscribe((teams)=>{
 
     this.dataTeams=teams.content
+    console.log(this.dataTeams);
+    
   })
 }
 

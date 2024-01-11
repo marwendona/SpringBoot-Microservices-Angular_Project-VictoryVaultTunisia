@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Page } from 'src/app/models/Page';
 import { Referee } from 'src/app/models/Referee';
 
 @Injectable({
@@ -15,8 +16,12 @@ export class RefereeService {
     return this._httpClient.post<any>(this.refereeAPI, referee);
   }
 
-  getReferee():Observable<Referee[]> {
-    return this._httpClient.get<Referee[]>(this.refereeAPI);
+  getReferee():Observable<Page<Referee>> {
+    return this._httpClient.get<Page<Referee>>(this.refereeAPI);
+  }
+
+  getRefereeById(refereeId:number):Observable<Referee>{
+    return this._httpClient.get<Referee>(`${this.refereeAPI}/${refereeId}`,)
   }
 
   editReferee(referee:Referee,refereeId:number){

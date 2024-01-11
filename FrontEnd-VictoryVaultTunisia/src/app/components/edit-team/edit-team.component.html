@@ -88,30 +88,30 @@
           <table mat-table [dataSource]="dataPlayers" class="custom-table" style="zoom: 100%;">
             <ng-container matColumnDef="firstName">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </th>
-              <td mat-cell *matCellDef="let coach"> {{coach.firstName}} </td>
+              <td mat-cell *matCellDef="let player"> {{player.firstName}} </td>
               <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                 *matFooterCellDef></td>
             </ng-container>
   
             <ng-container matColumnDef="lastName">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName </th>
-              <td mat-cell *matCellDef="let coach"> {{coach.lastName}}</td>
+              <td mat-cell *matCellDef="let player"> {{player.lastName}}</td>
               <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                 *matFooterCellDef></td>
             </ng-container>
   
             <ng-container matColumnDef="nationality">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Nationality </th>
-              <td mat-cell *matCellDef="let coach"> {{coach.nationality}}</td>
+              <td mat-cell *matCellDef="let player"> {{player.nationality}}</td>
               <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
                 *matFooterCellDef></td>
             </ng-container>
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-              <td mat-cell *matCellDef="let coach"> 
+              <td mat-cell *matCellDef="let player"> 
                 <span>
             
-                  <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" >
+                  <button (click)="confirmDelete(player.id)" type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" >
                     <mat-icon class="btn-icon">remove</mat-icon>
                   </button> 
                 </span>
