@@ -18,7 +18,7 @@ export class StadiumService {
     // params.set('imageFile', file);
 
 
-    return this._httpClient.post<any>(`${this.stadiumsPI}`,{params});
+    return this._httpClient.post<any>(`${this.stadiumsPI}`, {params});
   }
 
   getStadiums():Observable<Stadium[]> {

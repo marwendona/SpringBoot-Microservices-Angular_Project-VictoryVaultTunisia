@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -50,10 +50,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
     
   ],
-  providers: [],
+  providers: [provideAnimations()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

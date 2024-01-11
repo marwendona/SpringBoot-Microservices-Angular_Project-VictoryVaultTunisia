@@ -36,7 +36,7 @@ export class StadeComponent implements OnInit {
     this.stadeForm = new FormGroup({
       name: new FormControl('', Validators.required),
       capacity: new FormControl('', Validators.required),
-      photo: new FormControl('', Validators.required),
+
     });
   }
 
@@ -64,7 +64,6 @@ export class StadeComponent implements OnInit {
       photo: "this.fileName",
       matches: [],
     };
-
     this.stadiumService.addStadiums(stade,file).subscribe(() => {
       console.log('stade added successfuly!!');
       console.log(stade)
