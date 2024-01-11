@@ -10,7 +10,7 @@ import { Stadium } from 'src/app/models/Stadium';
 export class StadiumService {
 
   constructor(private _httpClient: HttpClient) {}
-  stadiumsPI= `http://localhost:9090/matches-service/stadiums`
+  stadiumsPI= `http://localhost:8082/stadiums`
   
   addStadiums(stadiums:Stadium,file?:File): Observable<any> { 
     let httpheader = new HttpHeaders();

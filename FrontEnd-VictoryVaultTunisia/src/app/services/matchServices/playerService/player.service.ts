@@ -9,7 +9,7 @@ import { Players } from 'src/app/models/Players';
 })
 export class PlayerService {
   constructor(private _httpClient: HttpClient) {}
-  playersAPI= `http://localhost:9090/matches-service/players`
+  playersAPI= `http://localhost:8082/players`
   
   addPlayers(player:Players): Observable<any> {
     return this._httpClient.post<any>(`${this.playersAPI}`, player);

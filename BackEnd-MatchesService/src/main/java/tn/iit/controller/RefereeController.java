@@ -10,6 +10,7 @@ import tn.iit.dto.mapper.RefereeMapper;
 import tn.iit.entity.Referee;
 import tn.iit.service.RefereeService;
 
+@CrossOrigin(origins ={"http://localhost:4200","http://localhost:9090"})
 
 @RestController
 @RequestMapping("/referees")

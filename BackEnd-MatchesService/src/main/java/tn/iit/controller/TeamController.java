@@ -18,6 +18,7 @@ import tn.iit.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
+@CrossOrigin(origins ={"http://localhost:4200","http://localhost:9090"})
 
 @RestController
 @RequestMapping("/teams")
