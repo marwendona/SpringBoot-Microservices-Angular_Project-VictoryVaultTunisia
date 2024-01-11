@@ -18,7 +18,7 @@ export class AddteamComponent implements OnInit {
 
   teamForm!: FormGroup;
   dataCoach!: any;
-  players!:any;
+  players!:Players[];
   selectedCoach: string = ''; // Initialize with the default value you want
 
   constructor(private coachService:CoachService, private playerService:PlayerService, private teamService:TeamService ,private router: Router){}
@@ -49,11 +49,12 @@ export class AddteamComponent implements OnInit {
   playersVierge:Players[]=[];
   async getPlayers(){
      this.playerService.getPlayers().subscribe( players => {
-      console.log("players",players.content)
-      // this.players = new MatTableDataSource<Players>(players);
-      // this.players = this.players._data.value.content
-      // this.players
-      // console.log("this.players",this.players)
+      this.players=players.content
+      this.players.forEach(p=>{
+        if(p.teamId==null){
+          this.playersVierge.push(p)
+        }
+      })
     })
   }
   // selectedChoices: string[] = [];

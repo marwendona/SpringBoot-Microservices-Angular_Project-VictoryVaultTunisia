@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Page } from 'src/app/models/Page';
 import { Players } from 'src/app/models/Players';
 import { Team } from 'src/app/models/Team';
 
@@ -16,8 +17,8 @@ export class TeamService {
     return this._httpClient.post<any>(this.teamAPI, team);
   }
   
-  getTeams():Observable<Team[]> {
-    return this._httpClient.get<Team[]>(this.teamAPI);
+  getTeams():Observable<Page<Team>> {
+    return this._httpClient.get<Page<Team>>(this.teamAPI);
   }
 
   getPlayersByTeams(id:number):Observable<Players[]> {

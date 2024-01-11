@@ -76,11 +76,19 @@ export class EditTeamComponent  implements OnInit{
       // }
     })
   }
-  async getPlayers() {
-    this.playerService.getPlayers().subscribe((players) => {
-      this.players = players.content;
-    });
-  }
+  playersVierge:Players[]=[];
+
+  async getPlayers(){
+    this.playerService.getPlayers().subscribe( players => {
+     this.players=players.content
+     this.players.forEach((p: Players)=>{
+       if(p.teamId==null){
+         this.playersVierge.push(p)
+       }
+     })
+
+   })
+ }
   EditTeam() {
     console.log("ahoa",Object.values(this.playerSelections))
 

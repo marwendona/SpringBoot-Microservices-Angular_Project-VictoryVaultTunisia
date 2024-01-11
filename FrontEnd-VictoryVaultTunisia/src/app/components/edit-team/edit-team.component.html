@@ -45,7 +45,7 @@
                     <select formControlName="PL1Edit" class="form-control custom-input" (change)="onSelectOption($event, 'player1')" (change)="onSelectPlayer1()" >
                       <option disabled selected>Pick a player</option>
                       <option disabled>──────────</option>
-                      <option *ngFor="let player of players" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
+                      <option *ngFor="let player of playersVierge" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
                     </select>
                   </div>
                 
@@ -55,7 +55,7 @@
                       <select class="form-control custom-input" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectPlayern(playerIndex)">
                         <option disabled selected>Pick a player</option>
                         <option disabled>──────────</option>
-                        <option *ngFor="let player of players" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
+                        <option *ngFor="let player of playersVierge" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
                       </select>
                     </div>
                   </div>
