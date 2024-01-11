@@ -52,6 +52,7 @@ public class StadiumService {
         byte[] bytes= imageFile.getBytes();
         Path path = Paths.get(root.resolve(folder)+ "\\" +imageFile.getOriginalFilename()) ;
         Files.write(path, bytes, StandardOpenOption.CREATE);
+        System.out.println(path);
         return imageFile.getOriginalFilename();
     }
 }

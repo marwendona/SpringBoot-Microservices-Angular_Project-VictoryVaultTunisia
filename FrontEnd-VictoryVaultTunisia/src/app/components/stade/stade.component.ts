@@ -52,10 +52,11 @@ export class StadeComponent implements OnInit {
     this.getStadium()
   }
   addStadium() {
-    var file
+    var file;
     if(this.eventImage){
-
-    file: File = this.eventImage.target.files[0];
+      console.log("dd");
+      
+    file = this.eventImage.target.files[0];
     }
     const stade: Stadium = {
       id: 0,
@@ -64,7 +65,7 @@ export class StadeComponent implements OnInit {
       photo: "",
       matches: [],
     };
-    this.stadiumService.addStadiums(stade,file).subscribe(() => {
+    this.stadiumService.addStadiums(stade,file).subscribe((stad) => {
       window.location.reload();
     });
   }
@@ -78,6 +79,7 @@ export class StadeComponent implements OnInit {
 
   onImageSelected(event: any) {
     if(event){
+      
       this.eventImage=event
     }
   }
@@ -105,7 +107,7 @@ export class StadeComponent implements OnInit {
     var file
     if(this.eventImage){
 
-    file: File = this.eventImage.target.files[0];
+    file = this.eventImage.target.files[0];
     }
     const stade: Stadium = {
       id: 0,
@@ -114,10 +116,8 @@ export class StadeComponent implements OnInit {
       photo: "",
       matches: []
     };
-    this.stadiumService.editStadium(stade,this.stadeFormEdit.value.id,file).subscribe((aa) => {
-      console.log(aa);
-      
-      //window.location.reload();
+    this.stadiumService.editStadium(stade,this.stadeFormEdit.value.id,file).subscribe(() => {
+      window.location.reload();
     });
     
   }

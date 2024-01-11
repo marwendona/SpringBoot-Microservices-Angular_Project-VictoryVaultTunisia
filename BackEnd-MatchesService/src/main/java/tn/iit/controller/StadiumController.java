@@ -40,12 +40,10 @@ public class StadiumController {
     public ResponseEntity<StadiumDto> createStadium(@RequestParam("name") String name,
                                                     @RequestParam("capacity") BigInteger capacity ,
                                                     @RequestParam(name = "imageFile",required = false) MultipartFile imageFile) throws IOException {
-
         StadiumDto stadiumDto = StadiumDto.builder().
                 name(name).
                 capacity(capacity).
                 build();
-
         if (imageFile != null) {
             String photo = StadiumService.saveImage(imageFile);
             stadiumDto.setPhoto(photo);
@@ -53,7 +51,7 @@ public class StadiumController {
         Stadium stadium = stadiumService.createStadium(StadiumMapper.toStadium(stadiumDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(StadiumMapper.toStadiumDto(stadium));
     }
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<StadiumDto> updateStadium(@PathVariable Long id,
                                                     @RequestParam("name") String name,
                                                     @RequestParam("capacity") BigInteger capacity ,
@@ -66,7 +64,8 @@ public class StadiumController {
                 name(name).
                 capacity(capacity).
                 build();
-
+System.out.println(imageFile);
+        
         if (imageFile != null) {
             String photo = StadiumService.saveImage(imageFile);
             stadiumDto.setPhoto(photo);
