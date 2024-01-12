@@ -15,5 +15,8 @@ public class TeamDto {
     private List<LineupDto> lineups;
     private List<PlayerDto> players;
     private Long coachId;
+    private String coachFirstName;
+    private String coachLastName;
+    private String coachNationality;
 
 }

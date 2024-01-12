@@ -13,13 +13,14 @@ import tn.iit.dto.mapper.MatchSeasonServiceMapper;
 import tn.iit.dto.mapper.ReplacementMapper;
 import tn.iit.dto.mapper.ScorerMapper;
 import tn.iit.entity.Match;
-import tn.iit.entity.Scorer;
 import tn.iit.service.LineupService;
 import tn.iit.service.MatchService;
 import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
+import tn.iit.service.TeamService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/matches")
@@ -28,20 +29,26 @@ public class MatchController {
     private final RefereeService refereeService;
     private final LineupService lineupService;
     private final StadiumService stadiumService;
-
+    private final TeamService teamService;
     public MatchController(MatchService matchService,
                            RefereeService refereeService,
                            LineupService lineupService,
-                           StadiumService stadiumService) {
+                           StadiumService stadiumService
+                           , TeamService teamService) {
         this.matchService = matchService;
         this.refereeService = refereeService;
         this.lineupService = lineupService;
         this.stadiumService = stadiumService;
+        this.teamService = teamService;
     }
     @GetMapping
     public ResponseEntity<Page<MatchDto>> getMatches(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<MatchDto> matches = matchService.getAllMatches(PageRequest.of(page,size)).map(MatchMapper::toMatchDto);
         matches.forEach(match -> {
+            if(Optional.ofNullable(match.getLineupAwayId()).isPresent()&&Optional.ofNullable(match.getLineupHomeId()).isPresent()){
+                match.setLineupAwayTeamName(lineupService.getLineupById(match.getLineupAwayId()).getTeam().getName());
+                match.setLineupHomeTeamName(lineupService.getLineupById(match.getLineupHomeId()).getTeam().getName());
+            }
             match.setTeamAwayScorers(
                     matchService.getMatchById(match.getId()).getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()
             );
@@ -52,18 +59,20 @@ public class MatchController {
                     matchService.getMatchById(match.getId()).getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()
             );
         });
-        return ResponseEntity.ok(matchService.getAllMatches(PageRequest.of(0,10)).map(MatchMapper::toMatchDto));
+        return ResponseEntity.ok(matches);
     }
     @GetMapping("/{id}")
     public ResponseEntity<MatchDto> getMatchById(@PathVariable Long id) {
         MatchDto matchDto = MatchMapper.toMatchDto(matchService.getMatchById(id));
-        matchDto.setStadiumId(stadiumService.getStadiumById(matchDto.getStadiumId()).getId());
-        matchDto.setRefereeId(refereeService.getRefereeById(matchDto.getRefereeId()).getId());
-        matchDto.setLineupAwayId(lineupService.getLineupById(matchDto.getLineupAwayId()).getId());
-        matchDto.setLineupHomeId(lineupService.getLineupById(matchDto.getLineupHomeId()).getId());
         if(matchDto == null) {
             return ResponseEntity.notFound().build();
         }
+        matchDto.setStadiumId(stadiumService.getStadiumById(matchDto.getStadiumId()).getId());
+        matchDto.setRefereeId(refereeService.getRefereeById(matchDto.getRefereeId()).getId());
+        if(Optional.ofNullable(matchDto.getLineupAwayId()).isPresent())
+        {matchDto.setLineupAwayId(lineupService.getLineupById(matchDto.getLineupAwayId()).getId());
+        matchDto.setLineupHomeId(lineupService.getLineupById(matchDto.getLineupHomeId()).getId());}
+        
         return ResponseEntity.ok(matchDto);
     }
     @PostMapping
@@ -89,6 +98,19 @@ public class MatchController {
         newMatch.setLineupAway(lineupService.getLineupById(matchDto.getLineupAwayId()));
         newMatch.setLineupHomes(lineupService.getLineupById(matchDto.getLineupHomeId()));
         matchService.updateMatch(newMatch);
+        return ResponseEntity.ok(matchDto);
+    }
+    @PutMapping("/LineupAdd/{id}")
+    public ResponseEntity<MatchDto> addLineupToMatch(@PathVariable Long id, @RequestBody MatchDto matchDto) {
+        Match oldMatch = matchService.getMatchById(id);
+        if(oldMatch == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        oldMatch.setLineupAway(lineupService.getLineupById(matchDto.getLineupAwayId()));
+        oldMatch.setLineupHomes(lineupService.getLineupById(matchDto.getLineupHomeId()));
+        Match match= matchService.updateMatch(oldMatch);
+        System.out.println(match);
         return ResponseEntity.ok(matchDto);
     }
     @DeleteMapping("/{id}")
@@ -120,6 +142,7 @@ public class MatchController {
     }
     @GetMapping("/matches/season-service/{id}")
     ResponseEntity<List<MatchSeasonServiceDto>> getMatchesByRoundId(@PathVariable long id) {
+        System.out.println(matchService.getMatchesByRoundId(id));
         List<MatchSeasonServiceDto> matches = matchService
                 .getMatchesByRoundId(id)
                 .stream()

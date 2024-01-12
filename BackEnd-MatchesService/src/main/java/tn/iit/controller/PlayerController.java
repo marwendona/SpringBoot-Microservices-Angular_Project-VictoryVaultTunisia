@@ -1,21 +1,22 @@
 package tn.iit.controller;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import tn.iit.dto.PlayerDto;
 import tn.iit.dto.mapper.PlayerMapper;
 import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
-
-
     private final PlayerService playerService;
     private final TeamService teamService;
 
@@ -35,8 +36,10 @@ public class PlayerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PlayerDto>> getAllPlayers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        Page<PlayerDto> players = playerService.getAllPlayers(PageRequest.of(page, size)).map(PlayerMapper::toPlayerDto);
+    public ResponseEntity<List<PlayerDto>> getAllPlayers() {
+        List<PlayerDto> players = playerService.getAllPlayers().stream()
+                .map(PlayerMapper::toPlayerDto)
+                .collect(Collectors.toList());
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 

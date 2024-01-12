@@ -1,0 +1,70 @@
+
+.content-container {
+    background-color: #f8f8f8; /* Set a background color for the rectangle */
+    padding: 100px; /* Add padding inside the rectangle */
+    border-radius: 10px; /* Add rounded corners to the rectangle */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    width: 100%; /* Make the rectangle take the full width of its container */
+  }
+  
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
+.btn{
+
+font-family: Roboto, sans-serif;
+font-weight: 0;
+font-size: 14px;
+color: #fff;
+background-color: #d62828;
+padding: 10px 30px;
+border: 2px solid #d62828;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 703ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+}
+
+.btn:hover{
+
+transition : 703ms;
+padding: 10px 32px;
+transform : translateY(-0px);
+background-color: #fff;
+color: #d62828;
+border: solid 2px #d62828;
+}
+
+
+.custom-table .odd-row {
+    background-color: #e6e6e6;
+  }
+  
+  .custom-table tr:hover {
+    background-color: #ce3e3e;
+  }
+  
+  .custom-table th,
+  th:hover {
+    background-image: url('../../../assets/images/background/blackblueBg.jpg');
+    color: rgb(255, 255, 255);
+  }
+  .custom-table td,
+  .custom-table th {
+      text-align: center;
+  }
+  .btnIcon{
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: -50px;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50px;
+  
+    }
+    

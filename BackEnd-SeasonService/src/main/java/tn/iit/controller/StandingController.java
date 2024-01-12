@@ -1,5 +1,7 @@
 package tn.iit.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -8,35 +10,42 @@ import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.StandingDto;
 import tn.iit.dto.mapper.StandingMapper;
 import tn.iit.entity.Standing;
+import tn.iit.proxy.MatchController;
 import tn.iit.entity.Season;
 import tn.iit.service.StandingService;
-import tn.iit.service.SeasonService;
-
 
 @RestController
 @RequestMapping("/standings")
 public class StandingController {
 
     private final StandingService standingService;
-    private final SeasonService seasonService;
+    private final MatchController matchController;
 
-    public StandingController(StandingService standingService, SeasonService seasonService) {
+    public StandingController(StandingService standingService,
+
+            MatchController matchController) {
         this.standingService = standingService;
-        this.seasonService = seasonService;
+        this.matchController = matchController;
     }
 
     @GetMapping
-    public ResponseEntity<Page<StandingDto>> getAllStandings(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        Page<StandingDto> standings = standingService.
-                getAllStandings(PageRequest.of(page, size)).
-                map(StandingMapper::toStandingDto);
-        return ResponseEntity.ok(standings);
+    public ResponseEntity<List<StandingDto>> getAllStandings(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1000") int size) {
+        Page<StandingDto> standings = standingService.getAllStandings(PageRequest.of(page, size))
+                .map(StandingMapper::toStandingDto);
+        standings.forEach(standingDto -> standingDto
+                .setTeamName(matchController.getTeamByID(standingDto.getTeamId()).getBody().getName()));
+        System.out.println("dd");
+        return ResponseEntity.ok(standings.getContent());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<StandingDto> getStandingById(@PathVariable Long id) {
         Standing standing = standingService.getStandingById(id);
         if (standing != null) {
             StandingDto standingDto = StandingMapper.toStandingDto(standing);
+            standingDto.setTeamName(matchController.getTeamByID(standingDto.getTeamId()).getBody().getName());
+            System.out.println("dd");
             return ResponseEntity.ok(standingDto);
         } else {
             return ResponseEntity.notFound().build();
@@ -44,7 +53,8 @@ public class StandingController {
     }
 
     @PostMapping("/{seasonId}")
-    public ResponseEntity<StandingDto> createStanding(@RequestBody StandingDto standingDto, @PathVariable Long seasonId) {
+    public ResponseEntity<StandingDto> createStanding(@RequestBody StandingDto standingDto,
+            @PathVariable Long seasonId) {
         Standing standing = StandingMapper.toStanding(standingDto);
         Standing createdStanding = standingService.createStanding(standing, seasonId);
         StandingDto createdStandingDto = StandingMapper.toStandingDto(createdStanding);

@@ -1,5 +1,8 @@
 package tn.iit.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.iit.dto.SeasonDto;
 import tn.iit.dto.mapper.SeasonMapper;
 import tn.iit.entity.Season;
+import tn.iit.proxy.MatchController;
 import tn.iit.service.SeasonService;
 
 
@@ -16,17 +20,28 @@ import tn.iit.service.SeasonService;
 public class SeasonController {
 
     private final SeasonService seasonService;
+    private final MatchController matchController;
 
-    public SeasonController(SeasonService seasonService) {
+    public SeasonController(SeasonService seasonService,
+            MatchController matchController) {
+        this.matchController = matchController;
         this.seasonService = seasonService;
     }
 
     @GetMapping
-    public ResponseEntity<Page<SeasonDto>> getAllSeasons(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<List<SeasonDto>> getAllSeasons(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "1000") int size) {
         Page<SeasonDto> seasons = seasonService.
                 getAllSeasons(PageRequest.of(page, size)).
                 map(SeasonMapper::toSeasonDto);
-        return ResponseEntity.ok(seasons);
+        seasons.getContent().forEach(season->{
+            if(Optional.ofNullable(season.getGeneralStanding()).isPresent())
+                {season.getGeneralStanding().forEach(standing->
+                    standing.setTeamName(matchController.getTeamByID(standing.getTeamId()).getBody().getName()
+
+                ));}
+        });
+        
+        return ResponseEntity.ok(seasons.getContent());
     }
     @GetMapping("/{id}")
     public ResponseEntity<SeasonDto> getSeasonById(@PathVariable Long id) {

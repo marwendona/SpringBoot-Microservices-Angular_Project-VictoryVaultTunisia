@@ -18,9 +18,11 @@ public class PlayerMapper {
     }
     public static PlayerDto toPlayerDto(Player player) {
         Long teamId = null;
+        String teamName = null;
         Optional<Team> team = Optional.ofNullable(player.getTeam());
         if(team.isPresent()){
             teamId = team.get().getId();
+            teamName = team.get().getName();
         }
         return PlayerDto.builder().
                 id(player.getId()).
@@ -28,6 +30,7 @@ public class PlayerMapper {
                 lastName(player.getLastName()).
                 nationality(player.getNationality()).
                 teamId(teamId).
+                teamName(teamName).
                 build();
     }
 }

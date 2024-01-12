@@ -1,23 +1,44 @@
 package tn.iit.dto.mapper;
 
+
+import java.util.Optional;
+
 import tn.iit.dto.MatchDto;
+import tn.iit.entity.Lineup;
 import tn.iit.entity.Match;
 
 public class MatchMapper {
-
+     
     public static MatchDto toMatchDto(Match match) {
+        Lineup lineupAway=new Lineup();
+        Lineup lineupHome=new Lineup();
+        Optional<Lineup> optionalLineupAway= Optional.ofNullable(match.getLineupAway());
+        Optional<Lineup> optionalLineupHome = Optional.ofNullable(match.getLineupHomes());
+
+        if (optionalLineupAway.isPresent()) {
+            System.out.println(optionalLineupAway.get().getId());
+            lineupAway = optionalLineupAway.get();
+        }
+        if (optionalLineupHome.isPresent()) {
+            lineupHome = optionalLineupHome.get();
+        }
         return MatchDto.builder().
                 id(match.getId()).
                 date(match.getDate()).
                 stadiumId(match.getStadium().getId()).
                 refereeId(match.getReferee().getId()).
-                lineupAwayId(match.getLineupAway().getId()).
-                lineupHomeId(match.getLineupHomes().getId()).
+                lineupAwayId(lineupAway.getId()).
+                lineupHomeId(lineupHome.getId()).
                 teamAwayScorers(match.getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 teamHomeScorers(match.getTeamHomeScorers().stream().map(ScorerMapper::toScorerDto).toList()).
                 replacements(match.getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()).
                 spectatorNumber(match.getSpectatorNumber()).
                 roundId(match.getRoundId()).
+                stadiumName(match.getStadium().getName()).
+                stadiumCapacity(match.getStadium().getCapacity()).
+                refereeFirstName(match.getReferee().getFirstName()).
+                refereeLastName(match.getReferee().getLastName()).
+                refereeNationality(match.getReferee().getNationality()).
                 build();
     }
     public static Match toMatch(MatchDto dto) {

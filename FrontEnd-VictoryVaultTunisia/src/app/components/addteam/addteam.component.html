@@ -1,0 +1,72 @@
+<body style="zoom: 75%;">
+    <div class="wrapper">
+      <!--  -->
+      <app-header></app-header>
+      <!--  -->
+
+      <section>
+
+        <br><br><br><br><br><br><br>
+
+
+        <a href="team" class="btn" style="position: absolute; left: 100px;">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+
+
+        <h2 class="heading">add <span>team</span></h2>
+        <br><br>
+
+          <div class="content-container">
+            <form [formGroup]="teamForm"  (ngSubmit)="addTeam()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mt-3">
+                    <label for="prenomInput">Name <span style="color: #d62828;">*</span></label>
+                    <input type="text" class="form-control custom-input" formControlName="Name" required>
+                    <div style="color: red;"></div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group mt-3">
+                    <label for="playerSelect">Coach <span style="color: #d62828;">*</span></label>
+                    <select class="form-control custom-input" formControlName="CoachId">
+                      <option disabled selected>Coach Name</option>
+                      <option disabled>──────────</option>
+                      <option *ngFor="let coach of dataCoach" [value]="coach.id">{{ coach.firstName }}</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-15">
+                  <div class="form-group mt-2">
+                    <label for="playerSelect">Add Player</label>
+                    <select formControlName="PL1" class="form-control custom-input" (change)="onSelectOption($event, 'player1')" (change)="onSelectPlayer1()" >
+                      <option disabled selected>Pick a player</option>
+                      <option disabled>──────────</option>
+                      <option *ngFor="let player of playersVierge" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
+                    </select>
+                  </div>
+
+                  <div *ngFor="let playerIndex of [0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]">
+                    <div [hidden]="shouldHidePlayer(playerIndex)" class="form-group mt-2">
+                      <label for="playerSelect">Add another Player</label>
+                      <select class="form-control custom-input" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectPlayern(playerIndex)">
+                        <option disabled selected>Pick a player</option>
+                        <option disabled>──────────</option>
+                        <option *ngFor="let player of playersVierge" [value]="player.id" [disabled]="isPlayerSelected(player.id)">{{ player.firstName }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-danger" style="position: absolute; right: 100px;">Submit</button>
+            </form>
+          </div>
+      </section>
+      <!--  -->
+      <app-footer></app-footer>
+      <!--  -->
+    </div>
+  </body>

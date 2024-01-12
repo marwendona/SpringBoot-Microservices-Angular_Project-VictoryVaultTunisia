@@ -10,11 +10,9 @@ import tn.iit.dto.mapper.RefereeMapper;
 import tn.iit.entity.Referee;
 import tn.iit.service.RefereeService;
 
-
 @RestController
 @RequestMapping("/referees")
 public class RefereeController {
-
     private final RefereeService refereeService;
 
     public RefereeController(RefereeService refereeService) {

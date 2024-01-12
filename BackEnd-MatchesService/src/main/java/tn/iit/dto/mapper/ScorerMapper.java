@@ -9,6 +9,9 @@ public class ScorerMapper {
                 id(scorer.getId()).
                 scoringTime(scorer.getScoringTime()).
                 playerInPositionId(scorer.getPlayerInPosition().getId()).
+                playerInPositionFirstName(scorer.getPlayerInPosition().getPlayer().getFirstName()).
+                playerInPositionLastName(scorer.getPlayerInPosition().getPlayer().getLastName()).
+                playerInPositionNationality(scorer.getPlayerInPosition().getPlayer().getNationality()).
                 matchId(scorer.getMatch().getId()).
                 build();
     }

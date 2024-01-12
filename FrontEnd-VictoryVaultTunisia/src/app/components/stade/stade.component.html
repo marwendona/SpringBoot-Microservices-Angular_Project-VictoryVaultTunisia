@@ -1,0 +1,233 @@
+<body style="zoom: 75%;">
+  <div class="wrapper">
+    <!--  -->
+    <app-header></app-header>
+    <!--  -->
+    <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add Stadium</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="stadeForm" (ngSubmit)="addStadium()">
+              <div>
+                <div>
+                  <label for="prenomInput">Name of stadium  <span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="name" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+                <div>
+                  <label for="nomInput">max capacity <span style="color: #d62828;">*</span></label>
+                  <input type="number" class="form-control" formControlName="capacity" required>
+                  <div style="color: red;">
+                  </div>
+                </div>    
+                <div>
+                  <div class="form-group mt-3 mt-md-0">
+                    <label for="nomInput">photo<span style="color: #d62828;">*</span></label>
+                    <input type="file" class="form-control"  id="fileUpload"(change)="onImageSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+
+                    <!-- <input formControlName="photo" class="form-control" type="file"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- -----------------------------------------------------Modal Edit---------------------------------------------------------------- -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Edit Stadium</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="stadeFormEdit" (ngSubmit)="EditStadium()">
+              <div>
+                <div>
+                  <label for="prenomInput">Name of stadium  <span style="color: #d62828;">*</span></label>
+                  <input type="text" class="form-control" formControlName="nameEdit" required>
+                  <div style="color: red;">
+                  </div>
+                </div>
+                <div>
+                  <label for="nomInput">max capacity <span style="color: #d62828;">*</span></label>
+                  <input type="number" class="form-control" formControlName="capacityEdit" required>
+                  <div style="color: red;">
+                  </div>
+                </div>    
+                <div>
+                  <div class="form-group mt-3 mt-md-0">
+                    <label for="nomInput">photo<span style="color: #d62828;">*</span></label>
+                    <input type="file" class="form-control" id="fileUpload"(change)="onImageSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+
+                    <!-- <input formControlName="photo" class="form-control" type="file"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- <section>
+
+      <br><br><br><br><br><br><br>
+      <a data-toggle="modal" data-target="#DeleteModal"class="btnSpecial" style="position: absolute; right: 100px;">
+        <i class="fa fa-plus"></i>
+      </a>
+
+    
+
+    <h2 class="heading">liste des <span> " Stade "</span></h2>
+   <br> <br>
+    
+    <div class="content-container">
+  
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">capacity</th>
+                    <th scope="col">image</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let Stadium of dataStadium">
+                <th scope="col">stadium N°{{Stadium.id}}</th>
+                <td>{{Stadium.name}}</td>
+                <td>{{Stadium.capacity}}</td>
+                <td>{{Stadium.photo}}</td>
+                <td>
+                    <span>
+                        <button  type="button" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                          <mat-icon class="btn-icon">edit</mat-icon>
+                        </button>
+                        &nbsp;  
+                        <button type="button"  class=" btnIcon btn-danger" style=" background-color: #d51d1d; ">
+                          <mat-icon class="btn-icon">delete</mat-icon>          
+                        </button> 
+                      </span> 
+                </td>
+            </tr>
+     
+            </tbody>
+        </table>
+          
+          
+    </div>
+
+
+    </section> -->
+    <section>
+
+      <br><br><br><br><br><br><br>
+ 
+      <button data-toggle="modal" data-target="#AddModal" class="btn" style="position: absolute; right: 100px;">
+        <i class="fa fa-plus"></i>
+      </button>
+
+
+
+      <h2 class="heading">stadiums <span>List</span></h2>
+     <br> <br>
+      
+      <div class="content-container">
+      
+        <table mat-table [dataSource]="dataStadium" class="custom-table" style="zoom: 100%;">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let stadium" > {{stadium.name}} </td>
+            <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+              *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="capacity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> capacity </th>
+            <td mat-cell *matCellDef="let stadium" > {{stadium.capacity}}</td>
+            <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+              *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="photo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> photo </th>
+            <td mat-cell *matCellDef="let stadium" > {{stadium.photo}}</td>
+            <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+              *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let stadium" > 
+              <span>
+                <button data-toggle="modal" data-target="#EditModal" (click)="LoadInfoStadium(stadium)" class=" btnIcon btn-success" style=" background-color: #3ed11a; ">
+                  <mat-icon class="btn-icon">edit</mat-icon>
+                </button>
+                &nbsp;  
+                <button type="button" class="btnIcon btn-danger" style="background-color: #d51d1d;" (click)="confirmDelete(stadium.id)">
+                  <mat-icon class="btn-icon">delete</mat-icon>
+                </button>
+              </span>
+            </td>
+
+            <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
+              *matFooterCellDef></td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; let even = even"
+            [ngClass]="{ 'even-row': even, 'odd-row': !even }" (mouseenter)="onRowHover(true)"
+            (mouseleave)="onRowHover(false)" [ngStyle]="isRowHovered ? {'cursor': 'pointer'} : {}">
+          </tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+        </table>
+        <mat-paginator #paginator
+        class="demo-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="length"
+        [pageSize]="pageSize"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="pageSizeOptions"
+        [pageIndex]="pageIndex"
+        aria-label="Select page">
+</mat-paginator>
+      </div>
+
+    </section>
+
+    <!--  -->
+    <app-footer></app-footer>
+    <!--  -->
+  </div>
+
+</body>

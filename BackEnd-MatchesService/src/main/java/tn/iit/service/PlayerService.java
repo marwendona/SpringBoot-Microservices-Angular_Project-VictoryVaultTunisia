@@ -8,6 +8,8 @@ import tn.iit.dao.PlayerRepository;
 import tn.iit.entity.Player;
 import tn.iit.utils.checks.PlayerControl;
 
+import java.util.List;
+
 @Service
 public class PlayerService {
     private PlayerRepository playerRepository;
@@ -29,8 +31,8 @@ public class PlayerService {
         return playerRepository.findById(playerId).orElse(null);
     }
 
-    public Page<Player> getAllPlayers(Pageable pageable) {
-        return playerRepository.findAll(pageable);
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
     }
     public Player updatePlayer(Player player) {
         return playerRepository.save(player);

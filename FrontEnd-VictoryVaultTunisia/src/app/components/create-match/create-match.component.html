@@ -1,0 +1,123 @@
+<body style="zoom: 75%;">
+    <div class="wrapper">
+        <!--  -->
+        <app-header></app-header>
+        <!--  -->
+
+        <section>
+
+            <br><br><br><br><br><br><br>
+
+
+            <a href="match" class="btn" style="position: absolute; left: 100px;">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+
+
+            <h2 class="heading">add <span>match</span></h2>
+            <br><br>
+
+            <div class="content-container">
+                <form [formGroup]="matchForm" (ngSubmit)="addMatch()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">select season <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="season" (change)="loadround()" >
+                                    <option disabled selected>Referee</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let season of seasons" [value]="season.id">{{ season.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">select round <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="round">
+                                    <option disabled selected>Referee</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let round of roundData" [value]="round.id">{{ round.name + " "+ round.roundNumber }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">spectators number<span style="color: #d62828;">*</span></label>
+                                <input class="form-control custom-input" type="number" formControlName="spectators">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">select referee <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="referee">
+                                    <option disabled selected>Referee</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let referee of refereeData" [value]="referee.id">{{ referee.firstName }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-15">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">select Date <span style="color: #d62828;">*</span></label>
+                                <input class="form-control custom-input" type="date" formControlName="date">
+                            </div>
+                        </div>
+                        <div class="col-md-15">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">select stadium <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="stadium" >
+                                    <option disabled selected >Stadium</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let stadium of stadiumData" [value]="stadium.id">{{ stadium.name }}
+                                    </option>
+
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mt-3">
+
+                                    <img src="../../../assets/images/R.jpg" style="margin-left:600px;width: 500px;border-radius: 10%;" alt="image">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label for="playerSelect">Team home <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="teamHome" (change)="onSelectOption($event, 'player1')"  (change)="onSelectPlayer1()" >
+                                    <option disabled selected>team home</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let team of teamData" [value]="team.id"[disabled]="isPlayerSelected(team.id)" >{{ team.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mt-3">
+                                <div *ngFor="let playerIndex of [0]">
+
+                                <label for="playerSelect">Team away <span style="color: #d62828;">*</span></label>
+                                <select class="form-control custom-input" formControlName="teamAway" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectPlayern(playerIndex)">
+                                    <option disabled selected>team away</option>
+                                    <option disabled>──────────</option>
+                                    <option *ngFor="let team of teamData" [value]="team.id"[disabled]="isPlayerSelected(team.id)" >{{ team.name }}
+                                    </option>
+                                </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger"
+                        style="position: absolute; right: 100px;">Submit</button>
+                </form>
+            </div>
+        </section>
+        <!--  -->
+        <app-footer></app-footer>
+        <!--  -->
+    </div>
+</body>

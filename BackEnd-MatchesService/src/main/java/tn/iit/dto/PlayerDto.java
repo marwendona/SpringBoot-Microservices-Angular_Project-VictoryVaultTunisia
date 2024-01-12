@@ -9,8 +9,13 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 public class PlayerDto {
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private String nationality;
+
     private Long teamId;
+    private String teamName;
 }

@@ -1,66 +1,52 @@
 <header class="header-main">
-    <div class="header-upper">
-        <div class="container">
-            <div class="row">
-                <ul>
-                    <li><a href="">Signup/login</a></li>
-                    <li><a href="shopcart.html"><i class="fa fa-shopping-cart"></i> <span>cart(<span
-                                    class="cartitems">0</span>)</span></a></li>
+  <div class="header-lower clearfix">
+    <div class="container">
+      <div class="row">
+        <h1 class="logo"><a href="/home"><img src="assets/images/logo.png" alt="image"></a></h1>
+        <div class="menubar">
+          <nav class="navbar">
+            <div class="nav-wrapper">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle"><span
+                  class="sr-only">Toggle
+                                        navigation</span> <span class="icon-bar"></span></button>
+              </div>
+              <div class="nav-menu">
+                <ul class="nav navbar-nav menu-bar">
+                  <li><a [ngClass]="{ 'active': isActive('/home') }" href="/home">Home <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                  <li><a [ngClass]="{ 'active': isActive('/match') }"
+                         href="/match">Match <span></span> <span></span> <span></span>
+                    <span></span></a></li>
+
+                  <li><a [ngClass]="{ 'active': isActive('/team') }" href="team">team <span></span>
+                    <span></span> <span></span>
+                    <span></span></a></li>
+
+                  <li><a [ngClass]="{ 'active': isActive('/coach') }" href="coach">Coach<span></span> <span></span>
+                    <span></span>
+                    <span></span></a></li>
+
+
+                  <li><a [ngClass]="{ 'active': isActive('/players') }" href="players">players <span></span>
+                    <span></span> <span></span>
+                    <span></span></a></li>
+                  <li><a [ngClass]="{ 'active': isActive('/stade') }" href="stade">Stadium <span></span> <span></span>
+                    <span></span>
+                    <span></span></a>
+                  </li>
+                  <li><a [ngClass]="{ 'active': isActive('/referee') }" href="referee">Referee <span></span>
+                    <span></span> <span></span>
+                    <span></span></a>
+                  </li>
                 </ul>
+              </div>
             </div>
+          </nav>
         </div>
+      </div>
     </div>
-    <div class="header-lower clearfix">
-        <div class="container">
-            <div class="row">
-                <h1 class="logo"><a href="/home"><img src="assets/images/logo.png" alt="image"></a></h1>
-                <div class="menubar">
-                    <nav class="navbar">
-                        <div class="nav-wrapper">
-                            <div class="navbar-header"><button type="button" class="navbar-toggle"><span
-                                        class="sr-only">Toggle
-                                        navigation</span> <span class="icon-bar"></span></button></div>
-                            <div class="nav-menu">
-                                <ul class="nav navbar-nav menu-bar">
-                                    <li><a [ngClass]="{ 'active': isActive('/home') }" href="/home">Home <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span></a></li>
-                                    <li><a [ngClass]="{ 'active': isActive('/classement') }"
-                                            href="/classement">classement <span></span> <span></span> <span></span>
-                                            <span></span></a></li>
-
-                                    <li><a [ngClass]="{ 'active': isActive('/team') }" href="team">team <span></span>
-                                            <span></span> <span></span>
-                                            <span></span></a></li>
-
-                                    <li><a [ngClass]="{ 'active': isActive('/coach') }" href="coach">Coach<span></span> <span></span> <span></span>
-                                            <span></span></a></li>
-
-                                    <li><a>gallery <span></span> <span></span> <span></span> <span></span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="gallerypage01.html">masonry</a></li>
-                                            <li><a href="gallery02.html">gallery column two</a></li>
-                                            <li><a href="gallery03.html">gallery column 03</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="shop.html">shop <span></span> <span></span> <span></span>
-                                            <span></span></a></li>
-                                    <li><a href="contact.html">contact <span></span> <span></span> <span></span>
-                                            <span></span></a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="social"><a href="https://www.facebook.com/Itobuz" class="facebook"><i
-                            class="fa fa-facebook"></i></a> <a href="https://twitter.com/itobuztech" class="twitter"><i
-                            class="fa fa-twitter"></i></a> <a href="https://www.behance.net/itobuz" class="behance"><i
-                            class="fa fa-behance"></i></a></div>
-            </div>
-        </div>
-    </div>
+  </div>
 </header>

@@ -64,7 +64,8 @@
               "browserTarget": "FrontEnd-VictoryVaultTunisia:build:production"
             },
             "development": {
-              "browserTarget": "FrontEnd-VictoryVaultTunisia:build:development"
+              "browserTarget": "FrontEnd-VictoryVaultTunisia:build:development",
+              "proxyConfig": "src/proxy-conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -96,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
