@@ -8,6 +8,9 @@ import { Page } from 'src/app/models/Page';
   providedIn: 'root'
 })
 export class MatchService {
+  deleteTeam(matchId: number): Observable<any> {
+    return this._httpClient.delete<any>(this.matchAPI+`/${matchId}`);
+  }
 
 
   constructor(private _httpClient: HttpClient) {}

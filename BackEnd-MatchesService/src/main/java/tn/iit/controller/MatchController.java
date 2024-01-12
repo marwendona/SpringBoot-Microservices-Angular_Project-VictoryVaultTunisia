@@ -19,6 +19,7 @@ import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/matches")
@@ -61,8 +62,9 @@ public class MatchController {
         }
         matchDto.setStadiumId(stadiumService.getStadiumById(matchDto.getStadiumId()).getId());
         matchDto.setRefereeId(refereeService.getRefereeById(matchDto.getRefereeId()).getId());
-        matchDto.setLineupAwayId(lineupService.getLineupById(matchDto.getLineupAwayId()).getId());
-        matchDto.setLineupHomeId(lineupService.getLineupById(matchDto.getLineupHomeId()).getId());
+        if(Optional.ofNullable(matchDto.getLineupAwayId()).isPresent())
+        {matchDto.setLineupAwayId(lineupService.getLineupById(matchDto.getLineupAwayId()).getId());
+        matchDto.setLineupHomeId(lineupService.getLineupById(matchDto.getLineupHomeId()).getId());}
         
         return ResponseEntity.ok(matchDto);
     }
@@ -120,6 +122,7 @@ public class MatchController {
     }
     @GetMapping("/matches/season-service/{id}")
     ResponseEntity<List<MatchSeasonServiceDto>> getMatchesByRoundId(@PathVariable long id) {
+        System.out.println(matchService.getMatchesByRoundId(id));
         List<MatchSeasonServiceDto> matches = matchService
                 .getMatchesByRoundId(id)
                 .stream()
