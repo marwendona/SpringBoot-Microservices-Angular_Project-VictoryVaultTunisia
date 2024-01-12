@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Lineups } from 'src/app/models/Lineups';
+import { Match } from 'src/app/models/Match';
 import { PlayerInPosition } from 'src/app/models/PlayerInPosition';
-import { PlayerInPositionFirst } from 'src/app/models/PlayerInPositionFirst';
 import { Players } from 'src/app/models/Players';
 import { Team } from 'src/app/models/Team';
 import { LineupService } from 'src/app/services/matchServices/lineupService/lineup.service';
+import { MatchService } from 'src/app/services/matchServices/matchService/match.service';
 import { PlayerInPositionService } from 'src/app/services/matchServices/playerInPositionService/player-in-position.service';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
 import { TeamService } from 'src/app/services/matchServices/teamService/team.service';
@@ -22,7 +24,7 @@ export class MatchDetailComponent implements OnInit{
 
   teams!:Team[];
   MatchFormAffect!: FormGroup;
-  constructor(private lineupService:LineupService,private playerService:PlayerService,private teamService:TeamService,private playerInPosition:PlayerInPositionService){}
+  constructor(private matchService:MatchService, private route: ActivatedRoute,private lineupService:LineupService,private router: Router,private playerService:PlayerService,private teamService:TeamService,private playerInPosition:PlayerInPositionService){}
 
    async ngOnInit(){
     await this.getTeams();
@@ -60,17 +62,17 @@ export class MatchDetailComponent implements OnInit{
       OptionplayerHome9: new FormControl('', Validators.required),
       OptionplayerHome10: new FormControl('', Validators.required),
       OptionplayerHome11: new FormControl('', Validators.required),
-      OptionplayeAway1: new FormControl('', Validators.required),
-      OptionplayeAway2: new FormControl('', Validators.required),
-      OptionplayeAway3: new FormControl('', Validators.required),
-      OptionplayeAway4: new FormControl('', Validators.required),
-      OptionplayeAway5: new FormControl('', Validators.required),
-      OptionplayeAway6: new FormControl('', Validators.required),
-      OptionplayeAway7: new FormControl('', Validators.required),
-      OptionplayeAway8: new FormControl('', Validators.required),
-      OptionplayeAway9: new FormControl('', Validators.required),
-      OptionplayeAway10: new FormControl('', Validators.required),
-      OptionplayeAway11: new FormControl('', Validators.required),
+      OptionplayerAway1: new FormControl('', Validators.required),
+      OptionplayerAway2: new FormControl('', Validators.required),
+      OptionplayerAway3: new FormControl('', Validators.required),
+      OptionplayerAway4: new FormControl('', Validators.required),
+      OptionplayerAway5: new FormControl('', Validators.required),
+      OptionplayerAway6: new FormControl('', Validators.required),
+      OptionplayerAway7: new FormControl('', Validators.required),
+      OptionplayerAway8: new FormControl('', Validators.required),
+      OptionplayerAway9: new FormControl('', Validators.required),
+      OptionplayerAway10: new FormControl('', Validators.required),
+      OptionplayerAway11: new FormControl('', Validators.required),
       playerAway1: new FormControl('', Validators.required),
       playerAway2: new FormControl('', Validators.required),
       playerAway3: new FormControl('', Validators.required),
@@ -86,65 +88,80 @@ export class MatchDetailComponent implements OnInit{
   }
 
   EditMatch() {
-   console.log(this.MatchFormAffect.get("playerHome1")?.value)
    const lineupHome:Lineups={
-    id: 0,
-    teamId: Number(this.MatchFormAffect.value.TeamHome)
-  }
-
-  this.lineupService.addLineup(lineupHome).subscribe(result=>{})
-   for (let i = 1; i <= 11; i++) {
-    const playerValue = this.MatchFormAffect.get(`playerHome${i}`)?.value;
- 
-    const playerInPositionFirst:PlayerInPositionFirst={
-      id: 0,
-      position: this.MatchFormAffect.get(`OptionplayerHome${i}`)?.value,
-      playerId: Number(this.MatchFormAffect.get(`playerHome${i}`)?.value),
-      playerFirstName: '',
-      playerLastName: '',
-      playerNationality: '',
-      lineupId: 38
-    }
-
-    console.log(`playerInPosition${i}`,playerInPositionFirst);
-    this.playerInPosition.addPlayersInPosition(playerInPositionFirst).subscribe(()=>{
-      console.log(`yes${i}`);
-      
-    })
-}
-const lineupAway:Lineups={
-  id: 0,
-  teamId: Number(this.MatchFormAffect.value.TeamAway)
-}
-
-this.lineupService.addLineup(lineupAway).subscribe(result=>{})
-
-for (let i = 1; i <= 11; i++) {
-  const playerValue = this.MatchFormAffect.get(`playerAway${i}`)?.value;
-
-  const playerInPositionFirstAway:PlayerInPositionFirst={
-    id: 0,
-    position: this.MatchFormAffect.get(`OptionplayerAway${i}`)?.value,
-    playerId: Number(this.MatchFormAffect.get(`playerAway${i}`)?.value),
-    playerFirstName: '',
-    playerLastName: '',
-    playerNationality: '',
-    lineupId: 38//hedhi el id lezm nkatchiwha
-  }
-
-  console.log(`playerInPosition${i}`,playerInPositionFirstAway);
-  this.playerInPosition.addPlayersInPosition(playerInPositionFirstAway).subscribe(()=>{
-    console.log(`yes${i}`);
+     id: 0,
+     teamId: Number(this.MatchFormAffect.value.TeamHome),
+     players: []
+   }
+  this.lineupService.addLineup(lineupHome).subscribe(result => {
+      for (let i = 1; i <= 11; i++) {
+        const playerInPosition: PlayerInPosition = {
+          id: 0,
+          position: this.MatchFormAffect.get(`OptionplayerHome${i}`)?.value,
+          playerId: Number(this.MatchFormAffect.get(`playerHome${i}`)?.value),
+          playerFirstName: '',
+          playerLastName: '',
+          playerNationality: '',
+          lineupId: result.id
+        };
+        this.playerInPosition.addPlayersInPosition(playerInPosition).subscribe(() => { });
+      }
+      const lineupAway:Lineups={
+        id: 0,
+        teamId: Number(this.MatchFormAffect.value.TeamAway),
+        players: []
+      }
     
-  })
+    this.lineupService.addLineup(lineupAway).subscribe(resultaway=>{
+    
+      for (let i = 1; i <= 11; i++) {
+        const playerInPositionFirstAway:PlayerInPosition={
+          id: 0,
+          position: this.MatchFormAffect.get(`OptionplayerAway${i}`)?.value,
+          playerId: Number(this.MatchFormAffect.get(`playerAway${i}`)?.value),
+          playerFirstName: '',
+          playerLastName: '',
+          playerNationality: '',
+          lineupId: resultaway.id
+        }
+        this.playerInPosition.addPlayersInPosition(playerInPositionFirstAway).subscribe(()=>{})
+      }
+    
+      this.route.queryParams.subscribe((params) => {
+        console.log("params",params)
+        const match:Match={
+          id: 0,
+          stadiumId: 0,
+          stadiumName: '',
+          stadiumCapacity: 0,
+          refereeId: 0,
+          refereeFirstName: '',
+          refereeLastName: '',
+          refereeNationality: '',
+          date: new Date,
+          spectatorNumber: 0,
+          teamHomeScorers: [],
+          teamAwayScorers: [],
+          lineupHomeId: result.id,
+          lineupHomeTeamId: 0,
+          lineupHomeTeamName: '',
+          lineupAwayId: resultaway.id,
+          lineupAwayTeamId: 0,
+          lineupAwayTeamName: '',
+          replacements: [],
+          roundId: 0
+        }
+        this.matchService.addLineupMatch(params['id'],match).subscribe(result=>{console.log(result);
+        })
+      })
+     })  
+    })
+
+
+ this.router.navigate(['/match'])     
+
+
 }
-
-
-
-
-
-
-  }
  playerSelections: { [key: string]: number | undefined } = {};
 
  onSelectOption(event: any, key: string) {

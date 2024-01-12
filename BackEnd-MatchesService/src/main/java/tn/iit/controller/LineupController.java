@@ -49,15 +49,15 @@ public class LineupController {
         Team team = teamService.getTeamById(lineupDto.getTeamId());
         lineup.setTeam(team);
         Lineup createdLineup = lineupService.createLineup(lineup);
-        List<PlayerInPosition> playerInPositions = lineupDto
-                .getPlayers()
-                .stream()
-                .map(PlayerInPositionMapper::toPlayerInPosition)
-                .toList();
-        playerInPositions.forEach(playerInPosition -> {
-            playerInPosition.setLineup(createdLineup);
-            playerInPositionService.createPlayerInPosition(playerInPosition);
-        });
+        // List<PlayerInPosition> playerInPositions = lineupDto
+        //         .getPlayers()
+        //         .stream()
+        //         .map(PlayerInPositionMapper::toPlayerInPosition)
+        //         .toList();
+        // playerInPositions.forEach(playerInPosition -> {
+        //     playerInPosition.setLineup(createdLineup);
+        //     playerInPositionService.createPlayerInPosition(playerInPosition);
+        // });
         lineupDto = LineupMapper.toLineupDto(createdLineup);
         return ResponseEntity.status(HttpStatus.CREATED).body(lineupDto);
     }

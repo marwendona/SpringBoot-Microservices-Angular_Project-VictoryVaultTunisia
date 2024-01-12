@@ -91,6 +91,19 @@ public class MatchController {
         matchService.updateMatch(newMatch);
         return ResponseEntity.ok(matchDto);
     }
+    @PutMapping("/LineupAdd/{id}")
+    public ResponseEntity<MatchDto> addLineupToMatch(@PathVariable Long id, @RequestBody MatchDto matchDto) {
+        Match oldMatch = matchService.getMatchById(id);
+        if(oldMatch == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        oldMatch.setLineupAway(lineupService.getLineupById(matchDto.getLineupAwayId()));
+        oldMatch.setLineupHomes(lineupService.getLineupById(matchDto.getLineupHomeId()));
+        Match match= matchService.updateMatch(oldMatch);
+        System.out.println(match);
+        return ResponseEntity.ok(matchDto);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMatch(@PathVariable Long id) {
         matchService.deleteMatch(id);

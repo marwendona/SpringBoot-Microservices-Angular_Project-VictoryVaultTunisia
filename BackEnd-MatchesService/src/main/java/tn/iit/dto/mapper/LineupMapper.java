@@ -1,5 +1,9 @@
 package tn.iit.dto.mapper;
 
+import java.util.Optional;
+
+import org.aspectj.weaver.Position;
+
 import tn.iit.dto.LineupDto;
 import tn.iit.entity.Lineup;
 import tn.iit.service.MatchService;
@@ -13,11 +17,16 @@ public class LineupMapper {
         return lineup;
     }
     public static LineupDto toLineupDto(Lineup lineup) {
-        return LineupDto.builder().
+        LineupDto var =LineupDto.builder().
                 id(lineup.getId()).
                 teamId(lineup.getTeam().getId()).
-                players(lineup.getPlayerInPositions().stream().map(PlayerInPositionMapper::toPlayerInPositionDto).toList()).
-                teamName(lineup.getTeam().getName()).
+                // players(lineup.getPlayerInPositions().stream().map(PlayerInPositionMapper::toPlayerInPositionDto).toList()).
+                // teamName(lineup.getTeam().getName()).
                 build();
+            if(Optional.ofNullable(lineup.getPlayerInPositions()).isPresent()){
+                var.setPlayers(lineup.getPlayerInPositions().stream().map(PlayerInPositionMapper::toPlayerInPositionDto).toList());
+                var.setTeamName(lineup.getTeam().getName());
+            }
+                return var;
     }
 }

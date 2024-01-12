@@ -19,4 +19,9 @@ export class MatchService {
 
   getMatch():Observable<Page<Match>> {
     return this._httpClient.get<Page<Match>>(this.matchAPI);
-  }}
+  }
+
+  addLineupMatch(matchId:number,match:Match):Observable<any> {
+    return this._httpClient.put(`${this.matchAPI}/LineupAdd/${matchId}`, match)
+  }
+}
