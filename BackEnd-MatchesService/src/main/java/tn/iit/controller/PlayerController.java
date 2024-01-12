@@ -11,6 +11,9 @@ import tn.iit.entity.Player;
 import tn.iit.service.PlayerService;
 import tn.iit.service.TeamService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -33,8 +36,10 @@ public class PlayerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PlayerDto>> getAllPlayers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        Page<PlayerDto> players = playerService.getAllPlayers(PageRequest.of(page, size)).map(PlayerMapper::toPlayerDto);
+    public ResponseEntity<List<PlayerDto>> getAllPlayers() {
+        List<PlayerDto> players = playerService.getAllPlayers().stream()
+                .map(PlayerMapper::toPlayerDto)
+                .collect(Collectors.toList());
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
