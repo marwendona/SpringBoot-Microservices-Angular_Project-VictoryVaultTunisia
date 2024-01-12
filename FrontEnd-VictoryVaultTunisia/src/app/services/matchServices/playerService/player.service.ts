@@ -21,6 +21,9 @@ export class PlayerService {
     params = params.set('page', page);
     return this._httpClient.get<Page<Players>>(this.playersAPI,{params});
   }
+  getAllPlayers():Observable<Players[]>{
+    return this._httpClient.get<Players[]>(this.playersAPI);
+  }
   
   getPlayerById(playerId:number):Observable<Players>{
     return this._httpClient.get<Players>(`${this.playersAPI}/${playerId}`);

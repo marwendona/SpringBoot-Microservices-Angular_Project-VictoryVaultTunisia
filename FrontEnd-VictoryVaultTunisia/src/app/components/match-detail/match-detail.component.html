@@ -41,32 +41,298 @@
 
 
             <div class="content-container">
-                <form>
+                <form  [formGroup]="MatchFormAffect" (ngSubmit)="EditMatch()"> 
+
                     <div class="row">
+                        <!-- Team Home Column -->
+
                         <div class="col-md-6">
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-2">
                                 <label for="playerSelect">select Team Home <span
                                         style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="stadium">
+                                <select class="form-control custom-input" formControlName="TeamHome" (change)="onSelectOption($event, 'player1')"  (change)="onSelectTeamHome()" >
                                     <option disabled selected>Team</option>
                                     <option disabled>──────────</option>
-                                    <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}
+                                    <option *ngFor="let team of teams" [value]="team.id" [disabled]="isTeamHomeSelected(team.id)">{{ team.name }}
                                 </select>
                             </div>
+                            
                             <br>
                             <div class="form-group mt-3">
                                 <table>
                                     <tr>
                                         <td width=12% align="center" valign="middle">Position</td>
                                         <td width=48% valign="top"><label for="dateInput"></label>
-                                            <input type="text" id="dateInput" name="dateInput" placeholder="">
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome1">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
                                         </td>
                                         <td width=12% align="center" valign="middle">Player</td>
                                         <td width=48% align="right" valign="top">
-                                            <select class="form-control custom-input" formControlName="teamHome">
+                                            <select class="form-control custom-input" formControlName="playerHome1">
                                                 <option disabled selected>select player</option>
                                                 <option disabled>──────────</option>
-                                                <option *ngFor="let player of players" [value]="player.id">{{ player.firstName }}
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome2">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome2">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome3">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome3">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome4">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome4">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome5">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome5">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome6">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome6">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome7">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome7">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome8">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome8">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome9">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome9">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome10">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome10">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br> <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerHome11">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerHome11">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersHome" [value]="player.id">{{ player.firstName }}
                                             </select>
                                         </td>
                                     </tr>
@@ -74,14 +340,19 @@
                                 </table>
                             </div>
                         </div>
+
+
+                        <!-- Team Away Column -->
+
                         <div class="col-md-6">
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-3" *ngFor="let playerIndex of [0]">
+                                
                                 <label for="playerSelect">select Team Away <span
                                         style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="stadium">
+                                <select class="form-control custom-input" formControlName="TeamAway" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectTeamAway(playerIndex)">
                                     <option disabled selected>Team</option>
                                     <option disabled>──────────</option>
-                                    <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}
+                                    <option *ngFor="let team of teams" [value]="team.id" [disabled]="isTeamHomeSelected(team.id)">{{ team.name }}
                                 </select>
                             </div>
                             <br>
@@ -90,87 +361,293 @@
                                     <tr>
                                         <td width=12% align="center" valign="middle">Position</td>
                                         <td width=48% valign="top"><label for="dateInput"></label>
-                                            <input type="text" id="dateInput" name="dateInput" placeholder="">
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway1">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
                                         </td>
                                         <td width=12% align="center" valign="middle">Player</td>
                                         <td width=48% align="right" valign="top">
-                                            <select class="form-control custom-input" formControlName="teamHome">
+                                            <select class="form-control custom-input" formControlName="playerAway1">
                                                 <option disabled selected>select player</option>
                                                 <option disabled>──────────</option>
-                                                <option *ngFor="let player of players" [value]="player.id">{{ player.firstName }}
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
                                             </select>
                                         </td>
                                     </tr>
                                     <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway2">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway2">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway3">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway3">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway4">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway4">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway5">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway5">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway6">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway6">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway7">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway7">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway8">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway8">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway9">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway9">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway10">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway10">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    <tr>
+                                        <td width=12% align="center" valign="middle">Position</td>
+                                        <td width=48% valign="top"><label for="dateInput"></label>
+                                            <select class="form-control custom-input" formControlName="OptionplayerAway11">
+                                                <option disabled selected>select Position</option>
+                                                <option disabled>──────────</option>
+                                                <option >guardian</option>
+                                                <option >full backs</option>
+                                                <option >stopper</option>
+                                                <option >defensive midfielders</option>
+                                                <option >attacking midfielders</option>
+                                                <option >attacker</option>
+                                                <option >The center front</option>
+                                                <option >replacements</option>
+                                            </select>
+                                        </td>
+                                        <td width=12% align="center" valign="middle">Player</td>
+                                        <td width=48% align="right" valign="top">
+                                            <select class="form-control custom-input" formControlName="playerAway11">
+                                                <option disabled selected>select player</option>
+                                                <option disabled>──────────</option>
+                                                <option *ngFor="let player of playersAway" [value]="player.id">{{ player.firstName }}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                    
                                 </table>
                             </div>
                         </div>
-
-
-                        <!-- <div class="col-md-6">
-                            <div class="form-group mt-3">
-                                <label for="playerSelect">spectators number<span style="color: #d62828;">*</span></label>
-                                <input class="form-control custom-input" type="number" formControlName="spectators">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mt-3">
-                                <label for="playerSelect">select referee <span style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="referee">
-                                    <option disabled selected>Referee</option>
-                                    <option disabled>──────────</option>
-                                    <option *ngFor="let referee of refereeData" [value]="referee.id">{{ referee.firstName }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-15">
-                            <div class="form-group mt-3">
-                                <label for="playerSelect">select Date <span style="color: #d62828;">*</span></label>
-                                <input class="form-control custom-input" type="date" formControlName="date">
-                            </div>
-                        </div>
-                        <div class="col-md-15">
-                            <div class="form-group mt-3">
-                                <label for="playerSelect">select stadium <span style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="stadium">
-                                    <option disabled selected>Stadium</option>
-                                    <option disabled>──────────</option>
-                                    <option>
-                                    </option>
-
-                                </select>
-                            </div>
-                        
-
-                        </div> -->
-                        <!-- <div class="col-md-6">
-                            <div class="form-group mt-3">
-                                <label for="playerSelect">Team home <span style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="teamHome" (change)="onSelectOption($event, 'player1')"  (change)="onSelectPlayer1()" >
-                                    <option disabled selected>team home</option>
-                                    <option disabled>──────────</option>
-                                    <option *ngFor="let team of teamData" [value]="team.id"[disabled]="isPlayerSelected(team.id)" >{{ team.name }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group mt-3">
-                                <div *ngFor="let playerIndex of [0]">
-
-                                <label for="playerSelect">Team away <span style="color: #d62828;">*</span></label>
-                                <select class="form-control custom-input" formControlName="teamAway" (change)="onSelectOption($event, 'player' + (playerIndex + 2))" (change)="onSelectPlayern(playerIndex)">
-                                    <option disabled selected>team away</option>
-                                    <option disabled>──────────</option>
-                                    <option *ngFor="let team of teamData" [value]="team.id"[disabled]="isPlayerSelected(team.id)" >{{ team.name }}
-                                    </option>
-                                </select>
-                                </div>
-
-                            </div>
-                        </div> -->
-
-
-
                     </div>
                     <button type="submit" class="btn btn-danger"
                         style="position: absolute; right: 100px;">Submit</button>

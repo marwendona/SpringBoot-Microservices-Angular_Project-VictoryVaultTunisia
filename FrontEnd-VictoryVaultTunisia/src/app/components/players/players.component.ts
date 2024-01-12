@@ -4,6 +4,7 @@ import { Players } from 'src/app/models/Players';
 import { PlayerService } from 'src/app/services/matchServices/playerService/player.service';
 import Swal from 'sweetalert2';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-players',
@@ -34,9 +35,10 @@ constructor(private playerService:PlayerService){}
 
 
 getPlayers(){
-  this.playerService.getPlayers(this.pageSize,this.pageIndex).subscribe(playerPage=>{
-    this.dataPlayers= playerPage.content;
-    this.length=playerPage.totalElements;
+  this.playerService.getPlayers().subscribe(playerPage=>{
+    this.dataPlayers=playerPage
+    // this.dataPlayers= new MatTableDataSource<Players>(playerPage);
+    // this.dataPlayers=this.dataPlayers._data.value.content
   })
 }
 handlePageEvent(e: any) {

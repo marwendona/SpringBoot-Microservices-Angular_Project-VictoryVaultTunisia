@@ -18,7 +18,7 @@ export class AddteamComponent implements OnInit {
 
   teamForm!: FormGroup;
   dataCoach!: any;
-  players!:Players[];
+  players!:any[];
   selectedCoach: string = ''; // Initialize with the default value you want
 
   constructor(private coachService:CoachService, private playerService:PlayerService, private teamService:TeamService ,private router: Router){}
@@ -48,8 +48,8 @@ export class AddteamComponent implements OnInit {
   selectedPlayerId: number | undefined;
   playersVierge:Players[]=[];
   async getPlayers(){
-     this.playerService.getPlayers().subscribe( players => {
-      this.players=players.content
+     this.playerService.getAllPlayers().subscribe( players => {      
+      this.players=players
       this.players.forEach(p=>{
         if(p.teamId==null){
           this.playersVierge.push(p)
