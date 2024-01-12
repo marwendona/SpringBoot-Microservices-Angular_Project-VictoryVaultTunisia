@@ -57,15 +57,15 @@
         </ng-container>
 
         <ng-container matColumnDef="Home">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> match Home</th>
-          <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.coachId}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> team Home</th>
+          <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.lineupHomeTeamName}}</td>
           <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
               *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="Away">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> match Away</th>
-          <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.coachId}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> team Away</th>
+          <td mat-cell *matCellDef="let match" (click)="onMatchClick(match)"> {{match.lineupAwayTeamName}}</td>
           <td style="background-image: url('../../../assets/images/background/blackblueBg.jpg');" mat-footer-cell
               *matFooterCellDef></td>
         </ng-container>

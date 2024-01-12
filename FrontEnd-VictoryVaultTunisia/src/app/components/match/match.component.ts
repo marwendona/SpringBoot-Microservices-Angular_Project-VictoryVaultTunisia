@@ -41,6 +41,8 @@ MatchData!: CdkTableDataSourceInput<any>;
 getMatch(){
   this.matchService.getMatch().subscribe(matchData=>{
     this.MatchData=matchData.content;
+    console.log(this.MatchData);
+    
   })
 }
 

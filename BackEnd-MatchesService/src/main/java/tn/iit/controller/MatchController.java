@@ -17,6 +17,7 @@ import tn.iit.service.LineupService;
 import tn.iit.service.MatchService;
 import tn.iit.service.RefereeService;
 import tn.iit.service.StadiumService;
+import tn.iit.service.TeamService;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,20 +29,26 @@ public class MatchController {
     private final RefereeService refereeService;
     private final LineupService lineupService;
     private final StadiumService stadiumService;
-
+    private final TeamService teamService;
     public MatchController(MatchService matchService,
                            RefereeService refereeService,
                            LineupService lineupService,
-                           StadiumService stadiumService) {
+                           StadiumService stadiumService
+                           , TeamService teamService) {
         this.matchService = matchService;
         this.refereeService = refereeService;
         this.lineupService = lineupService;
         this.stadiumService = stadiumService;
+        this.teamService = teamService;
     }
     @GetMapping
     public ResponseEntity<Page<MatchDto>> getMatches(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<MatchDto> matches = matchService.getAllMatches(PageRequest.of(page,size)).map(MatchMapper::toMatchDto);
         matches.forEach(match -> {
+            if(Optional.ofNullable(match.getLineupAwayId()).isPresent()&&Optional.ofNullable(match.getLineupHomeId()).isPresent()){
+                match.setLineupAwayTeamName(lineupService.getLineupById(match.getLineupAwayId()).getTeam().getName());
+                match.setLineupHomeTeamName(lineupService.getLineupById(match.getLineupHomeId()).getTeam().getName());
+            }
             match.setTeamAwayScorers(
                     matchService.getMatchById(match.getId()).getTeamAwayScorers().stream().map(ScorerMapper::toScorerDto).toList()
             );
@@ -52,7 +59,7 @@ public class MatchController {
                     matchService.getMatchById(match.getId()).getReplacements().stream().map(ReplacementMapper::toReplacementDto).toList()
             );
         });
-        return ResponseEntity.ok(matchService.getAllMatches(PageRequest.of(0,10)).map(MatchMapper::toMatchDto));
+        return ResponseEntity.ok(matches);
     }
     @GetMapping("/{id}")
     public ResponseEntity<MatchDto> getMatchById(@PathVariable Long id) {

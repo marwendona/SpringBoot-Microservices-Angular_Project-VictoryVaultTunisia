@@ -12,10 +12,11 @@ public class MatchMapper {
     public static MatchDto toMatchDto(Match match) {
         Lineup lineupAway=new Lineup();
         Lineup lineupHome=new Lineup();
-        Optional<Lineup> optionalLineupAway= Optional.ofNullable(lineupAway);
-        Optional<Lineup> optionalLineupHome = Optional.ofNullable(lineupHome);
+        Optional<Lineup> optionalLineupAway= Optional.ofNullable(match.getLineupAway());
+        Optional<Lineup> optionalLineupHome = Optional.ofNullable(match.getLineupHomes());
 
         if (optionalLineupAway.isPresent()) {
+            System.out.println(optionalLineupAway.get().getId());
             lineupAway = optionalLineupAway.get();
         }
         if (optionalLineupHome.isPresent()) {
