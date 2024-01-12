@@ -13,11 +13,11 @@ import java.util.List;
 @FeignClient(name = "matches-service", path = "/")
 public interface MatchController {
 
-    @GetMapping("/matches/season-service/{id}")
+    @GetMapping("/matches/matches/season-service/{id}")
     ResponseEntity<List<MatchDto>> getMatchesByRoundId(@PathVariable long id);
-    @DeleteMapping("/matches/season-service/{id}")
+    @DeleteMapping("/matches/matches/season-service/{id}")
     ResponseEntity<Void> deleteMatchesByRoundId(@PathVariable long id);
-    @DeleteMapping("/teams/season-service/{id}")
+    @GetMapping("/teams/teams/season-service/{id}")
     ResponseEntity<TeamDto> getTeamByID(@PathVariable long id);
 
 }

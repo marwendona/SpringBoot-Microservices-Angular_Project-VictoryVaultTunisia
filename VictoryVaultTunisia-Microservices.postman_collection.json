@@ -1,0 +1,4194 @@
+{
+	"info": {
+		"_postman_id": "7cf87e33-0dbb-4e0c-80a7-7fe84f65ff4b",
+		"name": "VictoryVaultTunisia-Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26234692"
+	},
+	"item": [
+		{
+			"name": "MatchesService",
+			"item": [
+				{
+					"name": "matches",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT matches/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"stadiumId\": 1,\n  \"refereeId\": 2,\n  \"date\": \"2015-04-23T18:25:43.511Z\",\n  \"spectatorNumber\": 3,\n  \"lineupHomeId\": 3,\n  \"lineupAwayId\": 2\n\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/matches/5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"matches",
+												"5"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/matches/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"matches",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE matches/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-servicematches/5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-servicematches",
+												"5"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/matches/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"matches",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET matches/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/matches/5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"matches",
+												"5"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/matches/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"matches",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST matches",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"stadiumId\": 1,\n  \"refereeId\": 2,\n  \"date\": \"2012-04-23T18:25:43.511Z\",\n  \"spectatorNumber\": 3,\n  \"lineupHomeId\": 3,\n  \"lineupAwayId\": 2\n\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/matches",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"matches"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/matches",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"matches"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "GET matches",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/matches",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"matches"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/matches",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"matches"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"stadiumId\": \"<long>\",\n  \"refereeId\": \"<long>\",\n  \"date\": \"<dateTime>\",\n  \"spectatorNumber\": {},\n  \"teamHomeScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"teamAwayScorers\": [\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"scoringTime\": \"<integer>\",\n      \"playerInPositionId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ],\n  \"lineupHomeId\": \"<long>\",\n  \"lineupAwayId\": \"<long>\",\n  \"replacements\": [\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"replacementTime\": \"<integer>\",\n      \"playerInId\": \"<long>\",\n      \"playerOutId\": \"<long>\",\n      \"matchId\": \"<long>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "scorers",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT scorers/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"scoringTime\": 33,\n  \"playerInPositionId\": 2,\n  \"matchId\": 2\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/scorers/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"scorers",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/scorers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"scorers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE scorers/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/scorers/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"scorers",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/scorers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"scorers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET scorers/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/scorers/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"scorers",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/scorers/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"scorers",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST scorers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"scoringTime\": 47,\n  \"playerInPositionId\": 2,\n  \"matchId\": 2\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/scorers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"scorers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/scorers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"scorers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET scorers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/scorers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"scorers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/scorers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"scorers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"scoringTime\": \"<integer>\",\n  \"playerInPositionId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "referees",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT referees/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"<dd>\",\n  \"lastName\": \"<dd>\",\n  \"nationality\": \"<^df>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/referees/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"referees",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/referees/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"referees",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE referees/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/referees/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"referees",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/referees/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"referees",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET referees/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/referees/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"referees",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/referees/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"referees",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST referees",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/referees",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"referees"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/referees",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"referees"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET referees",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/referees",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"referees"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/referees",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"referees"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "replacements",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT replacements/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"replacementTime\": 1,\n  \"playerInId\": 2,\n  \"playerOutId\": 3,\n  \"matchId\": 2\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/replacements/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"replacements",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/replacements/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"replacements",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE replacements/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/replacements/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"replacements",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/replacements/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"replacements",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET replacements/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/replacements/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"replacements",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/replacements/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"replacements",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST replacements",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"replacementTime\": \"15\",\n  \"playerInId\": 2,\n  \"playerOutId\": 3,\n  \"matchId\": 2\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/replacements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"replacements"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/replacements",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"replacements"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET replacements",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/replacements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"replacements"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/replacements",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"replacements"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"replacementTime\": \"<integer>\",\n  \"playerInId\": \"<long>\",\n  \"playerOutId\": \"<long>\",\n  \"matchId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "playerinposition",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT playerinposition/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"position\": \"<string>\",\n  \"playerId\": 1,\n  \"lineupId\": 1\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/playerinposition/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"playerinposition",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/playerinposition/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"playerinposition",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE playerinposition/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/playerinposition/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"playerinposition",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/playerinposition/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"playerinposition",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET playerinposition/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/playerinposition/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"playerinposition",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/playerinposition/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"playerinposition",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST playerinposition",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"position\": \"<string>\",\n  \"playerId\": 1,\n  \"lineupId\": 2\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/playerinposition",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"playerinposition"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/playerinposition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"playerinposition"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET playerinposition",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/playerinposition",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"playerinposition"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/playerinposition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"playerinposition"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"position\": \"<string>\",\n  \"playerId\": \"<long>\",\n  \"lineupId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "lineups",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT lineups/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"teamId\": 1\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/lineups/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"lineups",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/lineups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"lineups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE lineups/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/lineups/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"lineups",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/lineups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"lineups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET lineups/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/lineups/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"lineups",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/lineups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"lineups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST lineups",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"teamId\": 1\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/lineups",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"lineups"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/lineups",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"lineups"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET lineups",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/lineups",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"lineups"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/lineups",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"lineups"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"position\": \"<string>\",\n      \"playerId\": \"<long>\",\n      \"lineupId\": \"<long>\"\n    }\n  ],\n  \"teamId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "coach",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT coach/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/coach/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"coach",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/coach/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"coach",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE coach/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/coach/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"coach",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/coach/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"coach",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET coach/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/coach/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"coach",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/coach/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"coach",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST coach",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/coach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"coach"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/coach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"coach"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET coach",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/coach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"coach"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/coach",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"coach"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "teams",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT teams/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<ssss>\",\n  \"coachId\": 1\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/teams/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"teams",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/teams/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"teams",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE teams/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/teams/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"teams",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/teams/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"teams",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET teams/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/teams/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"teams",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/teams/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"teams",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST teams",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"coachId\": 4\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/teams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"teams"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/teams",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"teams"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET teams",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/teams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"teams"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/teams",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"teams"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"lineups\": [\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"players\": [\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"position\": \"<string>\",\n          \"playerId\": \"<long>\",\n          \"lineupId\": \"<long>\"\n        }\n      ],\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"players\": [\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"teamId\": \"<long>\"\n    }\n  ],\n  \"coachId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "players",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT players/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"<ddd>\",\n  \"lastName\": \"<ddd>\",\n  \"nationality\": \"<ddd>\",\n  \"teamId\": 1\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/players/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"players",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/players/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"players",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE players/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/players/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"players",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/players/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"players",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET players/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/players/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"players",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/players/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"players",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST players",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": 1\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/players",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"players"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/players",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"players"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "GET players",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/players",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"players"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/players",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"players"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"teamId\": \"<long>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "stadiums",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "PUT stadiums/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": 30\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9090/matches-service/stadiums/2?name=NouveauNom&capacity=50000",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"stadiums",
+												"2"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "NouveauNom"
+												},
+												{
+													"key": "capacity",
+													"value": "50000"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/stadiums/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stadiums",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "DELETE stadiums/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/stadiums/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"stadiums",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/stadiums/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stadiums",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET stadiums/{id}",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:9090/matches-service/stadiums/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9090",
+											"path": [
+												"matches-service",
+												"stadiums",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/stadiums/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"stadiums",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "POST stadiums",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"capacity\": 20,\n  \"photo\": null\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/matches-service/stadiums?name=f&capacity=22",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"stadiums"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "f"
+										},
+										{
+											"key": "capacity",
+											"value": "22"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/stadiums",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stadiums"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "GET stadiums",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9090/matches-service/stadiums",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"matches-service",
+										"stadiums"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/stadiums",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stadiums"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"capacity\": {},\n  \"matches\": [\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<long>\",\n      \"stadiumId\": \"<long>\",\n      \"refereeId\": \"<long>\",\n      \"date\": \"<dateTime>\",\n      \"spectatorNumber\": {},\n      \"teamHomeScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"teamAwayScorers\": [\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"scoringTime\": \"<integer>\",\n          \"playerInPositionId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ],\n      \"lineupHomeId\": \"<long>\",\n      \"lineupAwayId\": \"<long>\",\n      \"replacements\": [\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"replacementTime\": \"<integer>\",\n          \"playerInId\": \"<long>\",\n          \"playerOutId\": \"<long>\",\n          \"matchId\": \"<long>\"\n        }\n      ]\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SeasonService",
+			"item": [
+				{
+					"name": "Season",
+					"item": [
+						{
+							"name": "getAllSeasons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/seasons",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"seasons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSeasonById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/seasons/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"seasons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createSeason",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\":\"Season 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/seasons",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"seasons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateSeason",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\":\"Season 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/seasons/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"seasons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSeason",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/seasons/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"seasons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Round",
+					"item": [
+						{
+							"name": "getAllRounds",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/rounds",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"rounds"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRoundById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/rounds/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"rounds",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createRound",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\":\"Round 1\",\r\n\"roundNumber\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/rounds/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"rounds",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateRound",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\":\"Round 2\",\r\n\"roundNumber\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/rounds/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"rounds",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteRound",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/rounds/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"rounds",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Standing",
+					"item": [
+						{
+							"name": "getAllStandings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/standings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"standings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getStandingById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/standings/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"standings",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createStanding",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"rank\":1,\r\n\"score\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/standings/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"standings",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateStanding",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"rank\":2,\r\n\"score\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/season-service/standings/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"standings",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteStanding",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/season-service/standings/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"season-service",
+										"standings",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8082"
+		}
+	]
+}

@@ -123,7 +123,7 @@ public class TeamController {
     }
 
     @GetMapping("/teams/season-service/{id}")
-    public ResponseEntity<TeamSeasonServiceDto> getMethodName(@RequestParam Long id) {
+    public ResponseEntity<TeamSeasonServiceDto> getMethodName(@PathVariable Long id) {
         Team team = teamService.getTeamById(id);
         if (team != null) {
             TeamSeasonServiceDto teamSeasonServiceDto = TeamSeasonServiceDto.builder()

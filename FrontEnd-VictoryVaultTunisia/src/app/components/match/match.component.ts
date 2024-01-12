@@ -71,7 +71,7 @@ onMatchClick(team: any) {
     });
   }
   deleteFunction(teamID:number): void {
-    this.teamService.deleteTeam(teamID).subscribe(()=>{
+    this.matchService.deleteTeam(teamID).subscribe(()=>{
       Swal.fire({
         title: 'Deleted!',
         text: 'Your file has been deleted.',
