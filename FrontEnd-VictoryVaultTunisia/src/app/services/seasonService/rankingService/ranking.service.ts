@@ -9,10 +9,10 @@ import { Standing } from 'src/app/models/Standing';
 export class RankingService {
 
   constructor(private _httpClient: HttpClient) {}
-  standingAPI= `/season-service/standing`
+  standingAPI= `/season-service/standings`
   
   addStanding(standing:Standing): Observable<any> {
-    return this._httpClient.post<any>(this.standingAPI, standing);
+    return this._httpClient.post<any>(this.standingAPI+`/${standing.seasonId}`, standing);
   }
 
   getStanding():Observable<Standing[]> {

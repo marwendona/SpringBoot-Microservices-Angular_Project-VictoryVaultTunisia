@@ -5,6 +5,6 @@ export class Season {
     id!:number;
     name:string='';
     rounds!:Round[];
-    standings!:Standing[];
+    generalStanding!:Standing[];
   }
   

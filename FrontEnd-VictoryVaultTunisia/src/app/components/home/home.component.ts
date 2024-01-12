@@ -14,6 +14,8 @@ import { SeasonService } from 'src/app/services/seasonService/seasonService/seas
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+rankForm!: FormGroup<any>;
+
   constructor(
     private seasonService: SeasonService,
     private roundService:RoundService,
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
   seasonForm!: FormGroup<any>;
   matches!: MatchSeason[];
   rounds!: Round[] ;
-  currentRound!: Round;;
+  currentRound!: Round|undefined;
   standings!: Standing[];
   Seasons!: Season[];
   currentSeason!: Season;
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.initFormAddAccount();
     this.initFormAddRound();
+    this.initFormAddRank();
     this.getSeasons();
   }
 
@@ -45,13 +48,22 @@ export class HomeComponent implements OnInit {
       roundNumber: new FormControl('', Validators.required),
     });
   }
+  initFormAddRank() {
+    this.rankForm = new FormGroup({
+      rank: new FormControl('', Validators.required),
+      score: new FormControl('', Validators.required),
+      teamName: new FormControl('', Validators.required),
+    });
+  }
   getSeasons() {
     this.seasonService.getSeason().subscribe((data) => {
       this.Seasons = data;
       this.currentSeason = this.Seasons[this.Seasons.length - 1];
       this.rounds = this.currentSeason.rounds
       this.currentRound = this.rounds[this.rounds.length - 1];
-      this.standings = this.currentSeason.standings
+      this.standings = this.currentSeason.generalStanding
+      console.log(this.currentSeason);
+      
     });
   }
   addSeason() {
@@ -59,10 +71,11 @@ export class HomeComponent implements OnInit {
       id: 0,
       name: this.seasonForm.value.name,
       rounds: [],
-      standings: []
+      generalStanding: []
     }
     this.seasonService.addSeason(this.seasonForm.value).subscribe((data) => {
       this.getSeasons();
+      window.location.reload();
     });
   }
   addRound() {
@@ -71,18 +84,43 @@ export class HomeComponent implements OnInit {
       name: this.roundForm.value.name,
       roundNumber: this.roundForm.value.roundNumber,
       matches:[],
-      seasonId: this.currentSeason.id
+      seasonId: this.currentSeason?.id || 0
     }
     this.roundService.addRound(round).subscribe((data) => {
       this.getSeasons();
+      window.location.reload();
     });
   }
+  addRank() {
+    //TODO use dynamic teamId
+    let rank:Standing = {
+      id: 0,
+      rank: this.rankForm.value.rank,
+      score: this.rankForm.value.score,
+      teamName: this.rankForm.value.teamName,
+      seasonId: this.currentSeason?.id || 0,
+      teamId: 1
+    }
+    this.standingService.addStanding(rank).subscribe((data) => {
+      this.getSeasons();
+      window.location.reload();
+    });
+    }
   nextSeason() {
     if (this.currentSeason)
    { let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
     if (indexcurrentSeson != this.Seasons.length - 1) {
       this.currentSeason = this.Seasons[indexcurrentSeson + 1];
+      if(this.currentSeason.rounds){
+        this.rounds = this.currentSeason.rounds
+        this.currentRound = this.rounds[this.rounds.length - 1];
+        this.standings = this.currentSeason.generalStanding
+        }
+        else{
+          this.currentRound = undefined
+        }
     }
+    
   }
   }
   previousSeason() {
@@ -90,6 +128,14 @@ export class HomeComponent implements OnInit {
    { let indexcurrentSeson: number = this.Seasons.indexOf(this.currentSeason);
     if (indexcurrentSeson != 0) {
       this.currentSeason = this.Seasons[indexcurrentSeson - 1];
+      if(this.currentSeason.rounds){
+      this.rounds = this.currentSeason.rounds
+      this.currentRound = this.rounds[this.rounds.length - 1];
+      this.standings = this.currentSeason.generalStanding
+      }
+      else{
+        this.currentRound = undefined
+      }
     }}
   }
   previousRound() {

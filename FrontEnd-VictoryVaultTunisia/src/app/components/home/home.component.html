@@ -85,6 +85,58 @@
       </div>
     </div>
     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <!-- -----------------------------------------------------Modal Add---------------------------------------------------------------- -->
+        <div class="modal fade" id="AddModalRanking" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Add remplacemet</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="rankForm" (ngSubmit)="addRank()">
+                <div>
+                  <div>
+                    <label for="prenomInput">Team rank<span style="color: #d62828;">*</span></label>
+                    <input type="text" class="form-control" formControlName="rank" required>
+                    <div style="color: red;">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="prenomInput">Team score<span style="color: #d62828;">*</span></label>
+                    <input type="number" class="form-control" formControlName="score" required>
+                    <div style="color: red;">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="prenomInput">Team name<span style="color: #d62828;">*</span></label>
+                    <input type="text" class="form-control" formControlName="teamName" required>
+                    <div style="color: red;">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+                  <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancel</button>
+                </div>
+  
+              </form>
+  
+            </div>
+  
+  
+  
+          </div>
+        </div>
+      </div>
+      <!-- -------------------------------------------------------------------------------------------------------------------------- -->
     <br><br><br><br><br><br>
     <button data-toggle="modal" data-target="#AddModal" class="btn" style="position: absolute; right: 100px;">
       <span>Add Season </span>
@@ -115,11 +167,11 @@
             Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus
             doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut! Est.</p>
 
-          <div class="matchSchedule_details row" *ngIf="Seasons && currentSeason">
+          <div class="matchSchedule_details row" *ngIf="Seasons && currentSeason ">
             <div class="match_versus-wrap">
               <div class="wrap_match-innerdetails">
                 <ul class="home_tInfo scrollable">
-                  <li *ngFor="let match of currentRound.matches"><a href="">
+                  <li *ngFor="let match of currentRound?.matches"><a href="">
                       <ul class="t_info match_info01 headline01 clearfix">
                         <li></li>
                         <li>
@@ -147,7 +199,7 @@
 
                       <i class="fa fa-arrow-up" style="color: white;"></i>
                     </a></p>
-                  <h4 class="headline03">Round °{{currentRound.roundNumber}}</h4>
+                  <h4 *ngIf="currentRound" class="headline03">Round °{{currentRound.roundNumber}}</h4>
                   <p (click)="nextRound()"><a class="btnSpecial" style="position: absolute; right: 100px;">
 
                       <i class="fa fa-arrow-down" style="color: white;"></i>
@@ -158,7 +210,14 @@
           </div>
 
           <div class="matchSchedule_details row" *ngIf="currentSeason">
+            
             <div class="match_next">
+              <button data-toggle="modal" data-target="#AddModalRanking" class="btn"
+              style="position: absolute; right: 100px; width: fit-content;height: 25px; margin-top: 10px" >
+              <span>Add Ranking</span>
+              <p></p>
+              <i class="fa fa-plus"></i>
+            </button>
               <div class="wrap_match_next right-triangle">
                 <div class="right-padding">
                   <h4 class="headline03">Season Rankings</h4>
@@ -168,7 +227,7 @@
             <div class="match_versus-wrap">
               <div class="wrap_match-innerdetails">
                 <ul class="point_table scrollable">
-                  <li class="clearfix" *ngFor="let standing of currentSeason.standings">
+                  <li class="clearfix" *ngFor="let standing of currentSeason.generalStanding">
                     <div class="subPoint_table">
                       <div class="headline01 smallpoint">{{standing.rank}}</div>
                       <div class="headline01 largepoint">{{standing.teamName}}</div>
