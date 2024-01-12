@@ -1,5 +1,5 @@
 export class Referee {
-    id!:number;
+    id!:number|null;
     firstName:string='';
     lastName:string='';
     nationality:string='';

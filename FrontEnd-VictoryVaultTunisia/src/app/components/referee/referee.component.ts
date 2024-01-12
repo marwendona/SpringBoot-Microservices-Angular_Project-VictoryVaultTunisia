@@ -110,7 +110,7 @@ export class RefereeComponent implements OnInit{
 
 addReferee() {
   const referee: Referee = {
-    id:1,
+    id:null,
     firstName: this.refereeFormAdd.value.firstName,
     lastName: this.refereeFormAdd.value.lastName,
     nationality: this.refereeFormAdd.value.nationality
